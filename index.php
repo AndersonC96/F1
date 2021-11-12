@@ -1,5 +1,5 @@
 <?php
-    require __DIR__ . '/PHP/header.php';
+    require __DIR__ . './PHP/header.php';
 ?>
 <div class="h-screen flex justify-center content-center items-center mb-5 mt-5">
     <div class="flex justify-center content-center items-center">
@@ -29,8 +29,8 @@
         }
     </style>
     <?php
-        require __DIR__ . '/PHP/navbar.php';
+        require __DIR__ . './PHP/navbar.php';
     ?>
     <?php
-        require __DIR__ . '/PHP/footer.php';
+        require __DIR__ . './PHP/footer.php';
     ?>
