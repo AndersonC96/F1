@@ -5,16 +5,16 @@
     <div class="flex justify-center content-center items-center">
         <main class="block">
             <article class="start-grid justify-items-center place-content-between mb-10 rounded-lg">
-                <div class="emoji-orbit">🏎</div>
+                <div class="emoji-orbit"><center>🏎</center></div>
                 <div class="emoji-track opacity-0 sm:opacity-100"></div>
                 <div class="text-container">
                     <div class="animation one"></div>
-                    <div class="text one">Bem-vindo ao</div>
+                    <div class="text one"><center>Bem-vindo ao</center></div>
                     <div class="animation two"></div>
-                    <div class="text two">Fatos da Formula 1</div>
-                    <div class="emoji">🏎</div>
+                    <div class="text two"><center>Portal Formula 1</center></div>
+                    <div class="emoji"><center>🏎</center></div>
                     <div class="race-info">
-                        <p class="sm:text-lg text-xs text-center"><?php echo "Next Race: " . getLocation($races) . " (" . getCircuit($races) . ")"; ?></p>
+                        <p class="sm:text-lg text-xs text-center"><?php echo "<b>Próxima corrida</b>: " . getLocation($races) . " (" . getCircuit($races) . ")"; ?></p>
                         <p class="sm:text-lg text-xs text-center"><?php echo getTimeToNextRace($races); ?></p>
                     </div>
                 </div>
