@@ -1,0 +1,119 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap');
+*{
+    box-sizing: border-box;
+    font-family: 'Titillium Web';
+    margin: 0;
+    padding: 0;
+}
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.text-container{
+    background-color: transparent;
+    position: relative;
+    overflow: hidden;
+    text-transform: uppercase;
+}
+.block article{
+    position: relative;
+}
+.race-info{
+    text-transform: none;
+    animation: text 3.5s ease;
+}
+.text{
+    animation: text 2s ease-in-out;
+    font-family: 'Titillium Web', sans-serif;
+    font-weight: bold;
+    height: 80px;
+    font-size: 2rem;
+    text-align: center;
+    display: hidden;
+}
+.one{
+    font-size: 2.5rem;
+}
+.animation{
+    width: 100%;
+    height: 80px;
+    position: absolute;
+    z-index: 1;
+}
+.animation.one{
+    animation: textRevealOne 1.5s ease-in-out;
+}
+.animation.two{
+    animation: textRevealTwo 1.5s ease-in-out;
+}
+.pb-1 a{
+    font-family: 'Titillium Web';
+}
+.emoji{
+    opacity: 0;
+    position: absolute;
+    display: inline-block;
+    width: 100%;
+    top: calc(40% - 72px);
+    left: calc(40% - 48px);
+    font-size: 5rem;
+    animation: emojiReveal 1s ease-out;
+}
+.emoji-orbit{
+    position: absolute;
+    display: inline-block;
+    opacity: 0;
+    top: calc(50% - 36px);
+    left: calc(50% - 24px);
+    font-size: 3rem;
+    animation: orbit 3s linear infinite 2.5s;
+}
+.emoji-track{
+    border: 4px solid rgb(90, 90, 90);
+    border-radius: 50%;
+    height: 485px;
+    width: 485px;
+    position: absolute;
+    display: inline-block;
+    opacity: 1;
+    top: -63%;
+    left: -11%;
+    font-size: 3rem;
+    animation: text linear forwards 4s;
+}
+.mainDiv{
+    height: 100vh;
+    display: flex;
+}
+.teamsMain{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+.teamsArticle{
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    align-items: center;
+}
+.teamLogo{
+    display: flex;
+    transform: scale(0.8);
+    margin-bottom: -40px;
+}
+@media screen and (min-width: 320px){
+    .teamsArticle{
+        font-size: 0.5rem;
+        margin-top: 0px;
+    }
+    .mainDiv{
+        width: 100%;
+    }
+}
+@media screen and (min-width: 550px){
+    .teamsArticle{
+        font-size: 1rem;
+    }
+}
