@@ -40,7 +40,7 @@
                 ">Começar</a>
             </li>
             <li class="mr-3 flex-1">
-                <a href="/PHP/teams.php" class="
+                <a href="./PHP/teams.php" class="
                     pb-1
                     md:pb-0
                     text-xl
@@ -59,7 +59,7 @@
                 ">Equipes</a>
             </li>
             <li class="mr-3 flex-1">
-                <a href="/PHP/drivers.php" class="
+                <a href="./PHP/drivers.php" class="
                     pb-1
                     md:pb-0
                     text-xl
