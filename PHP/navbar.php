@@ -37,7 +37,7 @@
                     md:text-2xl
                     lg:text-4xl
                     motion-safe:hover:scale-110
-                ">Começar</a>
+                ">Início</a>
             </li>
             <li class="mr-3 flex-1">
                 <a href="./PHP/teams.php" class="
