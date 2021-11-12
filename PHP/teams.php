@@ -1,8 +1,8 @@
 <?php
-    require __DIR__ . '/header.php';
+    require __DIR__ . './header.php';
 ?>
 <?php
-    require __DIR__ . '/navbar.php';
+    require __DIR__ . './navbar.php';
 ?>
 <?php
     $sorting = 'team';
@@ -34,11 +34,11 @@
                         <img class="scale-75 motion-safe:hover:scale-90 filter grayscale hover:filter-none" src="<?php echo $team['image']; ?>" alt="<?php echo $team['name']; ?>">
                         <h2 class="uppercase font-bold sm:text-lg text-base text-center hover:text-pink-500 mb-2"><a href="<?php echo $team['website'] ?>"><?php echo $team['name']; ?></a></h2>
                         <div class="flex flex-col items-center justify-center justify-items-center">
-                            <p class="sm:text-lg text-sm text-center"><?php echo "Pilotos: " . $driversString; ?></p>
-                            <p class="sm:text-lg text-sm"><?php echo "Equipe Principal: " . $team['teamPrincipal']; ?></p>
-                            <p class="sm:text-lg text-sm"><?php echo "Campeonatos: " . $team['championships']; ?></p>
-                            <p class="sm:text-lg text-sm"><?php echo "Corridas vencidas: " . $team['wins']; ?></p>
-                            <p class="sm:text-lg text-sm"><?php echo "Estreia: " . $team['year']; ?></p>
+                            <p class="sm:text-lg text-sm text-center"><?php echo "<b>Pilotos</b>: " . $driversString; ?></p>
+                            <p class="sm:text-lg text-sm"><?php echo "<b>Equipe Principal</b>: " . $team['teamPrincipal']; ?></p>
+                            <p class="sm:text-lg text-sm"><?php echo "<b>Campeonatos</b>: " . $team['championships']; ?></p>
+                            <p class="sm:text-lg text-sm"><?php echo "<b>Corridas vencidas</b>: " . $team['wins']; ?></p>
+                            <p class="sm:text-lg text-sm"><?php echo "<b>Estreia</b>: " . $team['year']; ?></p>
                         </div>
                     </article>
                 <?php endforeach; ?>
@@ -51,5 +51,5 @@
             }
         </style>
         <?php
-            require __DIR__ . '/footer.php';
+            require __DIR__ . './footer.php';
         ?>
