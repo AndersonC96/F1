@@ -307,4 +307,5 @@
         ['location' => 'Qatar', 'date' => '1637452800', 'dateTime' => '2021-11-21 15:00:00', 'circuit' => 'Losail International Circuit'],
         ['location' => 'Saudi Arabia', 'date' => '1638662400', 'dateTime' => '2021-12-05 18:30:00', 'circuit' => 'Jeddah Corniche Circuit'],
         ['location' => 'Abu Dhabi', 'date' => '1639267200', 'dateTime' => '2021-12-12 14:00:00', 'circuit' => 'Yas Marina Circuit'],
+        ['location' => 'Bahrain', 'date' => '1647734400', 'dateTime' => '2022-03-20 00:00:00', 'circuit' => 'Bahrain International Circuit'],
     ];
