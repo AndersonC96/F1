@@ -44,7 +44,6 @@
                         <p class="sm:text-lg text-sm text-center"><?php echo "<b>Volta mais rápida</b>: " . $driver['fastest_laps']; ?></p>
                         <p class="sm:text-lg text-sm text-center"><?php echo "<b>Melhor Colocação</b>: " . $driver['highest_race_finish']; ?></p>
                         <p class="sm:text-lg text-sm text-center"><?php echo "<b>Escuderia anterior</b>: " . $driver['last_team']; ?></p>
-                        <p class="sm:text-lg text-sm text-center mb-10"><?php echo "<b>Venceu nesta temporada</b>: " . isWinnerThisSeason($driver['wonThisSeason']); ?></p>
                     </div>
                 </article>
             <?php endforeach; ?>
