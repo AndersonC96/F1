@@ -36,8 +36,22 @@
                         <div class="flex flex-col items-center justify-center justify-items-center">
                             <p class="sm:text-lg text-sm text-center"><?php echo "<b>Pilotos</b>: " . $driversString; ?></p>
                             <p class="sm:text-lg text-sm"><?php echo "<b>Equipe Principal</b>: " . $team['teamPrincipal']; ?></p>
-                            <p class="sm:text-lg text-sm"><?php echo "<b>Campeonatos</b>: " . $team['championships']; ?></p>
+                            <p class="sm:text-lg text-sm"><?php echo "<b>Chefe Técnico</b>: " . $team['technical_chief']; ?></p>
+                            <p class="sm:text-lg text-sm"><?php echo "<b>Sede</b>: " . $team['base']; ?></p>
+                            <p class="sm:text-lg text-sm"><?php echo "<b>Unidade de energia</b>: " . $team['powerUnit']; ?></p>
+                            <p class="sm:text-lg text-sm"><?php echo "<b>Motor</b>: " . $team['engine']; ?></p>
+                            <p class="sm:text-lg text-sm"><?php echo "<b>Chassis</b>: " . $team['chassis']; ?></p>
+                            <p class="sm:text-lg text-sm"><?php echo "<b>Campeonato de Construtores</b>: " . $team['championships']; ?></p>
+                            <p class="sm:text-lg text-sm"><?php echo "<b>Campeonato de Pilotos</b>: " . $team['driversChampionships']; ?></p>
+                            <p class="sm:text-lg text-sm"><?php echo "<b>Corridas</b>: " . $team['racesEntered']; ?></p>
+                            <p class="sm:text-lg text-sm"><?php echo "<b>Primeira corrida</b>: " . $team['firstEntry']; ?></p>
                             <p class="sm:text-lg text-sm"><?php echo "<b>Corridas vencidas</b>: " . $team['wins']; ?></p>
+                            <p class="sm:text-lg text-sm"><?php echo "<b>Primeira vitória</b>: " . $team['firstWin']; ?></p>
+                            <p class="sm:text-lg text-sm"><?php echo "<b>Última vitória</b>: " . $team['lastWin']; ?></p>
+                            <p class="sm:text-lg text-sm"><?php echo "<b>Pódios</b>: " . $team['podiums']; ?></p>
+                            <p class="sm:text-lg text-sm"><?php echo "<b>Pontos</b>: " . $team['points']; ?></p>
+                            <p class="sm:text-lg text-sm"><?php echo "<b>Pole positions</b>: " . $team['pole_positions']; ?></p>
+                            <p class="sm:text-lg text-sm"><?php echo "<b>Volta mais rápida</b>: " . $team['fastest_laps']; ?></p>
                             <p class="sm:text-lg text-sm"><?php echo "<b>Estreia</b>: " . $team['year']; ?></p>
                         </div>
                     </article>
