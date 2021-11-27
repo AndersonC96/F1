@@ -37,7 +37,6 @@
                         <p class="sm:text-lg text-sm text-center"><?php echo "<b>Primeira vitória</b>: " . $driver['first_win']; ?></p>
                         <p class="sm:text-lg text-sm text-center"><?php echo "<b>Última vitória</b>: " . $driver['last_win']; ?></p>
                         <p class="sm:text-lg text-sm text-center"><?php echo "<b>Pódios</b>: " . $driver['podiums']; ?></p>
-                        <p class="sm:text-lg text-sm text-center"><?php echo "<b>Pontos</b>: " . $driver['points']; ?></p>
                         <p class="sm:text-lg text-sm text-center"><?php echo "<b>Grandes Prêmios</b>: " . $driver['grands_prix']; ?></p>
                         <p class="sm:text-lg text-sm text-center"><?php echo "<b>Primeira corrida</b>: " . $driver['first_race']; ?></p>
                         <p class="sm:text-lg text-sm text-center"><?php echo "<b>Última corrida</b>: " . $driver['lastRace']; ?></p>
