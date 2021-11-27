@@ -41,8 +41,8 @@
                             <p class="sm:text-lg text-sm"><?php echo "<b>Unidade de energia</b>: " . $team['powerUnit']; ?></p>
                             <p class="sm:text-lg text-sm"><?php echo "<b>Motor</b>: " . $team['engine']; ?></p>
                             <p class="sm:text-lg text-sm"><?php echo "<b>Chassis</b>: " . $team['chassis']; ?></p>
-                            <p class="sm:text-lg text-sm"><?php echo "<b>Campeonato de Construtores</b>: " . $team['championships']; ?></p>
-                            <p class="sm:text-lg text-sm"><?php echo "<b>Campeonato de Pilotos</b>: " . $team['driversChampionships']; ?></p>
+                            <p class="sm:text-lg text-sm"><?php echo "<b>Título de Construtores</b>: " . $team['championships']; ?></p>
+                            <p class="sm:text-lg text-sm"><?php echo "<b>Título de Pilotos</b>: " . $team['driversChampionships']; ?></p>
                             <p class="sm:text-lg text-sm"><?php echo "<b>Corridas</b>: " . $team['racesEntered']; ?></p>
                             <p class="sm:text-lg text-sm"><?php echo "<b>Primeira corrida</b>: " . $team['firstEntry']; ?></p>
                             <p class="sm:text-lg text-sm"><?php echo "<b>Corridas vencidas</b>: " . $team['wins']; ?></p>
