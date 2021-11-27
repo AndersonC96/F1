@@ -120,3 +120,13 @@
         }
         return $teams;
     }
+    function getChampions(array $champions, string $sorting){
+        $sortByWins = array_column($champions, 'wins');
+        $sortByName = array_column($champions, 'name');
+        if($sorting === "wins"){
+            array_multisort($sortByWins, SORT_DESC, $champions);
+        }else if($sorting === "name"){
+            array_multisort($sortByName, SORT_ASC, $champions);
+        }
+        return $champions;
+    }
