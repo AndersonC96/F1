@@ -49,7 +49,6 @@
                             <p class="sm:text-lg text-sm"><?php echo "<b>Primeira vitória</b>: " . $team['firstWin']; ?></p>
                             <p class="sm:text-lg text-sm"><?php echo "<b>Última vitória</b>: " . $team['lastWin']; ?></p>
                             <p class="sm:text-lg text-sm"><?php echo "<b>Pódios</b>: " . $team['podiums']; ?></p>
-                            <p class="sm:text-lg text-sm"><?php echo "<b>Pontos</b>: " . $team['points']; ?></p>
                             <p class="sm:text-lg text-sm"><?php echo "<b>Pole positions</b>: " . $team['pole_positions']; ?></p>
                             <p class="sm:text-lg text-sm"><?php echo "<b>Volta mais rápida</b>: " . $team['fastest_laps']; ?></p>
                             <p class="sm:text-lg text-sm text-center"><?php echo "<b>Melhor Colocação</b>: " . $team['highestraceResult']; ?></p>
