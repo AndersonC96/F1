@@ -29,6 +29,7 @@
                     <h2 class="uppercase font-bold sm:text-lg text-lg text-center hover:text-pink-500"><a href="<?php echo $driver['website'] ?>"><?php echo $driver['name']; ?></a></h2>
                     <div class="flex flex-col items-center justify-center justify-items-center sm:text-lg text-base text-center">
                         <p class="text-center mb-2"><b><?php echo $driver['team']; ?></b></p>
+                        <p class="sm:text-lg text-sm text-center"><?php echo "<b>Carreira</b>: " . $driver['activeYears']; ?></p>
                         <p class="sm:text-lg text-sm text-center"><?php echo "<b>Nacionalidade</b>: " . $driver['nationality']; ?></p>
                         <p class="sm:text-lg text-sm text-center"><?php echo "<b>Idade</b>: " . age($driver['birthYear']); ?></p>
                         <p class="sm:text-lg text-sm text-center"><?php echo "<b>Títulos</b>: " . $driver['world_championships']; ?></p>
