@@ -88,6 +88,10 @@
         $nextRace = nextRace($races);
         return $nextRace['circuit'];
     }
+    function getGrandPrix(array $races): string{
+        $nextRace = nextRace($races);
+        return $nextRace['grand_prix'];
+    }
     function getTimeToNextRace(array $races): string{
         $nextRace = nextRace($races);
         $rem = strtotime($nextRace['dateTime']) - time();
