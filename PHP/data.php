@@ -694,7 +694,7 @@
             'pole_positions' => 68,
             'fastest_laps' => 77,
             'highest_race_finish' => '1 (91x)',
-            'otherTeams' => '<i style="color: #009994";>Mercedes AMG Petronas F1 Team</i> (2010-2012), <i style="color: #ed1c24";>Scuderia Ferrari Marlboro</i> (1996-2006), Mild Seven Benetton Renault (1991-1995), Team 7UP Jordan (1991)',
+            'otherTeams' => '<i style="color: #009994";>Mercedes AMG Petronas F1 Team</i> (2010-2012), <i style="color: #ed1c24";>Scuderia Ferrari Marlboro</i> (1996-2006), <i style="color: #4a9ecd">Mild Seven Benetton Renault</i> (1991-1995), <i style="color: #1b6d3e">Team 7UP Jordan</i> (1991)',
         ],
     ];
     $teamsWithWinsThisSeason = [
