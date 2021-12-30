@@ -15,7 +15,8 @@
                     <div class="emoji"><center>🏎</center></div>
                     <div class="race-info">
                         <p class="sm:text-lg text-xs text-center"><?php echo "<b>Próxima corrida</b>: " . getLocation($races) . " (" . getCircuit($races) . ")"; ?></p>
-                        <p class="sm:text-lg text-xs text-center"><?php echo getTimeToNextRace($races); ?></p>
+                        <p class="sm:text-lg text-xs text-center"><?php echo "<b>Grande prêmio</b>: " . getGrandPrix($races); ?></p>
+                        <p class="sm:text-lg text-xs text-center"><?php echo "<b>Tempo restante</b>: " . getTimeToNextRace($races); ?></p>
                     </div>
                 </div>
             </article>
