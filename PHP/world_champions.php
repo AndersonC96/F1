@@ -41,7 +41,7 @@
                         <p class="sm:text-lg text-sm text-center"><?php echo "<b>Última corrida</b>: " . $driver['lastRace']; ?></p>
                         <p class="sm:text-lg text-sm text-center"><?php echo "<b>Pole positions</b>: " . $driver['pole_positions']; ?></p>
                         <p class="sm:text-lg text-sm text-center"><?php echo "<b>Volta mais rápida</b>: " . $driver['fastest_laps']; ?></p>
-                        <p class="sm:text-lg text-sm text-center"><?php echo "<b>Melhor Colocação</b>: " . $driver['highest_race_finish']; ?></p>
+                        <!--<p class="sm:text-lg text-sm text-center"><?php echo "<b>Melhor Colocação</b>: " . $driver['highest_race_finish']; ?></p>-->
                         <p class="sm:text-lg text-sm text-center"><?php echo "<b>Outras Equipes</b>: " . $driver['otherTeams']; ?></p>
                     </div>
                 </article>
