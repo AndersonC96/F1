@@ -30,7 +30,7 @@
                     <div class="flex flex-col items-center justify-center justify-items-center sm:text-lg text-base text-center">
                         <p class="text-center mb-2"><b><?php echo $driver['activeYears']; ?></b></p>
                         <p class="sm:text-lg text-sm text-center"><?php echo "<b>Nacionalidade</b>: " . $driver['nationality']; ?></p>
-                        <p class="sm:text-lg text-sm text-center"><?php echo "<b>Idade</b>: " . age($driver['birthYear']); ?></p>
+                        <!--<p class="sm:text-lg text-sm text-center"><?php echo "<b>Idade</b>: " . age($driver['birthYear']); ?></p>-->
                         <p class="sm:text-lg text-sm text-center"><?php echo "<b>Títulos</b>: " . $driver['world_championships']; ?></p>
                         <p class="sm:text-lg text-sm text-center"><?php echo "<b>Vitórias</b>: " . $driver['wins']; ?></p>
                         <p class="sm:text-lg text-sm text-center"><?php echo "<b>Primeira vitória</b>: " . $driver['first_win']; ?></p>
