@@ -13,7 +13,7 @@
 ?>
 <div class="mb-5 mt-5">
     <div class="">
-        <form class="absolute right-[40%] text-xs sm:right-[2%] sm:text-lg" action="./world_champions.php" id="sorting-form">
+        <form class="absolute right-[40%] text-xs sm:right-[2%] sm:text-lg" action="./drivers.php" id="sorting-form">
             <label class="mr-1" for="sorting">Ordenar por: </label>
             <select class="border border-black rounded-md" name="sorting" id="">
                 <option value="team" disabled selected> </option>
