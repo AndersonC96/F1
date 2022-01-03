@@ -134,3 +134,16 @@
         }
         return $champions;
     }
+    function getConstructors(array $teams, string $sorting){
+        $sortByWins = array_column($constructors, 'wins');
+        $sortByName = array_column($constructors, 'name');
+        $sortByChampionchips = array_column($constructors, 'championships');
+        if($sorting === "wins"){
+            array_multisort($sortByWins, SORT_DESC, $constructors);
+        }else if($sorting === "name"){
+            array_multisort($sortByName, SORT_ASC, $constructors);
+        }else if($sorting === "championships"){
+            array_multisort($sortByChampionchips, SORT_DESC, $constructors);
+        }
+        return $constructors;
+    }
