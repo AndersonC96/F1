@@ -59,6 +59,25 @@
                 ">Equipes</a>
             </li>
             <li class="mr-3 flex-1">
+                <a href="./PHP/constructors_champions.php" class="
+                    pb-1
+                    md:pb-0
+                    text-xl
+                    md:text-base
+                    text-gray-600
+                    md:text-gray-400
+                    block
+                    md:inline-block
+                    hover:text-white
+                    border-b-2 border-gray-800
+                    md:border-gray-900
+                    hover:border-pink-500
+                    md:text-2xl
+                    lg:text-4xl
+                    motion-safe:hover:scale-110
+                ">Construtores</a>
+            </li>
+            <li class="mr-3 flex-1">
                 <a href="./PHP/drivers.php" class="
                     pb-1
                     md:pb-0
