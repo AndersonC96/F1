@@ -134,7 +134,7 @@
         }
         return $champions;
     }
-    function getConstructors(array $teams, string $sorting){
+    function getConstructors(array $constructors, string $sorting){
         $sortByWins = array_column($constructors, 'wins');
         $sortByName = array_column($constructors, 'name');
         $sortByChampionchips = array_column($constructors, 'championships');
