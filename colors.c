@@ -41,3 +41,6 @@ Vel's Parnelli Jones Racing     = #c4002e
 Shadow Racing Team              = #3e6fc5
 Arrows Racing Team              = #ba4f63
 Team Haas                       = #e05c45
+Theodore Racing Hong Kong       = #57513e
+ATS Racing Team                 = #e4a50c
+Brawn GP F1 Team                = #f2f279
