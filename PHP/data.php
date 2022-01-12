@@ -402,7 +402,7 @@
         ],
         [
             'name' => 'Robert Kubica',
-            'image' => 'https://www.formula1.com/content/dam/fom-website/drivers/R/ROBKUB01_Robert_Kubica/robkub01.png.transform/2col/image.png',
+            'image' => 'https://www.formula1.com/content/dam/fom-website/drivers/R/ROBKUB01_Robert_Kubica/robkub01.png.transform/2col-retina/image.png',
             'website' => 'https://www.formula1.com/en/drivers/robert-kubica.html',
             'team' => 'Alfa Romeo Racing ORLEN',
             'number' => 88,
