@@ -1,7 +1,7 @@
 Team 7UP Jordan                 = #1b6d3e
 Mild Seven Benetton Renault     = #4a9ecd
 Scuderia Ferrari                = #ed1c24
-Mercedes AMG Petronas F1 Team   = #009994
+Mercedes AMG Petronas F1 Team   = #00d2be
 Vodafone McLaren Mercedes       = #ffa112
 Alfa Romeo SpA                  = #900000
 Officine Alfieri Maserati       = #d40000
