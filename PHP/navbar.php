@@ -97,7 +97,7 @@
                 ">Campeões</a>
             </li>
             <li class="mr-3 flex-1">
-                <a href="./PHP/constructors_champions.php" class="
+                <a href="./PHP/cars_champions.php" class="
                     pb-1
                     md:pb-0
                     text-xl
@@ -113,7 +113,7 @@
                     md:text-2xl
                     lg:text-4xl
                     motion-safe:hover:scale-110
-                ">Construtores</a>
+                ">Carros</a>
             </li>
         </ul>
     </div>
