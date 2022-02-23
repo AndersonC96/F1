@@ -53,6 +53,7 @@
                             <p class="sm:text-lg text-sm"><?php echo "<b>Volta mais rápida</b>: " . $team['fastest_laps']; ?></p>
                             <p class="sm:text-lg text-sm text-center"><?php echo "<b>Melhor Colocação</b>: " . $team['highestraceResult']; ?></p>
                             <p class="sm:text-lg text-sm"><?php echo "<b>Estreia</b>: " . $team['year']; ?></p>
+                            <img class="scale-75 motion-safe:hover:scale-90 filter grayscale hover:filter-none" src="<?php echo $team['imageCar']; ?>">
                         </div>
                     </article>
                 <?php endforeach; ?>
