@@ -34,12 +34,12 @@
                         <p class="sm:text-lg text-sm text-center"><?php echo "<b>Idade</b>: " . age($driver['birthYear']); ?></p>
                         <p class="sm:text-lg text-sm text-center"><?php echo "<b>Títulos</b>: " . $driver['world_championships']; ?></p>
                         <p class="sm:text-lg text-sm text-center"><?php echo "<b>Vitórias</b>: " . $driver['wins']; ?></p>
+                        <p class="sm:text-lg text-sm text-center"><?php echo "<b>Primeira corrida</b>: " . $driver['first_race']; ?></p>
                         <p class="sm:text-lg text-sm text-center"><?php echo "<b>Primeira vitória</b>: " . $driver['first_win']; ?></p>
                         <p class="sm:text-lg text-sm text-center"><?php echo "<b>Última vitória</b>: " . $driver['last_win']; ?></p>
                         <p class="sm:text-lg text-sm text-center"><?php echo "<b>Pódios</b>: " . $driver['podiums']; ?></p>
                         <p class="sm:text-lg text-sm text-center"><?php echo "<b>Pontos</b>: " . $driver['points']; ?></p>
                         <p class="sm:text-lg text-sm text-center"><?php echo "<b>Grandes Prêmios</b>: " . $driver['grands_prix']; ?></p>
-                        <p class="sm:text-lg text-sm text-center"><?php echo "<b>Primeira corrida</b>: " . $driver['first_race']; ?></p>
                         <p class="sm:text-lg text-sm text-center"><?php echo "<b>Pole positions</b>: " . $driver['pole_positions']; ?></p>
                         <p class="sm:text-lg text-sm text-center"><?php echo "<b>Volta mais rápida</b>: " . $driver['fastest_laps']; ?></p>
                         <p class="sm:text-lg text-sm text-center"><?php echo "<b>Melhor Colocação</b>: " . $driver['highest_race_finish']; ?></p>
