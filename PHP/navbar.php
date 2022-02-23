@@ -3,7 +3,7 @@
     md:w-1/6
     bg-gray-900
     md:bg-gray-900
-    px-2
+    px-3
     text-center
     fixed
     bottom-0
@@ -95,25 +95,6 @@
                     lg:text-4xl
                     motion-safe:hover:scale-110
                 ">Campeões</a>
-            </li>
-            <li class="mr-3 flex-1">
-                <a href="./PHP/cars_champions.php" class="
-                    pb-1
-                    md:pb-0
-                    text-xl
-                    md:text-base
-                    text-gray-600
-                    md:text-gray-400
-                    block
-                    md:inline-block
-                    hover:text-white
-                    border-b-2 border-gray-800
-                    md:border-gray-900
-                    hover:border-pink-500
-                    md:text-2xl
-                    lg:text-4xl
-                    motion-safe:hover:scale-110
-                ">Carros</a>
             </li>
         </ul>
     </div>
