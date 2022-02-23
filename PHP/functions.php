@@ -101,6 +101,10 @@
         $timeLeft = "$day Dias $hr Horas $min Minutos restantes";
         return $timeLeft;
     }
+    function getWatch(array $races): string{
+        $nextRace = nextRace($races);
+        return $nextRace['watch'];
+    }
     function getDrivers(array $drivers, string $sorting){
         $sortByWins = array_column($drivers, 'wins');
         $sortByName = array_column($drivers, 'name');
