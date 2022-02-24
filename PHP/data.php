@@ -884,6 +884,7 @@
             'fastest_laps' => 12,
             'highest_race_finish' => '1 (13x)',
             'otherTeams' => '<i style="color: #dc0000">Scuderia Ferrari</i> (1950-1954), <i style="color: #d40000">Officine Alfieri Maserati</i> (1954), <i style="color: #fe2932">Scuderia Lancia</i> (1954-1955)',
+            'imageCar' => '../images/1965.png',
         ],
         [
             'name' => 'Graham Hill',
@@ -904,6 +905,7 @@
             'fastest_laps' => 10,
             'highest_race_finish' => '1 (14x)',
             'otherTeams' => '<i style="color: #ffb800">Team Lotus</i> (1958-1959, 1967-1970), <i style="color: #182622">Owen Racing Organisation</i> (1960-1966), <i style="color: #01639d">Motor Racing Developments Ltd</i> (1971-1972), <i style="color: #d7e3e0">Embassy Racing with Graham Hill</i> (1973-1975)',
+            'imageCar' => '../images/1968.png',
         ],
         [
             'name' => 'Jim Clark',
@@ -924,6 +926,7 @@
             'fastest_laps' => 28,
             'highest_race_finish' => '1 (25x)',
             'otherTeams' => '<i style="color: #ffb800">Team Lotus</i> (1960-1967)',
+            'imageCar' => '../images/1965.png',
         ],
         [
             'name' => 'Emerson Fittipaldi',
@@ -944,6 +947,7 @@
             'fastest_laps' => 6,
             'highest_race_finish' => '1 (14x)',
             'otherTeams' => '<i style="color: #ffb800">Team Lotus</i> (1970-1973), <i style="color: #FF9800">Marlboro Team McLaren</i> (1974-1975), <i style="color: #fdf517">Fittipaldi Automotive</i> (1976-1980)',
+            'imageCar' => '../images/1974.png',
         ],
         [
             'name' => 'Mika Häkkinen',
@@ -964,6 +968,7 @@
             'fastest_laps' => 25,
             'highest_race_finish' => '1 (20x)',
             'otherTeams' => '<i style="color: #ffb800">Team Lotus</i> (1991-1992), <i style="color: #FF9800">West McLaren Mercedes</i> (1993-2001)',
+            'imageCar' => '../images/1999.png',
         ],
         [
             'name' => 'Fernando Alonso',
@@ -984,6 +989,7 @@
             'fastest_laps' => 23,
             'highest_race_finish' => '1 (32x)',
             'otherTeams' => '<i style="color: #010203">European Minardi F1</i> (2001), <i style="color: #fff500">Renault F1 Team</i> (2003-2006, 2008-09), <i style="color: #FF9800">McLaren F1 Team</i> (2007, 2015-2018), <i style="color: #0090ff">BWT Alpine F1 Team</i> (2021-)',
+            'imageCar' => '../images/2006.png',
         ],
         [
             'name' => 'Giuseppe Farina',
@@ -1004,6 +1010,7 @@
             'fastest_laps' => 5,
             'highest_race_finish' => '1 (5x)',
             'otherTeams' => '<i style="color: #900000">Alfa Romeo SpA</i> (1950-1951), <i style="color: #dc0000">Scuderia Ferrari</i> (1952-1956)',
+            'imageCar' => '../images/1950.png',
         ],
         [
             'name' => 'Mike Hawthorn',
@@ -1024,6 +1031,7 @@
             'fastest_laps' => 6,
             'highest_race_finish' => '1 (3x)',
             'otherTeams' => '<i style="color: #002215">Leslie D. Hawthorn</i> (1952), <i style="color: #dc0000">Scuderia Ferrari</i> (1953-1955, 1957-1958), <i style="color: #00503f">Vandervell Products</i> (1955-1956), <i style="color: #182622">Owen Racing Organisation</i> (1956), <i style="color: #d40000">Officine Alfieri Maserati</i> (1956)',
+            'imageCar' => '../images/1958.png',
         ],
         [
             'name' => 'Phil Hill',
@@ -1044,6 +1052,7 @@
             'fastest_laps' => 6,
             'highest_race_finish' => '1 (3x)',
             'otherTeams' => '<i style="color: #d40000">Jo Bonnier</i> (1958), <i style="color: #dc0000">Scuderia Ferrari</i> (1958-1960, 1961-1962), <i style="color: #002215">Cooper Car Company</i> (1960, 1964), <i style="color: #949896">Porsche System Engineering</i> (1962), <i style="color: #de7a8c">Automobili Turismo e Sport</i> (1963), <i style="color: #ffb800">Ecurie Filipinetti</i> (1963, 1966), <i style="color: #FF9800">Phil Hill</i> (1966), <i style="color: #24263e">Anglo American Racers</i> (1966)',
+            'imageCar' => '../images/1961.png',
         ],
         [
             'name' => 'John Surtees',
@@ -1064,6 +1073,7 @@
             'fastest_laps' => 11,
             'highest_race_finish' => '1 (6x)',
             'otherTeams' => '<i style="color: #ffb800">Team Lotus</i> (1960), <i style="color: #002215">Bowmaker-Yeoman Racing Team</i> (1961-1962), <i style="color: #dc0000">Scuderia Ferrari SpA SEFAC</i> (1963-1966), <i style="color: #002215">Cooper Car Company</i> (1966), <i style="color: #ece7e3">Honda Racing</i> (1967-1968), <i style="color: #182622">Owen Racing Organisation</i> (1969), <i style="color: #182550">Team Surtees</i> (1970-1972)',
+            'imageCar' => '../images/1964.png',
         ],
         [
             'name' => 'Denny Hulme',
@@ -1084,6 +1094,7 @@
             'fastest_laps' => 9,
             'highest_race_finish' => '1 (8x)',
             'otherTeams' => '<i style="#c0c7bf">Brabham Racing Organisation</i> (1965-1967), <i style="color: #FF9800">Marlboro Team Texaco</i> (1968-1974)',
+            'imageCar' => '../images/1967.png',
         ],
         [
             'name' => 'Jochen Rindt',
@@ -1104,6 +1115,7 @@
             'fastest_laps' => 3,
             'highest_race_finish' => '1 (6x)',
             'otherTeams' => '<i style="color: #c0c7bf">Rob Walker Racing Team</i> (1964), <i style="color: #002215">Cooper Car Company</i> (1965-1967), <i style="color: #c0c7bf">Brabham Racing Organisation</i> (1968), <i style="color: #ffb800">Gold Leaf Team Lotus</i> (1969-1970)',
+            'imageCar' => '../images/1970.png',
         ],
         [
             'name' => 'James Hunt',
@@ -1124,6 +1136,7 @@
             'fastest_laps' => 8,
             'highest_race_finish' => '1 (10x)',
             'otherTeams' => '<i style="color: #fef047">Hesketh Racing</i> (1973-1975), <i style="color: #FF9800">Marlboro Team McLaren</i> (1976-1978), <i style="color: #e7c4ab">Olympus Cameras Wolf Racing</i> (1979)',
+            'imageCar' => '../images/1976.png',
         ],
         [
             'name' => 'Mario Andretti',
@@ -1144,6 +1157,7 @@
             'fastest_laps' => 10,
             'highest_race_finish' => '1 (12x)',
             'otherTeams' => '<i style="color: #ffb800">Martini Racing Team Lotus</i> (1968-1969, 1976,  1977-1980), <i style="color: #fef047">STP Corporation</i> (1970), <i style="color: #dc0000">Scuderia Ferrari SpA SEFAC</i> (1971-1972, 1982), <i style="color: #c4002e">Vel\'s Parnelli Jones Racing</i> (1974-1975, 1976), <i style="color: #900000">Marlboro Team Alfa Romeo</i> (1981), <i style="color: #005aff">TAG Williams Team</i> (1982)',
+            'imageCar' => '../images/1978.png',
         ],
         [
             'name' => 'Jody Scheckter',
@@ -1164,6 +1178,7 @@
             'fastest_laps' => 3,
             'highest_race_finish' => '1 (10x)',
             'otherTeams' => '<i style="color: #FF9800">Yardley Team McLaren</i> (1972-1973), <i style="color: #063f87">Elf Team Tyrrell</i> (1974-1976), <i style="color: #e7c4ab">Walter Wolf Racing</i> (1977-1978), <i style="color: #dc0000">Scuderia Ferrari</i> (1979-1980)',
+            'imageCar' => '../images/1979.png',
         ],
         [
             'name' => 'Alan Jones',
@@ -1184,6 +1199,7 @@
             'fastest_laps' => 13,
             'highest_race_finish' => '1 (12x)',
             'otherTeams' => '<i style="color: #d7e3e0">Custom Made Harry Stiller Racing</i> (1975), <i style="color: #d7e3e0">Embassy Racing with Graham Hill</i> (1975), <i style="color: #3e6fc5">Shadow Racing Team</i> (1976-1977), <i style="color: #005aff">TAG Williams Team</i> (1978-1981), <i style="color: #ba4f63">Arrows Racing Team</i> (1983), <i style="color: #e05c45">Team Haas (USA) Ltd</i> (1985-1986)',
+            'imageCar' => '../images/1980.png',
         ],
         [
             'name' => 'Keke Rosberg',
@@ -1204,6 +1220,7 @@
             'fastest_laps' => 3,
             'highest_race_finish' => '1 (5x)',
             'otherTeams' => '<i style="color: #57513e">Theodore Racing Hong Kong</i> (1978), <i style ="color: #e4a50c">ATS Racing Team</i> (1978), <i style="color: #e7c4ab">Olympus Cameras Wolf Racing</i> (1979), <i style="color: #fdf517">Fittipaldi Automotive</i> (1980-1981), <i style="color: #005aff">Canon Williams Team</i> (1982-1985), <i style="color: #FF9800">Marlboro McLaren International</i> (1986)',
+            'imageCar' => '../images/1982.png',
         ],
         [
             'name' => 'Nigel Mansell',
@@ -1224,6 +1241,7 @@
             'fastest_laps' => 30,
             'highest_race_finish' => '1 (31x)',
             'otherTeams' => '<i style="color: #ffb800">John Player Special Team Lotus</i> (1980-1984), <i style="color: #005aff">Rothmans Williams Renault</i> (1985-1988, 1991-1992, 1994), <i style="color: #dc0000">Scuderia Ferrari</i> (1989-1990),  <i style="color: #FF9800">Marlboro McLaren Mercedes</i> (1995)',
+            'imageCar' => '../images/1992.png',
         ],
         [
             'name' => 'Damon Hill',
@@ -1244,6 +1262,7 @@
             'fastest_laps' => 19,
             'highest_race_finish' => '1 (22x)',
             'otherTeams' => '<i style="color: #01639d">Motor Racing Developments</i> (1992), <i style="color: #005aff">Rothmans Williams Renault</i> (1993-1996), <i style="color: #ba4f63">Danka Arrows Yamaha</i> (1997), <i style="color: #1b6d3e">B&H Jordan</i> (1998-1999)',
+            'imageCar' => '../images/1996.png',
         ],
         [
             'name' => 'Jacques Villeneuve',
@@ -1264,6 +1283,7 @@
             'fastest_laps' => 9,
             'highest_race_finish' => '1 (11x)',
             'otherTeams' => '<i style="color: #005aff">Winfield Williams</i> (1996-1998), <i style="color: #ece7e3">Lucky Strike BAR Honda</i> (1999-2003), <i style="color: #fff500">Mild Seven Renault F1 Team</i> (2004), <i style="color: #9b0000">BMW Sauber F1 Team</i> (2005-2006)',
+            'imageCar' => '../images/1997.png',
         ],
         [
             'name' => 'Kimi Räikkönen',
@@ -1284,6 +1304,7 @@
             'fastest_laps' => 46,
             'highest_race_finish' => '1 (21x)',
             'otherTeams' => '<i style="color: #9b0000">Red Bull Sauber Petronas</i> (2001), <i style="color: #FF9800">Team McLaren Mercedes</i> (2002-2006), <i style="color: #dc0000">Scuderia Ferrari</i> (2007-2009, 2014-2018), <i style="color: #ffb800">Lotus F1 Team</i> (2012-2013), <i style="color: #900000">Alfa Romeo F1 Team ORLEN</i> (2019-2021)',
+            'imageCar' => '../images/2007.png',
         ],
         [
             'name' => 'Jenson Button',
@@ -1304,6 +1325,7 @@
             'fastest_laps' => 8,
             'highest_race_finish' => '1 (15x)',
             'otherTeams' => '<i style="color: #005aff">BMW Williams F1 Team</i> (2000), <i style="color: #fff500">Mild Seven Renault F1 Team</i> (2001-2002), <i style="color: #ece7e3">Honda Racing F1 Team</i> (2003-2008), <i style="color: #f2f279">Brawn GP F1 Team</i> (2009), <i style="color: #FF9800">McLaren Honda</i> (2010-2017)',
+            'imageCar' => '../images/2009.png',
         ],
         [
             'name' => 'Nico Rosberg',
@@ -1323,7 +1345,8 @@
             'pole_positions' => 30,
             'fastest_laps' => 20,
             'highest_race_finish' => '1 (23x)',
-            'otherTeams' => '<i style="color: #005aff">AT&T Williams</i> (2006-2009), <i style="color: #009994">Mercedes AMG Petronas F1 Team</i> (2010-2016)',
+            'otherTeams' => '<i style="color: #005aff">AT&T Williams</i> (2006-2009), <i style="color: #00d2be">Mercedes AMG Petronas F1 Team</i> (2010-2016)',
+            'imageCar' => '../images/2016.png',
         ],
         [
             'name' => 'Max Verstappen',
@@ -1344,6 +1367,7 @@
             'fastest_laps' => 16,
             'highest_race_finish' => '1 (20x)',
             'otherTeams' => '<i style="color: #000084">Scuderia Toro Rosso</i> (2015-2016), <i style="color: #0600ef">Oracle Red Bull Racing</i> (2016-)',
+            'imageCar' => 'https://www.formula1.com/content/dam/fom-website/teams/2021/red-bull-racing.png.transform/6col/image.png'
         ],
     ];
     $teamsWithWinsThisSeason = [
