@@ -43,6 +43,7 @@
                         <p class="sm:text-lg text-sm text-center"><?php echo "<b>Volta mais rápida</b>: " . $driver['fastest_laps']; ?></p>
                         <!--<p class="sm:text-lg text-sm text-center"><?php echo "<b>Melhor Colocação</b>: " . $driver['highest_race_finish']; ?></p>-->
                         <p class="sm:text-lg text-sm text-center"><?php echo "<b>Equipes</b>: " . $driver['otherTeams']; ?></p>
+                        <img class="scale-90 motion-safe:hover:scale-100 filter grayscale hover:filter-none" src="<?php echo $driver['imageCar']; ?>">
                     </div>
                 </article>
             <?php endforeach; ?>
