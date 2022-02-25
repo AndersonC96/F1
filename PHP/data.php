@@ -684,6 +684,7 @@
             'fastest_laps' => 77,
             'highest_race_finish' => '1 (91x)',
             'otherTeams' => '<i style="color: #1b6d3e">Team 7UP Jordan</i> (1991), <i style="color: #4a9ecd">Mild Seven Benetton Renault</i> (1991-1995), <i style="color: #dc0000";>Scuderia Ferrari Marlboro</i> (1996-2006), <i style="color: #009994";>Mercedes AMG Petronas F1 Team</i> (2010-2012)',
+            'imageCar' => '../images/2004.png',
         ],
         [
             'name' => 'Lewis Hamilton',
@@ -704,6 +705,7 @@
             'fastest_laps' => 59,
             'highest_race_finish' => '1 (103x)',
             'otherTeams' => '<i style="color: #FF9800">Vodafone McLaren Mercedes</i> (2007-2012), <i style="color: #00d2be";>Mercedes-AMG Petronas Formula One Team</i> (2013-)',
+            'imageCar' => 'https://www.formula1.com/content/dam/fom-website/teams/2020/mercedes.png.transform/6col/image.png',
         ],
         [
             'name' => 'Juan Manuel Fangio',
@@ -724,6 +726,7 @@
             'fastest_laps' => 23,
             'highest_race_finish' => '1 (103x)',
             'otherTeams' => '<i style="color: #900000">Alfa Romeo SpA</i> (1950-1951), <i style="color: #d40000">Officine Alfieri Maserati</i> (1953-1954, 1957-1958), <i style="color: #009994">Daimler Benz AG</i> (1954-1955), <i style="color: #dc0000">Scuderia Ferrari</i> (1956), <i style="color: #848b92">Novi Auto Air Conditioner</i> (1958)',
+            'imageCar' => '../images/1957.png',
         ],
         [
             'name' => 'Alain Prost',
@@ -744,6 +747,7 @@
             'fastest_laps' => 41,
             'highest_race_finish' => '1 (51x)',
             'otherTeams' => '<i style="color: #FF9800">Honda Marlboro McLaren</i> (1980, 1984-1989), <i style="color: #fff500">Equipe Renault Elf</i> (1981-1983), <i style="color: #dc0000">Scuderia Ferrari</i> (1990-1991), <i style="color: #005aff">Canon Williams Renault</i> (1993)',
+            'imageCar' => '../images/1993.png',
         ],
         [
             'name' => 'Sebastian Vettel',
@@ -764,6 +768,7 @@
             'fastest_laps' => 38,
             'highest_race_finish' => '1 (53x)',
             'otherTeams' => '<i style="color: #9b0000">BMW Sauber F1 Team</i> (2006-2007), <i style="color: #000084">Scuderia Toro Rosso</i> (2007-2008), <i style="color: #0600ef">Infiniti Red Bull Racing</i> (2009-2014), <i style="color: #dc0000">Scuderia Ferrari</i> (2015-2020), <i style="color: #006f62">Aston Martin Aramco Cognizant Formula One Team</i> (2021-)',
+            'imageCar' => '../images/2013.png',
         ],
         [
             'name' => 'Jack Brabham',
@@ -784,6 +789,7 @@
             'fastest_laps' => 12,
             'highest_race_finish' => '1 (14x)',
             'otherTeams' => '<i style="color: #002215">Cooper Car Company</i> (1955, 1957, 1958-1961), <i style="color: #7c7f80">Rob Walker Racing Team</i> (1957), <i style="color: #01639d">Brabham Racing Organisation</i> (1962-1970),',
+            'imageCar' => '../images/1966.png',
         ],
         [
             'name' => 'Jackie Stewart',
@@ -804,6 +810,7 @@
             'fastest_laps' => 15,
             'highest_race_finish' => '1 (27x)',
             'otherTeams' => '<i style="color: #182622">Owen Racing Organisation</i> (1965-1967), <i style="color: #1d6fb8">Matra International</i> (1968-1969), <i style="color: #063f87">Elf Team Tyrrell</i> (1970-1973)',
+            'imageCar' => '../images/1973.png',
         ],
         [
             'name' => 'Niki Lauda',
@@ -824,6 +831,7 @@
             'fastest_laps' => 24,
             'highest_race_finish' => '1 (25x)',
             'otherTeams' => '<i style="color: #fef047">STP March Racing Team</i> (1971-1972), <i style="color: #c0c7bf">Marlboro-BRM</i> (1973), <i style="color: #dc0000">Scuderia Ferrari SpA SEFAC</i> (1974-1977), <i style="color: #282934">Parmalat Racing Team</i> (1978-1979), <i style="color: #FF9800">Marlboro McLaren International</i> (1982-1985)',
+            'imageCar' => '../images/1984.png',
         ],
         [
             'name' => 'Nelson Piquet',
@@ -844,6 +852,7 @@
             'fastest_laps' => 23,
             'highest_race_finish' => '1 (23x)',
             'otherTeams' => '<i style="color: #dd2125">Team Tissot Ensign</i> (1978), <i style="color: #e9ebed">BS Fabrications</i> (1978), <i style="color: #01639d">Motor Racing Developments, Ltd.</i> (1978-1985), <i style="color: #005aff">Canon Williams Team</i> (1986-1987), <i style="color: #ffb800">Camel Team Lotus</i> (1988-1989), <i style="color: #4a9ecd">Camel Benetton Ford</i> (1990-1991)',
+            'imageCar' => '../images/1987.png',
         ],
         [
             'name' => 'Ayrton Senna',
@@ -864,6 +873,7 @@
             'fastest_laps' => 19,
             'highest_race_finish' => '1 (41x)',
             'otherTeams' => '<i style="color: #2c355e">Toleman Group Motorsport</i> (1984), <i style="color: #ffb800">Camel Team Lotus Honda</i> (1985-1987), <i style="color: #FF9800">Marlboro McLaren</i> (1988-1993), <i style="color: #005aff">Rothmans Williams Renault</i> (1994)',
+            'imageCar' => '../images/1991.png',
         ],
         [
             'name' => 'Alberto Ascari',
@@ -884,7 +894,7 @@
             'fastest_laps' => 12,
             'highest_race_finish' => '1 (13x)',
             'otherTeams' => '<i style="color: #dc0000">Scuderia Ferrari</i> (1950-1954), <i style="color: #d40000">Officine Alfieri Maserati</i> (1954), <i style="color: #fe2932">Scuderia Lancia</i> (1954-1955)',
-            'imageCar' => '../images/1965.png',
+            'imageCar' => '../images/1953.png',
         ],
         [
             'name' => 'Graham Hill',
