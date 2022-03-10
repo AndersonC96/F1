@@ -151,3 +151,16 @@
         }
         return $constructors;
     }
+    function getCalendar(array $calendar, string $sorting){
+        $sortByWins = array_column($calendar, 'wins');
+        $sortByName = array_column($calendar, 'name');
+        $sortByChampionchips = array_column($calendar, 'championships');
+        if($sorting === "wins"){
+            array_multisort($sortByWins, SORT_DESC, $calendar);
+        }else if($sorting === "name"){
+            array_multisort($sortByName, SORT_ASC, $calendar);
+        }else if($sorting === "championships"){
+            array_multisort($sortByChampionchips, SORT_DESC, $calendar);
+        }
+        return $calendar;
+    }
