@@ -45,3 +45,4 @@ Theodore Racing Hong Kong       = #57513e
 ATS Racing Team                 = #e4a50c
 Brawn GP F1 Team                = #f2f279
 Scuderia AlphaTauri             = #2b4562
+Ligier Lotos                    = #0046cc
