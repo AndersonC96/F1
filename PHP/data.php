@@ -1401,7 +1401,6 @@
             'circuit_length' => '5.412 km',
             'race_distance' => '308.238 km',
             'site' => 'https://www.formula1.com/en/racing/2022/Bahrain/Circuit.html',
-
         ]
     ];
     $teamsWithWinsThisSeason = [
