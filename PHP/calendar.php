@@ -39,7 +39,6 @@
                         <p class="sm:text-lg text-sm text-center"><?php echo "<b>Mais pódios</b>: " . $race['most_podiums']; ?></p>
                         <p class="sm:text-lg text-sm text-center"><?php echo "<b>Mais pontos</b>: " . $race['most_points']; ?></p>
                         <p class="sm:text-lg text-sm text-center"><?php echo "<b>Mais voltas lideradas</b>: " . $race['most_laps_led']; ?></p>
-                        <p class="sm:text-lg text-sm text-center"><?php echo "<b>Mais voltas</b>: " . $race['most_laps_raced']; ?></p>
                         <p class="sm:text-lg text-sm text-center"><?php echo "<b>Volta mais rápida</b>: " . $race['lap_record']; ?></p>
                         <p class="sm:text-lg text-sm text-center"><?php echo "<b>Número de voltas</b>: " . $race['number_of_laps']; ?></p>
                         <p class="sm:text-lg text-sm text-center"><?php echo "<b>Tamanho do circuito</b>: " . $race['circuit_length']; ?></p>
