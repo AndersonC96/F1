@@ -1380,6 +1380,30 @@
             'imageCar' => 'https://www.formula1.com/content/dam/fom-website/teams/2021/red-bull-racing.png.transform/6col/image.png'
         ],
     ];
+    $calendar = [
+        [
+            'country' => 'Bahrain',
+            'name' => 'Formula 1 Gulf Air Bahrain Grand Prix 2022',
+            'circuit' => 'Bahrain International Circuit',
+            'image' => 'https://www.formula1.com/content/dam/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/Bahrain_Circuit.png.transform/7col/image.png',
+            'first_grand_prix' => '2004',
+            'first_win' => 'Michael Schumacher | <i style="color: #dc0000">Scuderia Ferrari Marlboro</i>',
+            'last_win' => 'Lewis Hamilton | <i style="color: #00d2be">Mercedes-AMG Petronas F1 Team</i>',
+            'most_win' => 'Lewis Hamilton | 5 (2014, 2015, 2019, 2020, 2021) | <i style="color: #00d2be">Mercedes-AMG Petronas F1 Team</i>',
+            'most_wins_constructors' => '<i style="color: #dc0000">Scuderia Ferrari</i> - 6 (2004, 2007, 2008, 2010, 2017, 2018) | <i style="color: #00d2be">Mercedes-AMG Petronas F1 Team</i> - 6 (2014, 2015, 2016, 2019, 2020, 2021)',
+            'most_pole' => 'Lewis Hamilton - 3 (2015, 2016, 2020) - <i style="color: #00d2be">Mercedes-AMG Petronas F1 Team</i> | Sebastian Vettel - 3 (2010, 2012, 2018) - <i style="color: #006f62">Aston Martin Aramco Cognizant Formula One Team</i>',
+            'most_podiums' => 'Lewis Hamilton | 10 (2007, 2010, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021) | <i style="color: #00d2be">Mercedes-AMG Petronas F1 Team</i>',
+            'most_points' => 'Lewis Hamilton | 215 | <i style="color: #00d2be">Mercedes-AMG Petronas F1 Team</i>',
+            'most_laps_led' => 'Sebastian Vettel | 237 | <i style="color: #006f62">Aston Martin Aramco Cognizant Formula One Team</i>',
+            'most_laps_raced' => 'Kimi Räikkönen | 925 | <i style="color: #9b0000">Alfa Romeo F1 Team ORLEN</i>',
+            'lap_record' => 'Pedro de la Rosa | 1:31.447 | <i style="color: #FF9800">Team McLaren Mercedes</i>',
+            'number_of_laps' => '57',
+            'circuit_length' => '5.412 km',
+            'race_distance' => '308.238 km',
+            'site' => 'https://www.formula1.com/en/racing/2022/Bahrain/Circuit.html',
+
+        ]
+    ];
     $teamsWithWinsThisSeason = [
         '',
         '',
