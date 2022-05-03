@@ -40,7 +40,7 @@
                 ">Início</a>
             </li>
             <li class="mr-3 flex-1">
-                <a href="./PHP/teams.php" class="
+                <a href="/F1/PHP/teams.php" class="
                     pb-1
                     md:pb-0
                     text-xl
@@ -59,7 +59,7 @@
                 ">Equipes</a>
             </li>
             <li class="mr-3 flex-1">
-                <a href="./PHP/drivers.php" class="
+                <a href="/F1/PHP/drivers.php" class="
                     pb-1
                     md:pb-0
                     text-xl
@@ -78,7 +78,7 @@
                 ">Pilotos</a>
             </li>
             <li class="mr-3 flex-1">
-                <a href="./PHP/world_champions.php" class="
+                <a href="/F1/PHP/world_champions.php" class="
                     pb-1
                     md:pb-0
                     text-xl
@@ -97,7 +97,7 @@
                 ">Campeões</a>
             </li>
             <li class="mr-3 flex-1">
-                <a href="./PHP/calendar.php" class="
+                <a href="/F1/PHP/calendar.php" class="
                     pb-1
                     md:pb-0
                     text-xl
