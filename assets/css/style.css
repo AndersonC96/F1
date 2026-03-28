@@ -616,7 +616,13 @@ button:focus-visible {
 
 @media (min-width: 768px) {
   .podium-grid {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1280px) {
+  .podium-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
 
@@ -665,6 +671,7 @@ button:focus-visible {
   border-radius: 50%;
   border: 3px solid var(--border);
   object-fit: cover;
+  object-position: center 0%;
   background: #111;
   flex-shrink: 0;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
@@ -674,14 +681,20 @@ button:focus-visible {
   display: flex;
   flex-direction: column;
   gap: 0.2rem;
+  min-width: 0;
+  flex: 1;
 }
 
 .podium-code {
   font-weight: 800;
-  font-size: 1.35rem;
+  font-size: clamp(1.05rem, 2.2vw, 1.35rem);
   color: var(--text);
   letter-spacing: 0.05em;
   font-family: 'Titillium Web', sans-serif;
+  line-height: 1.1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .podium-time {
@@ -689,6 +702,9 @@ button:focus-visible {
   font-size: 0.9rem;
   color: var(--text-muted);
   font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .podium-time.winner {
@@ -697,6 +713,42 @@ button:focus-visible {
 
 .podium-time.gap {
   color: var(--accent);
+}
+
+@media (max-width: 480px) {
+  .podium-card {
+    padding: 0.95rem;
+    gap: 0.75rem;
+    display: grid;
+    grid-template-columns: auto auto;
+    align-items: center;
+  }
+
+  .podium-rank {
+    width: 40px;
+    font-size: 1.35rem;
+  }
+
+  .podium-avatar {
+    width: 56px;
+    height: 56px;
+  }
+
+  .podium-info {
+    grid-column: 1 / -1;
+    margin-top: 0.3rem;
+  }
+
+  .podium-code,
+  .podium-time {
+    white-space: normal;
+    overflow: visible;
+    text-overflow: clip;
+  }
+
+  .podium-time {
+    font-size: 0.82rem;
+  }
 }
 
 .state-card {

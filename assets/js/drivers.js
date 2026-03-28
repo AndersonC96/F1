@@ -5,6 +5,26 @@ const stateContainer = document.getElementById("drivers-state");
 const searchInput = document.getElementById("search-input");
 const sortSelect = document.getElementById("sort-select");
 
+const TEAM_COLOR_MAP = {
+  ferrari: "#e10600",
+  mercedes: "#00d2be",
+  mclaren: "#ff8000",
+  "red bull": "#1e5bc6",
+  "red bull racing": "#1e5bc6",
+  "racing bulls": "#2b5cff",
+  rb: "#2b5cff",
+  "rb f1 team": "#2b5cff",
+  alpine: "#0090ff",
+  williams: "#005aff",
+  "aston martin": "#006f62",
+  "haas": "#b6babd",
+  "haas f1 team": "#b6babd",
+  audi: "#c70000",
+  sauber: "#00c087",
+  "stake f1 team kick sauber": "#00c087",
+  cadillac: "#9ca3af"
+};
+
 let driversData = [];
 let expandedCardId = null;
 
@@ -101,6 +121,19 @@ function createBadge(label, value) {
   badge.className = "badge";
   badge.textContent = `${label}: ${value}`;
   return badge;
+}
+
+function normalizeTeamName(teamName) {
+  return String(teamName || "")
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .trim();
+}
+
+function resolveTeamColor(teamName, staticColor) {
+  const normalized = normalizeTeamName(teamName);
+  return TEAM_COLOR_MAP[normalized] || staticColor || "#e10600";
 }
 
 function appendDetailRow(dl, label, value, linkHref = "") {
@@ -262,7 +295,7 @@ async function loadDrivers() {
         dateOfBirth: profile.dateOfBirth || "",
         photo: staticData.photo || PLACEHOLDER_DRIVER_IMAGE,
         website: staticData.website || "",
-        teamColor: staticData.teamColor || "#e10600"
+        teamColor: resolveTeamColor(standing.Constructors?.[0]?.name, staticData.teamColor)
       };
     });
 

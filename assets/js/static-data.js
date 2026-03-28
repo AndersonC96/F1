@@ -18,7 +18,7 @@ export const DRIVER_STATIC = {
   charles_leclerc: {
     number: "16",
     poles: 26,
-    photo: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Charles_Leclerc_2022_Saudi_Arabia.jpg/512px-Charles_Leclerc_2022_Saudi_Arabia.jpg",
+    photo: "https://media.formula1.com/image/upload/c_lfill,w_440/q_auto/d_common:f1:2026:fallback:driver:2026fallbackdriverright.webp/v1740000001/common/f1/2026/ferrari/chalec01/2026ferrarichalec01right.webp",
     website: "https://www.formula1.com/en/drivers/charles-leclerc",
     teamColor: "#e10600"
   },
@@ -32,7 +32,7 @@ export const DRIVER_STATIC = {
   george_russell: {
     number: "63",
     poles: 5,
-    photo: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/George_Russell_2019.jpg/512px-George_Russell_2019.jpg",
+    photo: "https://media.formula1.com/image/upload/c_lfill,w_440/q_auto/d_common:f1:2026:fallback:driver:2026fallbackdriverright.webp/v1740000001/common/f1/2026/mercedes/georus01/2026mercedesgeorus01right.webp",
     website: "https://www.formula1.com/en/drivers/george-russell",
     teamColor: "#00d2be"
   },
@@ -151,7 +151,7 @@ export const DRIVER_STATIC = {
   kimi_antonelli: {
     number: "12",
     poles: 0,
-    photo: "https://media.formula1.com/image/upload/f_auto,c_limit,w_1440,q_auto/fom-website/2025/drivers/kimi-antonelli",
+    photo: "https://media.formula1.com/image/upload/c_lfill,w_440/q_auto/d_common:f1:2026:fallback:driver:2026fallbackdriverright.webp/v1740000001/common/f1/2026/mercedes/andant01/2026mercedesandant01right.webp",
     website: "https://www.formula1.com/en/drivers/kimi-antonelli",
     teamColor: "#00d2be"
   }
@@ -307,79 +307,79 @@ export const CHAMPIONS_HISTORY = [
 ];
 
 export const CIRCUIT_STATIC = {
-  suzuka: { 
-    laps: 53, 
-    length: "5.807km", 
-    distance: "307.471km", 
-    firstGP: 1987, 
+  suzuka: {
+    laps: 53,
+    length: "5.807km",
+    distance: "307.471km",
+    firstGP: 1987,
     fastestLap: { time: "1:30.965", driver: "Kimi Antonelli", year: 2025 },
     image: "https://media.formula1.com/image/upload/c_fit,h_704/q_auto/v1740000001/common/f1/2026/track/2026tracksuzukadetailed.webp"
   },
-  interlagos: { 
-    laps: 71, 
-    length: "4.309km", 
-    distance: "305.879km", 
-    firstGP: 1973, 
+  interlagos: {
+    laps: 71,
+    length: "4.309km",
+    distance: "305.879km",
+    firstGP: 1973,
     fastestLap: { time: "1:10.540", driver: "Valtteri Bottas", year: 2018 },
     image: "https://media.formula1.com/image/upload/content/dam/fom-website/2018-redesign-assets/circuit-maps-16-9/Brazil_Circuit.png"
   },
-  silverstone: { 
-    laps: 52, 
-    length: "5.891km", 
-    distance: "306.198km", 
-    firstGP: 1950, 
+  silverstone: {
+    laps: 52,
+    length: "5.891km",
+    distance: "306.198km",
+    firstGP: 1950,
     fastestLap: { time: "1:27.097", driver: "Max Verstappen", year: 2020 },
     image: "https://media.formula1.com/image/upload/content/dam/fom-website/2018-redesign-assets/circuit-maps-16-9/Great_Britain_Circuit.png"
   },
-  monaco: { 
-    laps: 78, 
-    length: "3.337km", 
-    distance: "260.286km", 
-    firstGP: 1950, 
+  monaco: {
+    laps: 78,
+    length: "3.337km",
+    distance: "260.286km",
+    firstGP: 1950,
     fastestLap: { time: "1:12.909", driver: "Lewis Hamilton", year: 2021 },
     image: "https://media.formula1.com/image/upload/content/dam/fom-website/2018-redesign-assets/circuit-maps-16-9/Monaco_Circuit.png"
   },
-  monza: { 
-    laps: 53, 
-    length: "5.793km", 
-    distance: "306.720km", 
-    firstGP: 1950, 
+  monza: {
+    laps: 53,
+    length: "5.793km",
+    distance: "306.720km",
+    firstGP: 1950,
     fastestLap: { time: "1:21.046", driver: "Rubens Barrichello", year: 2004 },
     image: "https://media.formula1.com/image/upload/content/dam/fom-website/2018-redesign-assets/circuit-maps-16-9/Italy_Circuit.png"
   },
-  spa: { 
-    laps: 44, 
-    length: "7.004km", 
-    distance: "308.052km", 
-    firstGP: 1950, 
+  spa: {
+    laps: 44,
+    length: "7.004km",
+    distance: "308.052km",
+    firstGP: 1950,
     fastestLap: { time: "1:46.286", driver: "Valtteri Bottas", year: 2018 },
     image: "https://media.formula1.com/image/upload/content/dam/fom-website/2018-redesign-assets/circuit-maps-16-9/Belgium_Circuit.png"
   },
-  albert_park: { 
-    laps: 58, 
-    length: "5.278km", 
-    distance: "306.124km", 
-    firstGP: 1996, 
+  albert_park: {
+    laps: 58,
+    length: "5.278km",
+    distance: "306.124km",
+    firstGP: 1996,
     fastestLap: { time: "1:19.813", driver: "Charles Leclerc", year: 2024 },
     image: "https://media.formula1.com/image/upload/c_fit,h_704/q_auto/v1740000001/common/f1/2026/track/2026trackmelbournedetailed.webp"
   },
-  bahrain: { laps: 57, length: "5.412km", distance: "308.238km", firstGP: 2004 , image: "https://media.formula1.com/image/upload/content/dam/fom-website/2018-redesign-assets/circuit-maps-16-9/Bahrain_Circuit.png"},
-  jeddah: { laps: 50, length: "6.174km", distance: "308.450km", firstGP: 2021 , image: "https://media.formula1.com/image/upload/content/dam/fom-website/2018-redesign-assets/circuit-maps-16-9/Saudi_Arabia_Circuit.png"},
-  miami: { laps: 57, length: "5.412km", distance: "308.326km", firstGP: 2022 , image: "https://media.formula1.com/image/upload/content/dam/fom-website/2018-redesign-assets/circuit-maps-16-9/Miami_Circuit.png"},
-  catalunya: { laps: 66, length: "4.657km", distance: "307.236km", firstGP: 1991 , image: "https://media.formula1.com/image/upload/content/dam/fom-website/2018-redesign-assets/circuit-maps-16-9/Spain_Circuit.png"},
-  red_bull_ring: { laps: 71, length: "4.318km", distance: "306.452km", firstGP: 1970 , image: "https://media.formula1.com/image/upload/content/dam/fom-website/2018-redesign-assets/circuit-maps-16-9/Austria_Circuit.png"},
-  hungaroring: { laps: 70, length: "4.381km", distance: "306.630km", firstGP: 1986 , image: "https://media.formula1.com/image/upload/content/dam/fom-website/2018-redesign-assets/circuit-maps-16-9/Hungary_Circuit.png"},
-  zandvoort: { laps: 72, length: "4.259km", distance: "306.587km", firstGP: 1952 , image: "https://media.formula1.com/image/upload/content/dam/fom-website/2018-redesign-assets/circuit-maps-16-9/Netherlands_Circuit.png"},
-  baku: { laps: 51, length: "6.003km", distance: "306.049km", firstGP: 2016 , image: "https://media.formula1.com/image/upload/content/dam/fom-website/2018-redesign-assets/circuit-maps-16-9/Azerbaijan_Circuit.png"},
-  marina_bay: { laps: 62, length: "4.940km", distance: "306.143km", firstGP: 2008 , image: "https://media.formula1.com/image/upload/content/dam/fom-website/2018-redesign-assets/circuit-maps-16-9/Singapore_Circuit.png"},
-  americas: { laps: 56, length: "5.513km", distance: "308.405km", firstGP: 2012 , image: "https://media.formula1.com/image/upload/content/dam/fom-website/2018-redesign-assets/circuit-maps-16-9/USA_Circuit.png"},
-  rodriguez: { laps: 71, length: "4.304km", distance: "305.354km", firstGP: 1963 , image: "https://media.formula1.com/image/upload/content/dam/fom-website/2018-redesign-assets/circuit-maps-16-9/Mexico_Circuit.png"},
-  las_vegas: { laps: 50, length: "6.201km", distance: "310.050km", firstGP: 1982 , image: "https://media.formula1.com/image/upload/content/dam/fom-website/2018-redesign-assets/circuit-maps-16-9/Las_Vegas_Circuit.png"},
-  losail: { laps: 57, length: "5.419km", distance: "308.611km", firstGP: 2021 , image: "https://media.formula1.com/image/upload/content/dam/fom-website/2018-redesign-assets/circuit-maps-16-9/Qatar_Circuit.png"},
-  yas_marina: { laps: 58, length: "5.281km", distance: "306.183km", firstGP: 2009 , image: "https://media.formula1.com/image/upload/content/dam/fom-website/2018-redesign-assets/circuit-maps-16-9/Abu_Dhabi_Circuit.png"},
-  shanghai: { laps: 56, length: "5.451km", distance: "305.066km", firstGP: 2004 , image: "https://media.formula1.com/image/upload/content/dam/fom-website/2018-redesign-assets/circuit-maps-16-9/China_Circuit.png"},
-  imola: { laps: 63, length: "4.909km", distance: "309.049km", firstGP: 1980 , image: "https://media.formula1.com/image/upload/content/dam/fom-website/2018-redesign-assets/circuit-maps-16-9/Emilia_Romagna_Circuit.png"},
-  villeneuve: { laps: 70, length: "4.361km", distance: "305.270km", firstGP: 1978 , image: "https://media.formula1.com/image/upload/content/dam/fom-website/2018-redesign-assets/circuit-maps-16-9/Canada_Circuit.png"}
+  bahrain: { laps: 57, length: "5.412km", distance: "308.238km", firstGP: 2004, image: "https://media.formula1.com/image/upload/content/dam/fom-website/2018-redesign-assets/circuit-maps-16-9/Bahrain_Circuit.png" },
+  jeddah: { laps: 50, length: "6.174km", distance: "308.450km", firstGP: 2021, image: "https://media.formula1.com/image/upload/content/dam/fom-website/2018-redesign-assets/circuit-maps-16-9/Saudi_Arabia_Circuit.png" },
+  miami: { laps: 57, length: "5.412km", distance: "308.326km", firstGP: 2022, image: "https://media.formula1.com/image/upload/content/dam/fom-website/2018-redesign-assets/circuit-maps-16-9/Miami_Circuit.png" },
+  catalunya: { laps: 66, length: "4.657km", distance: "307.236km", firstGP: 1991, image: "https://media.formula1.com/image/upload/content/dam/fom-website/2018-redesign-assets/circuit-maps-16-9/Spain_Circuit.png" },
+  red_bull_ring: { laps: 71, length: "4.318km", distance: "306.452km", firstGP: 1970, image: "https://media.formula1.com/image/upload/content/dam/fom-website/2018-redesign-assets/circuit-maps-16-9/Austria_Circuit.png" },
+  hungaroring: { laps: 70, length: "4.381km", distance: "306.630km", firstGP: 1986, image: "https://media.formula1.com/image/upload/content/dam/fom-website/2018-redesign-assets/circuit-maps-16-9/Hungary_Circuit.png" },
+  zandvoort: { laps: 72, length: "4.259km", distance: "306.587km", firstGP: 1952, image: "https://media.formula1.com/image/upload/content/dam/fom-website/2018-redesign-assets/circuit-maps-16-9/Netherlands_Circuit.png" },
+  baku: { laps: 51, length: "6.003km", distance: "306.049km", firstGP: 2016, image: "https://media.formula1.com/image/upload/content/dam/fom-website/2018-redesign-assets/circuit-maps-16-9/Azerbaijan_Circuit.png" },
+  marina_bay: { laps: 62, length: "4.940km", distance: "306.143km", firstGP: 2008, image: "https://media.formula1.com/image/upload/content/dam/fom-website/2018-redesign-assets/circuit-maps-16-9/Singapore_Circuit.png" },
+  americas: { laps: 56, length: "5.513km", distance: "308.405km", firstGP: 2012, image: "https://media.formula1.com/image/upload/content/dam/fom-website/2018-redesign-assets/circuit-maps-16-9/USA_Circuit.png" },
+  rodriguez: { laps: 71, length: "4.304km", distance: "305.354km", firstGP: 1963, image: "https://media.formula1.com/image/upload/content/dam/fom-website/2018-redesign-assets/circuit-maps-16-9/Mexico_Circuit.png" },
+  las_vegas: { laps: 50, length: "6.201km", distance: "310.050km", firstGP: 1982, image: "https://media.formula1.com/image/upload/content/dam/fom-website/2018-redesign-assets/circuit-maps-16-9/Las_Vegas_Circuit.png" },
+  losail: { laps: 57, length: "5.419km", distance: "308.611km", firstGP: 2021, image: "https://media.formula1.com/image/upload/content/dam/fom-website/2018-redesign-assets/circuit-maps-16-9/Qatar_Circuit.png" },
+  yas_marina: { laps: 58, length: "5.281km", distance: "306.183km", firstGP: 2009, image: "https://media.formula1.com/image/upload/content/dam/fom-website/2018-redesign-assets/circuit-maps-16-9/Abu_Dhabi_Circuit.png" },
+  shanghai: { laps: 56, length: "5.451km", distance: "305.066km", firstGP: 2004, image: "https://media.formula1.com/image/upload/content/dam/fom-website/2018-redesign-assets/circuit-maps-16-9/China_Circuit.png" },
+  imola: { laps: 63, length: "4.909km", distance: "309.049km", firstGP: 1980, image: "https://media.formula1.com/image/upload/content/dam/fom-website/2018-redesign-assets/circuit-maps-16-9/Emilia_Romagna_Circuit.png" },
+  villeneuve: { laps: 70, length: "4.361km", distance: "305.270km", firstGP: 1978, image: "https://media.formula1.com/image/upload/content/dam/fom-website/2018-redesign-assets/circuit-maps-16-9/Canada_Circuit.png" }
 };
 
 const OFFICIAL_RACE_NAMES_2026 = {

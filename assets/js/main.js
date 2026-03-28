@@ -91,6 +91,29 @@ function buildDetailItem(label, value) {
   return item;
 }
 
+function normalizeDriverKey(value) {
+  return String(value || "")
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^a-z0-9]+/g, "_")
+    .replace(/^_+|_+$/g, "");
+}
+
+function resolveDriverStaticInfo(driver) {
+  const byId = normalizeDriverKey(driver?.driverId);
+  if (byId && DRIVER_STATIC[byId]) {
+    return DRIVER_STATIC[byId];
+  }
+
+  const fullNameKey = normalizeDriverKey(`${driver?.givenName || ""}_${driver?.familyName || ""}`);
+  if (fullNameKey && DRIVER_STATIC[fullNameKey]) {
+    return DRIVER_STATIC[fullNameKey];
+  }
+
+  return {};
+}
+
 function buildPodiumComponent(results) {
   const container = document.createElement("div");
   container.className = "podium-grid";
@@ -108,8 +131,7 @@ function buildPodiumComponent(results) {
     rankEl.innerHTML = `${index + 1}<span>${rankSuffixes[index]}</span>`;
     
     // Driver Info
-    const driverId = result.Driver.driverId.replace(/-/g, "_");
-    const staticInfo = DRIVER_STATIC[driverId] || {};
+    const staticInfo = resolveDriverStaticInfo(result.Driver);
     
     // Avatar
     const avatar = document.createElement("img");
@@ -282,7 +304,6 @@ function buildLastRaceCard(lastRace) {
 
   const subtitle = document.createElement("p");
   subtitle.className = "card-subtitle";
-  subtitle.textContent = `Etapa ${lastRace.round} - ${translateCountry(lastRace.Circuit.Location.country)}`;
 
   const results = (lastRace.Results || []).slice(0, 3);
   const podiumWrapper = buildPodiumComponent(results);
