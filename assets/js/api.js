@@ -68,58 +68,86 @@ async function safeFetchArray(url, cacheKey, path) {
 }
 
 export async function fetchCurrentDriverStandings() {
-  return safeFetchArray(
-    `${API_BASE}/current/driverStandings.json`,
-    "f1_current_driver_standings",
-    ["MRData", "StandingsTable", "StandingsLists", 0, "DriverStandings"]
-  );
+  try {
+    return await safeFetchArray(
+      `${API_BASE}/current/driverStandings.json`,
+      "f1_current_driver_standings",
+      ["MRData", "StandingsTable", "StandingsLists", 0, "DriverStandings"]
+    );
+  } catch {
+    throw new Error("Nao foi possivel carregar a classificacao de pilotos.");
+  }
 }
 
 export async function fetchCurrentConstructorStandings() {
-  return safeFetchArray(
-    `${API_BASE}/current/constructorStandings.json`,
-    "f1_current_constructor_standings",
-    ["MRData", "StandingsTable", "StandingsLists", 0, "ConstructorStandings"]
-  );
+  try {
+    return await safeFetchArray(
+      `${API_BASE}/current/constructorStandings.json`,
+      "f1_current_constructor_standings",
+      ["MRData", "StandingsTable", "StandingsLists", 0, "ConstructorStandings"]
+    );
+  } catch {
+    throw new Error("Nao foi possivel carregar a classificacao de construtores.");
+  }
 }
 
 export async function fetchCurrentSchedule() {
-  return safeFetchArray(
-    `${API_BASE}/current/races.json?limit=30`,
-    "f1_current_schedule",
-    ["MRData", "RaceTable", "Races"]
-  );
+  try {
+    return await safeFetchArray(
+      `${API_BASE}/current/races.json?limit=30`,
+      "f1_current_schedule",
+      ["MRData", "RaceTable", "Races"]
+    );
+  } catch {
+    throw new Error("Nao foi possivel carregar o calendario da temporada.");
+  }
 }
 
 export async function fetchCurrentResults() {
-  return safeFetchArray(
-    `${API_BASE}/current/results.json?limit=5`,
-    "f1_current_results",
-    ["MRData", "RaceTable", "Races"]
-  );
+  try {
+    return await safeFetchArray(
+      `${API_BASE}/current/results.json?limit=5`,
+      "f1_current_results",
+      ["MRData", "RaceTable", "Races"]
+    );
+  } catch {
+    throw new Error("Nao foi possivel carregar os resultados recentes.");
+  }
 }
 
 export async function fetchDrivers(season) {
   const year = season || "current";
-  return safeFetchArray(
-    `${API_BASE}/${year}/drivers.json`,
-    `f1_drivers_${year}`,
-    ["MRData", "DriverTable", "Drivers"]
-  );
+  try {
+    return await safeFetchArray(
+      `${API_BASE}/${year}/drivers.json`,
+      `f1_drivers_${year}`,
+      ["MRData", "DriverTable", "Drivers"]
+    );
+  } catch {
+    throw new Error("Nao foi possivel carregar os pilotos da temporada.");
+  }
 }
 
 export async function fetchAllTimeChampions() {
-  return safeFetchArray(
-    `${API_BASE}/driverStandings/1.json?limit=100`,
-    "f1_all_time_champions",
-    ["MRData", "StandingsTable", "StandingsLists"]
-  );
+  try {
+    return await safeFetchArray(
+      `${API_BASE}/driverStandings/1.json?limit=100`,
+      "f1_all_time_champions",
+      ["MRData", "StandingsTable", "StandingsLists"]
+    );
+  } catch {
+    throw new Error("Nao foi possivel carregar os campeoes historicos da API.");
+  }
 }
 
 export async function fetchScheduleBySeason(season) {
-  return safeFetchArray(
-    `${API_BASE}/${season}/races.json?limit=30`,
-    `f1_schedule_${season}`,
-    ["MRData", "RaceTable", "Races"]
-  );
+  try {
+    return await safeFetchArray(
+      `${API_BASE}/${season}/races.json?limit=30`,
+      `f1_schedule_${season}`,
+      ["MRData", "RaceTable", "Races"]
+    );
+  } catch {
+    throw new Error("Nao foi possivel carregar o calendario da temporada solicitada.");
+  }
 }
