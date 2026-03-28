@@ -392,6 +392,7 @@ function createTable(titleText, rows, isConstructorTable = false) {
     points.textContent = entry.points;
 
     if (isConstructorTable) {
+      main.textContent = entry.Constructor.name;
       const logoUrl = resolveConstructorLogo(entry.Constructor.constructorId);
       if (logoUrl) {
         const img = document.createElement("img");
@@ -399,11 +400,10 @@ function createTable(titleText, rows, isConstructorTable = false) {
         img.src = logoUrl;
         img.alt = entry.Constructor.name;
         img.title = entry.Constructor.name;
-        main.replaceChildren(img);
+        secondary.replaceChildren(img);
       } else {
-        main.textContent = entry.Constructor.name;
+        secondary.textContent = "-";
       }
-      secondary.textContent = "-";
     } else {
       main.textContent = `${entry.Driver.givenName} ${entry.Driver.familyName}`;
       
