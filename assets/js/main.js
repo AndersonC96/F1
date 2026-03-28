@@ -12,6 +12,7 @@ import {
   formatRaceDate,
   getOfficialRaceName2026,
   setupNavActiveState,
+  TEAM_STATIC,
   toFlagUrl,
   translateCountry
 } from "./static-data.js";
@@ -112,6 +113,14 @@ function resolveDriverStaticInfo(driver) {
   }
 
   return {};
+}
+
+function resolveConstructorLogo(constructorId) {
+  const key = (constructorId || "").toLowerCase().replace(/[^a-z0-9]+/g, "_");
+  if (TEAM_STATIC[key]) {
+    return TEAM_STATIC[key].logo;
+  }
+  return null;
 }
 
 function buildPodiumComponent(results) {
@@ -383,11 +392,33 @@ function createTable(titleText, rows, isConstructorTable = false) {
     points.textContent = entry.points;
 
     if (isConstructorTable) {
-      main.textContent = entry.Constructor.name;
+      const logoUrl = resolveConstructorLogo(entry.Constructor.constructorId);
+      if (logoUrl) {
+        const img = document.createElement("img");
+        img.className = "team-logo-mini";
+        img.src = logoUrl;
+        img.alt = entry.Constructor.name;
+        img.title = entry.Constructor.name;
+        main.replaceChildren(img);
+      } else {
+        main.textContent = entry.Constructor.name;
+      }
       secondary.textContent = "-";
     } else {
       main.textContent = `${entry.Driver.givenName} ${entry.Driver.familyName}`;
-      secondary.textContent = entry.Constructors?.[0]?.name || "-";
+      
+      const constructor = entry.Constructors?.[0];
+      const logoUrl = resolveConstructorLogo(constructor?.constructorId);
+      if (logoUrl) {
+        const img = document.createElement("img");
+        img.className = "team-logo-mini";
+        img.src = logoUrl;
+        img.alt = constructor?.name;
+        img.title = constructor?.name;
+        secondary.replaceChildren(img);
+      } else {
+        secondary.textContent = constructor?.name || "-";
+      }
     }
 
     row.append(pos, main, secondary, points);

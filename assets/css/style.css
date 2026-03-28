@@ -929,3 +929,22 @@ button:focus-visible {
     gap: 0.08rem;
   }
 }
+
+/* Team Logos in Tables */
+.team-logo-mini {
+  max-width: 42px;
+  max-height: 22px;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto;
+  filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.25));
+  transition: transform 0.2s ease;
+}
+
+.team-logo-mini:hover {
+  transform: scale(1.15);
+}
+
+.standings-table td {
+  vertical-align: middle;
+}

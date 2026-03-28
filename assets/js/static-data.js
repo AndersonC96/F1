@@ -124,7 +124,7 @@ export const DRIVER_STATIC = {
 
 export const TEAM_STATIC = {
   red_bull: {
-    logo: "https://upload.wikimedia.org/wikipedia/en/thumb/0/01/Red_Bull_Racing_logo.svg/512px-Red_Bull_Racing_logo.svg.png",
+    logo: "https://media.formula1.com/image/upload/c_lfill,w_64/q_auto/v1740000001/common/f1/2026/red-bull-racing/2026red-bull-racinglogowhite.webp",
     carImage: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Max_Verstappen_2017_Malaysia_3.jpg/640px-Max_Verstappen_2017_Malaysia_3.jpg",
     chassis: "RB20",
     powerUnit: "Honda RBPT",
@@ -135,7 +135,7 @@ export const TEAM_STATIC = {
     principal: "Christian Horner"
   },
   ferrari: {
-    logo: "https://upload.wikimedia.org/wikipedia/en/thumb/d/d4/Scuderia_Ferrari_Logo.svg/512px-Scuderia_Ferrari_Logo.svg.png",
+    logo: "https://media.formula1.com/image/upload/c_lfill,w_64/q_auto/v1740000001/common/f1/2026/ferrari/2026ferrarilogowhite.webp",
     carImage: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Ferrari_SF-24_%28cropped%29.jpg/640px-Ferrari_SF-24_%28cropped%29.jpg",
     chassis: "SF-24",
     powerUnit: "Ferrari 066/12",
@@ -146,7 +146,7 @@ export const TEAM_STATIC = {
     principal: "Frederic Vasseur"
   },
   mercedes: {
-    logo: "https://upload.wikimedia.org/wikipedia/en/thumb/b/b6/Mercedes-Benz_in_Motorsport_logo.svg/512px-Mercedes-Benz_in_Motorsport_logo.svg.png",
+    logo: "https://media.formula1.com/image/upload/c_lfill,w_64/q_auto/v1740000001/common/f1/2026/mercedes/2026mercedeslogowhite.webp",
     carImage: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Lewis_Hamilton_2022_Paris.jpg/640px-Lewis_Hamilton_2022_Paris.jpg",
     chassis: "W15",
     powerUnit: "Mercedes-AMG F1 M15",
@@ -157,7 +157,7 @@ export const TEAM_STATIC = {
     principal: "Toto Wolff"
   },
   mclaren: {
-    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/McLaren_Racing_logo.svg/512px-McLaren_Racing_logo.svg.png",
+    logo: "https://media.formula1.com/image/upload/c_lfill,w_64/q_auto/v1740000001/common/f1/2026/mclaren/2026mclarenlogowhite.webp",
     carImage: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Lando_Norris_2020.png/640px-Lando_Norris_2020.png",
     chassis: "MCL38",
     powerUnit: "Mercedes-AMG F1 M15",
@@ -168,7 +168,7 @@ export const TEAM_STATIC = {
     principal: "Andrea Stella"
   },
   aston_martin: {
-    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Aston_Martin_Aramco_Cognizant_F1_Team_logo.svg/512px-Aston_Martin_Aramco_Cognizant_F1_Team_logo.svg.png",
+    logo: "https://media.formula1.com/image/upload/c_lfill,w_64/q_auto/v1740000001/common/f1/2026/aston-martin/2026aston-martinlogowhite.webp",
     carImage: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/37/Fernando_Alonso_2018_Malaysia.jpg/640px-Fernando_Alonso_2018_Malaysia.jpg",
     chassis: "AMR24",
     powerUnit: "Mercedes-AMG F1 M15",
@@ -179,7 +179,7 @@ export const TEAM_STATIC = {
     principal: "Mike Krack"
   },
   alpine: {
-    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/37/Alpine_F1_Team_Logo.svg/512px-Alpine_F1_Team_Logo.svg.png",
+    logo: "https://media.formula1.com/image/upload/c_lfill,w_64/q_auto/v1740000001/common/f1/2026/alpine/2026alpinelogowhite.webp",
     carImage: null,
     chassis: "A524",
     powerUnit: "Renault E-Tech RE24",
@@ -190,7 +190,7 @@ export const TEAM_STATIC = {
     principal: "Bruno Famin"
   },
   williams: {
-    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/Williams_Grand_Prix_Engineering_2020_logo.svg/512px-Williams_Grand_Prix_Engineering_2020_logo.svg.png",
+    logo: "https://media.formula1.com/image/upload/c_lfill,w_64/q_auto/v1740000001/common/f1/2026/williams/2026williamslogowhite.webp",
     carImage: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Alexander_Albon_2020.jpg/640px-Alexander_Albon_2020.jpg",
     chassis: "FW46",
     powerUnit: "Mercedes-AMG F1 M15",
@@ -201,7 +201,7 @@ export const TEAM_STATIC = {
     principal: "James Vowles"
   },
   rb: {
-    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Visa_Cash_App_RB_Formula_One_Team_logo.svg/512px-Visa_Cash_App_RB_Formula_One_Team_logo.svg.png",
+    logo: "https://media.formula1.com/image/upload/c_lfill,w_64/q_auto/v1740000001/common/f1/2026/rb/2026rblogowhite.webp",
     carImage: null,
     chassis: "VCARB 01",
     powerUnit: "Honda RBPT",
@@ -212,7 +212,7 @@ export const TEAM_STATIC = {
     principal: "Laurent Mekies"
   },
   sauber: {
-    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Stake_F1_Team_Kick_Sauber_logo.svg/512px-Stake_F1_Team_Kick_Sauber_logo.svg.png",
+    logo: "https://media.formula1.com/image/upload/c_lfill,w_64/q_auto/v1740000001/common/f1/2026/sauber/2026sauberlogowhite.webp",
     carImage: null,
     chassis: "C44",
     powerUnit: "Ferrari 066/12",
@@ -223,7 +223,7 @@ export const TEAM_STATIC = {
     principal: "Alessandro Alunni Bravi"
   },
   haas: {
-    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Haas_F1_Team_logo.svg/512px-Haas_F1_Team_logo.svg.png",
+    logo: "https://media.formula1.com/image/upload/c_lfill,w_64/q_auto/v1740000001/common/f1/2026/haas/2026haaslogowhite.webp",
     carImage: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/Kevin_Magnussen_2022.jpg/640px-Kevin_Magnussen_2022.jpg",
     chassis: "VF-24",
     powerUnit: "Ferrari 066/12",
