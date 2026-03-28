@@ -246,6 +246,24 @@ export const TEAM_STATIC = {
   }
 };
 
+const OFFICIAL_TEAM_NAMES = {
+  "Mercedes": "Mercedes-AMG PETRONAS Formula One Team",
+  "Ferrari": "Scuderia Ferrari HP",
+  "McLaren": "McLaren Mastercard F1 Team",
+  "Haas F1 Team": "TGR Haas F1 Team",
+  "Red Bull": "Oracle Red Bull Racing",
+  "RB F1 Team": "Visa Cash App Racing Bulls Formula One Team",
+  "Alpine F1 Team": "BWT Alpine Formula One Team",
+  "Audi": "Audi Revolut F1 Team",
+  "Williams": "Atlassian Williams F1 Team",
+  "Cadillac F1 Team": "Cadillac Formula 1 Team",
+  "Aston Martin": "Aston Martin Aramco Formula One Team"
+};
+
+export function getOfficialTeamName(teamName) {
+  return OFFICIAL_TEAM_NAMES[teamName] || teamName;
+}
+
 export const CHAMPIONS_HISTORY = [
   { name: "Juan Manuel Fangio", nationality: "Argentina", wins: 24, teams: ["Alfa Romeo", "Maserati", "Mercedes", "Ferrari"], titleYears: [1951, 1954, 1955, 1956, 1957], photo: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Juan_Manuel_Fangio_1957.jpg/512px-Juan_Manuel_Fangio_1957.jpg" },
   { name: "Alberto Ascari", nationality: "Italia", wins: 13, teams: ["Ferrari"], titleYears: [1952, 1953], photo: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Alberto_Ascari_circa_1950s.jpg/512px-Alberto_Ascari_circa_1950s.jpg" },

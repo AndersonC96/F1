@@ -14,7 +14,8 @@ import {
   setupNavActiveState,
   TEAM_STATIC,
   toFlagUrl,
-  translateCountry
+  translateCountry,
+  getOfficialTeamName
 } from "./static-data.js";
 
 const nextRaceState = document.getElementById("next-race-state");
@@ -248,7 +249,7 @@ function buildNextRaceCard(nextRace, isSeasonClosed = false) {
   headerTop.append(title, flag);
 
   const subtitle = document.createElement("p");
-  subtitle.className = "card-subtitle";
+    subtitle.className = "card-subtitle";
   subtitle.textContent = nextRace.Circuit.Location.locality + ", " + translateCountry(nextRace.Circuit.Location.country);
 
   const eventTime = raceDateToTimestamp(nextRace);
@@ -313,6 +314,7 @@ function buildLastRaceCard(lastRace) {
 
   const subtitle = document.createElement("p");
   subtitle.className = "card-subtitle";
+  subtitle.textContent = `Etapa ${lastRace.round} - ${translateCountry(lastRace.Circuit.Location.country)}`;
 
   const results = (lastRace.Results || []).slice(0, 3);
   const podiumWrapper = buildPodiumComponent(results);
@@ -392,14 +394,14 @@ function createTable(titleText, rows, isConstructorTable = false) {
     points.textContent = entry.points;
 
     if (isConstructorTable) {
-      main.textContent = entry.Constructor.name;
+      main.textContent = getOfficialTeamName(entry.Constructor.name);
       const logoUrl = resolveConstructorLogo(entry.Constructor.constructorId);
       if (logoUrl) {
         const img = document.createElement("img");
         img.className = "team-logo-mini";
         img.src = logoUrl;
-        img.alt = entry.Constructor.name;
-        img.title = entry.Constructor.name;
+        img.alt = getOfficialTeamName(entry.Constructor.name);
+        img.title = getOfficialTeamName(entry.Constructor.name);
         secondary.replaceChildren(img);
       } else {
         secondary.textContent = "-";
@@ -413,11 +415,11 @@ function createTable(titleText, rows, isConstructorTable = false) {
         const img = document.createElement("img");
         img.className = "team-logo-mini";
         img.src = logoUrl;
-        img.alt = constructor?.name;
-        img.title = constructor?.name;
+        img.alt = getOfficialTeamName(constructor?.name || "-");
+        img.title = getOfficialTeamName(constructor?.name || "-");
         secondary.replaceChildren(img);
       } else {
-        secondary.textContent = constructor?.name || "-";
+        secondary.textContent = getOfficialTeamName(constructor?.name || "-");
       }
     }
 

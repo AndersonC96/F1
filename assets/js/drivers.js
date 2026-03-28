@@ -1,5 +1,5 @@
 import { fetchCurrentDriverStandings, fetchDrivers } from "./api.js";
-import { DRIVER_STATIC, PLACEHOLDER_DRIVER_IMAGE, setupNavActiveState, toFlag } from "./static-data.js";
+import { DRIVER_STATIC, PLACEHOLDER_DRIVER_IMAGE, getOfficialTeamName, setupNavActiveState, toFlag } from "./static-data.js";
 
 const stateContainer = document.getElementById("drivers-state");
 const searchInput = document.getElementById("search-input");
@@ -286,7 +286,7 @@ async function loadDrivers() {
         id,
         position: Number(standing.position || 0),
         fullName: `${driver.givenName || ""} ${driver.familyName || ""}`.trim(),
-        team: standing.Constructors?.[0]?.name || "Equipe nao informada",
+        team: getOfficialTeamName(standing.Constructors?.[0]?.name) || "Equipe nao informada",
         points: Number(standing.points || 0),
         wins: Number(standing.wins || 0),
         poles: Number(staticData.poles || 0),

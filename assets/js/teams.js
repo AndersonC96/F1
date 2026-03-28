@@ -2,7 +2,7 @@ import {
   fetchCurrentConstructorStandings,
   fetchCurrentDriverStandings
 } from "./api.js";
-import { PLACEHOLDER_DRIVER_IMAGE, TEAM_STATIC, setImageFallback, setupNavActiveState } from "./static-data.js";
+import { PLACEHOLDER_DRIVER_IMAGE, TEAM_STATIC, getOfficialTeamName, setImageFallback, setupNavActiveState } from "./static-data.js";
 
 const stateContainer = document.getElementById("teams-state");
 const sortSelect = document.getElementById("sort-select");
@@ -220,7 +220,7 @@ async function loadTeams() {
       const staticData = TEAM_STATIC[id] || {};
       return {
         id,
-        name: entry.Constructor.name,
+        name: getOfficialTeamName(entry.Constructor.name),
         position: Number(entry.position || 0),
         points: Number(entry.points || 0),
         wins: Number(entry.wins || 0),
