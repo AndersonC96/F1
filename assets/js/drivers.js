@@ -1,0 +1,277 @@
+import { fetchCurrentDriverStandings, fetchDrivers } from "./api.js";
+import { DRIVER_STATIC, PLACEHOLDER_DRIVER_IMAGE, setupNavActiveState, toFlag } from "./static-data.js";
+
+const stateContainer = document.getElementById("drivers-state");
+const searchInput = document.getElementById("search-input");
+const sortSelect = document.getElementById("sort-select");
+
+let driversData = [];
+let expandedCardId = null;
+
+function updateSortInUrl(value) {
+  const url = new URL(window.location.href);
+  url.searchParams.set("sort", value);
+  window.history.replaceState({}, "", url);
+}
+
+function getSortFromUrl() {
+  const value = new URL(window.location.href).searchParams.get("sort");
+  const allowed = ["standing", "name", "team", "points", "wins", "poles"];
+  return allowed.includes(value) ? value : "standing";
+}
+
+function renderSkeleton() {
+  const grid = document.createElement("div");
+  grid.className = "grid grid-drivers";
+
+  for (let i = 0; i < 6; i += 1) {
+    const skeletonCard = document.createElement("article");
+    skeletonCard.className = "skeleton-card";
+
+    for (let line = 0; line < 5; line += 1) {
+      const skeletonLine = document.createElement("div");
+      skeletonLine.className = `skeleton skeleton-line ${line === 0 ? "short" : "medium"}`;
+      skeletonCard.appendChild(skeletonLine);
+    }
+
+    grid.appendChild(skeletonCard);
+  }
+
+  stateContainer.replaceChildren(grid);
+}
+
+function renderError(onRetry) {
+  const card = document.createElement("article");
+  card.className = "state-card error";
+
+  const text = document.createElement("p");
+  text.textContent = "Nao foi possivel carregar os pilotos agora.";
+
+  const button = document.createElement("button");
+  button.type = "button";
+  button.className = "button";
+  button.textContent = "Tentar novamente";
+  button.addEventListener("click", onRetry);
+
+  card.append(text, button);
+  stateContainer.replaceChildren(card);
+}
+
+function applySort(items, sortBy) {
+  const sorted = [...items];
+
+  sorted.sort((a, b) => {
+    if (sortBy === "name") {
+      return a.fullName.localeCompare(b.fullName, "pt-BR");
+    }
+
+    if (sortBy === "team") {
+      return (a.team || "").localeCompare(b.team || "", "pt-BR");
+    }
+
+    if (sortBy === "points") {
+      return b.points - a.points;
+    }
+
+    if (sortBy === "wins") {
+      return b.wins - a.wins;
+    }
+
+    if (sortBy === "poles") {
+      return b.poles - a.poles;
+    }
+
+    return a.position - b.position;
+  });
+
+  return sorted;
+}
+
+function filterDrivers(items, query) {
+  const normalized = query.trim().toLowerCase();
+  if (!normalized) {
+    return items;
+  }
+
+  return items.filter((driver) => driver.fullName.toLowerCase().includes(normalized));
+}
+
+function createBadge(label, value) {
+  const badge = document.createElement("span");
+  badge.className = "badge";
+  badge.textContent = `${label}: ${value}`;
+  return badge;
+}
+
+function renderEmptyState() {
+  const card = document.createElement("article");
+  card.className = "state-card";
+  card.textContent = "Nenhum piloto encontrado com os filtros atuais.";
+  stateContainer.replaceChildren(card);
+}
+
+function buildDriverCard(driver) {
+  const article = document.createElement("article");
+  article.className = "driver-card";
+
+  const header = document.createElement("div");
+  header.className = "driver-header";
+
+  const image = document.createElement("img");
+  image.className = "portrait";
+  image.src = driver.photo;
+  image.alt = `Foto do piloto ${driver.fullName}`;
+  image.loading = "lazy";
+  image.addEventListener("error", () => {
+    image.src = PLACEHOLDER_DRIVER_IMAGE;
+  });
+
+  const textWrap = document.createElement("div");
+  const name = document.createElement("h3");
+  name.className = "name";
+  name.textContent = driver.fullName;
+
+  const meta = document.createElement("p");
+  meta.className = "meta";
+  meta.textContent = `${toFlag(driver.nationality)} ${driver.team}`;
+
+  const badges = document.createElement("div");
+  badges.className = "kpis";
+  badges.append(
+    createBadge("Pts", driver.points),
+    createBadge("Vitorias", driver.wins),
+    createBadge("Poles", driver.poles)
+  );
+
+  textWrap.append(name, meta, badges);
+
+  const number = document.createElement("span");
+  number.className = "driver-number";
+  number.style.color = driver.teamColor;
+  number.textContent = String(driver.number || "-");
+
+  header.append(image, textWrap, number);
+
+  const button = document.createElement("button");
+  button.type = "button";
+  button.className = "expand-btn";
+  button.setAttribute("aria-expanded", String(expandedCardId === driver.id));
+  button.textContent = expandedCardId === driver.id ? "Ocultar detalhes" : "Ver detalhes";
+  button.addEventListener("click", () => {
+    expandedCardId = expandedCardId === driver.id ? null : driver.id;
+    renderDrivers();
+  });
+
+  article.append(header, button);
+
+  if (expandedCardId === driver.id) {
+    const details = document.createElement("div");
+    details.className = "details";
+
+    const dl = document.createElement("dl");
+    const pairs = [
+      ["Posicao", String(driver.position)],
+      ["Equipe", driver.team],
+      ["Pontos", String(driver.points)],
+      ["Vitorias", String(driver.wins)],
+      ["Poles", String(driver.poles)],
+      ["Nascimento", driver.dateOfBirth || "-"],
+      ["Nacionalidade", driver.nationality || "-"],
+      ["Site oficial", driver.website || "Nao informado"]
+    ];
+
+    pairs.forEach(([label, value]) => {
+      const dt = document.createElement("dt");
+      dt.textContent = label;
+      const dd = document.createElement("dd");
+      dd.textContent = value;
+      dl.append(dt, dd);
+    });
+
+    details.appendChild(dl);
+    article.appendChild(details);
+  }
+
+  return article;
+}
+
+function renderDrivers() {
+  const query = searchInput.value;
+  const sortBy = sortSelect.value;
+
+  const filtered = filterDrivers(driversData, query);
+  const sorted = applySort(filtered, sortBy);
+
+  if (sorted.length === 0) {
+    renderEmptyState();
+    return;
+  }
+
+  const grid = document.createElement("div");
+  grid.className = "grid grid-drivers";
+
+  sorted.forEach((driver) => {
+    grid.appendChild(buildDriverCard(driver));
+  });
+
+  stateContainer.replaceChildren(grid);
+}
+
+async function loadDrivers() {
+  renderSkeleton();
+
+  try {
+    const currentYear = new Date().getFullYear();
+    const [driverStandings, allDrivers] = await Promise.all([
+      fetchCurrentDriverStandings(),
+      fetchDrivers(currentYear)
+    ]);
+
+    const driversById = new Map(allDrivers.map((entry) => [entry.driverId, entry]));
+
+    driversData = driverStandings.map((standing) => {
+      const driver = standing.Driver || {};
+      const id = driver.driverId;
+      const profile = driversById.get(id) || driver;
+      const staticData = DRIVER_STATIC[id] || {};
+
+      return {
+        id,
+        position: Number(standing.position || 0),
+        fullName: `${driver.givenName || ""} ${driver.familyName || ""}`.trim(),
+        team: standing.Constructors?.[0]?.name || "Equipe nao informada",
+        points: Number(standing.points || 0),
+        wins: Number(standing.wins || 0),
+        poles: Number(staticData.poles || 0),
+        number: staticData.number || profile.permanentNumber || "-",
+        nationality: profile.nationality || driver.nationality || "",
+        dateOfBirth: profile.dateOfBirth || "",
+        photo: staticData.photo || PLACEHOLDER_DRIVER_IMAGE,
+        website: staticData.website || "",
+        teamColor: staticData.teamColor || "#e10600"
+      };
+    });
+
+    renderDrivers();
+  } catch {
+    renderError(loadDrivers);
+  }
+}
+
+function init() {
+  setupNavActiveState();
+
+  const sortFromUrl = getSortFromUrl();
+  sortSelect.value = sortFromUrl;
+
+  sortSelect.addEventListener("change", () => {
+    updateSortInUrl(sortSelect.value);
+    renderDrivers();
+  });
+
+  searchInput.addEventListener("input", renderDrivers);
+
+  loadDrivers();
+}
+
+init();

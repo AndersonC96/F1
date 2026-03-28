@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Lista de pilotos da temporada atual da Fórmula 1.">
+  <title>Portal Formula 1 | Pilotos</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root { color-scheme: dark; }
+    html, body { margin: 0; background: #0f0f0f; color: #f0f0f0; font-family: 'Titillium Web', sans-serif; }
+  </style>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Pular para o conteúdo</a>
+  <aside class="sidebar" aria-label="Navegação principal">
+    <div class="brand">F1 PORTAL</div>
+    <nav>
+      <a class="nav-item" data-page="index.html" href="index.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 3 10.5h2V21h5v-6h4v6h5V10.5h2z"/></svg><span>Início</span></a>
+      <a class="nav-item" data-page="teams.html" href="teams.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 13h2l2-4h5l1.5 4H21v4h-2a2 2 0 0 1-4 0H9a2 2 0 0 1-4 0H3zm4-1h4.2L10.4 10H8z"/></svg><span>Equipes</span></a>
+      <a class="nav-item" data-page="drivers.html" href="drivers.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 12a5 5 0 1 0-5-5 5 5 0 0 0 5 5m0 2c-4.4 0-8 2-8 4.5V21h16v-2.5c0-2.5-3.6-4.5-8-4.5"/></svg><span>Pilotos</span></a>
+      <a class="nav-item" data-page="champions.html" href="champions.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 2.8 5.7 6.2.9-4.5 4.4 1.1 6.2L12 17.2 6.4 20.2l1.1-6.2L3 9.6l6.2-.9z"/></svg><span>Campeões</span></a>
+      <a class="nav-item" data-page="calendar.html" href="calendar.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 2h2v2h6V2h2v2h3v18H4V4h3zm11 8H6v10h12z"/></svg><span>Calendário</span></a>
+    </nav>
+  </aside>
+
+  <main id="main-content" class="content">
+    <header class="page-header reveal-up">
+      <h1>Pilotos</h1>
+      <p>Grid atualizado com classificação da temporada atual.</p>
+    </header>
+
+    <section class="toolbar" aria-label="Filtros de pilotos">
+      <label class="field">
+        <span>Buscar por nome</span>
+        <input id="search-input" type="search" placeholder="Ex.: Verstappen">
+      </label>
+      <label class="field">
+        <span>Ordenar por</span>
+        <select id="sort-select">
+          <option value="standing">Classificação atual</option>
+          <option value="name">Nome</option>
+          <option value="team">Equipe</option>
+          <option value="points">Pontos</option>
+          <option value="wins">Vitórias</option>
+          <option value="poles">Poles</option>
+        </select>
+      </label>
+    </section>
+
+    <section id="drivers-state" aria-live="polite"></section>
+  </main>
+
+  <nav class="bottom-nav" aria-label="Navegação mobile">
+    <a class="nav-item" data-page="index.html" href="index.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 3 10.5h2V21h5v-6h4v6h5V10.5h2z"/></svg><span>Início</span></a>
+    <a class="nav-item" data-page="teams.html" href="teams.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 13h2l2-4h5l1.5 4H21v4h-2a2 2 0 0 1-4 0H9a2 2 0 0 1-4 0H3zm4-1h4.2L10.4 10H8z"/></svg><span>Equipes</span></a>
+    <a class="nav-item" data-page="drivers.html" href="drivers.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 12a5 5 0 1 0-5-5 5 5 0 0 0 5 5m0 2c-4.4 0-8 2-8 4.5V21h16v-2.5c0-2.5-3.6-4.5-8-4.5"/></svg><span>Pilotos</span></a>
+    <a class="nav-item" data-page="champions.html" href="champions.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 2.8 5.7 6.2.9-4.5 4.4 1.1 6.2L12 17.2 6.4 20.2l1.1-6.2L3 9.6l6.2-.9z"/></svg><span>Campeões</span></a>
+    <a class="nav-item" data-page="calendar.html" href="calendar.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 2h2v2h6V2h2v2h3v18H4V4h3zm11 8H6v10h12z"/></svg><span>Calendário</span></a>
+  </nav>
+
+  <script type="module" src="assets/js/drivers.js"></script>
+</body>
+</html>
