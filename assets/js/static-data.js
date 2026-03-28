@@ -147,6 +147,13 @@ export const DRIVER_STATIC = {
     photo: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f0/Oliver_Bearman_2024.jpg/512px-Oliver_Bearman_2024.jpg",
     website: "https://www.formula1.com/en/drivers/oliver-bearman",
     teamColor: "#9c9fa2"
+  },
+  kimi_antonelli: {
+    number: "12",
+    poles: 0,
+    photo: "https://media.formula1.com/image/upload/f_auto,c_limit,w_1440,q_auto/fom-website/2025/drivers/kimi-antonelli",
+    website: "https://www.formula1.com/en/drivers/kimi-antonelli",
+    teamColor: "#00d2be"
   }
 };
 
@@ -353,8 +360,8 @@ export const CIRCUIT_STATIC = {
     length: "5.278km", 
     distance: "306.124km", 
     firstGP: 1996, 
-    fastestLap: { time: "1:20.235", driver: "Charles Leclerc", year: 2022 },
-    image: "https://media.formula1.com/image/upload/content/dam/fom-website/2018-redesign-assets/circuit-maps-16-9/Australia_Circuit.png"
+    fastestLap: { time: "1:19.813", driver: "Charles Leclerc", year: 2024 },
+    image: "https://media.formula1.com/image/upload/c_fit,h_704/q_auto/v1740000001/common/f1/2026/track/2026trackmelbournedetailed.webp"
   },
   bahrain: { laps: 57, length: "5.412km", distance: "308.238km", firstGP: 2004 , image: "https://media.formula1.com/image/upload/content/dam/fom-website/2018-redesign-assets/circuit-maps-16-9/Bahrain_Circuit.png"},
   jeddah: { laps: 50, length: "6.174km", distance: "308.450km", firstGP: 2021 , image: "https://media.formula1.com/image/upload/content/dam/fom-website/2018-redesign-assets/circuit-maps-16-9/Saudi_Arabia_Circuit.png"},

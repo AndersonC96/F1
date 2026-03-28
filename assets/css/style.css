@@ -606,6 +606,99 @@ button:focus-visible {
   border-radius: 4px;
 }
 
+/* PODIUM COMPONENTS */
+.podium-grid {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+
+@media (min-width: 768px) {
+  .podium-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.podium-card {
+  background: rgba(25, 27, 31, 0.8);
+  border-radius: 12px;
+  padding: 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 1.1rem;
+  border-left: 5px solid var(--border);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.podium-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.5);
+}
+
+.podium-rank {
+  font-family: 'Titillium Web', sans-serif;
+  font-weight: 900;
+  font-size: 1.65rem;
+  font-style: italic;
+  color: var(--text-muted);
+  width: 48px;
+  flex-shrink: 0;
+  line-height: 0.9;
+  display: flex;
+  flex-direction: column;
+}
+
+.podium-rank span {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  margin-top: -0.2rem;
+  letter-spacing: 0.1em;
+}
+
+.podium-avatar {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  border: 3px solid var(--border);
+  object-fit: cover;
+  background: #111;
+  flex-shrink: 0;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+}
+
+.podium-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.podium-code {
+  font-weight: 800;
+  font-size: 1.35rem;
+  color: var(--text);
+  letter-spacing: 0.05em;
+  font-family: 'Titillium Web', sans-serif;
+}
+
+.podium-time {
+  font-family: 'Titillium Web', monospace;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.podium-time.winner {
+  color: #fff;
+}
+
+.podium-time.gap {
+  color: var(--accent);
+}
+
 .state-card {
   background: var(--surface);
   border: 1px solid var(--border);

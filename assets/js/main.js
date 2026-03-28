@@ -82,6 +82,61 @@ function buildDetailItem(label, value) {
   return item;
 }
 
+function buildPodiumComponent(results) {
+  const container = document.createElement("div");
+  container.className = "podium-grid";
+
+  const ranks = ["1ST", "2ND", "3RD"];
+  const rankSuffixes = ["ST", "ND", "RD"];
+
+  results.forEach((result, index) => {
+    const card = document.createElement("div");
+    card.className = "podium-card";
+
+    // Rank
+    const rankEl = document.createElement("div");
+    rankEl.className = "podium-rank";
+    rankEl.innerHTML = `${index + 1}<span>${rankSuffixes[index]}</span>`;
+    
+    // Driver Info
+    const driverId = result.Driver.driverId.replace(/-/g, "_");
+    const staticInfo = DRIVER_STATIC[driverId] || {};
+    
+    // Avatar
+    const avatar = document.createElement("img");
+    avatar.className = "podium-avatar";
+    avatar.src = staticInfo.photo || PLACEHOLDER_DRIVER_IMAGE;
+    avatar.alt = result.Driver.familyName;
+    if (staticInfo.teamColor) {
+      avatar.style.borderColor = staticInfo.teamColor;
+      card.style.borderLeftColor = staticInfo.teamColor;
+    }
+
+    // Info Wrap
+    const info = document.createElement("div");
+    info.className = "podium-info";
+
+    const code = document.createElement("div");
+    code.className = "podium-code";
+    code.textContent = result.Driver.code || result.Driver.familyName.substring(0, 3).toUpperCase();
+
+    const time = document.createElement("div");
+    time.className = "podium-time";
+    if (index === 0) {
+      time.classList.add("winner");
+      time.textContent = result.Time ? result.Time.time : "Vencedor";
+    } else {
+      time.classList.add("gap");
+      time.textContent = result.Time ? `+${result.Time.time}` : "Interv.";
+    }
+
+    info.append(code, time);
+    card.append(rankEl, avatar, info);
+    container.appendChild(card);
+  });
+
+  return container;
+}
 function buildRaceDetailsGrid(race) {
   const grid = document.createElement("div");
   grid.className = "race-details-grid";
@@ -220,21 +275,10 @@ function buildLastRaceCard(lastRace) {
   subtitle.className = "card-subtitle";
   subtitle.textContent = `Etapa ${lastRace.round} - ${translateCountry(lastRace.Circuit.Location.country)}`;
 
-  const podiumWrapper = document.createElement("div");
-  podiumWrapper.className = "kpis";
+  const results = (lastRace.Results || []).slice(0, 3);
+  const podiumWrapper = buildPodiumComponent(results);
 
-  const podium = (lastRace.Results || []).slice(0, 3);
-  podium.forEach((result) => {
-    const badge = document.createElement("span");
-    badge.className = "badge";
-    const firstName = result.Driver.givenName || "";
-    const lastName = result.Driver.familyName || "";
-    const teamName = result.Constructor.name || "Equipe";
-    badge.textContent = `P${result.position}: ${firstName} ${lastName} (${teamName})`;
-    podiumWrapper.appendChild(badge);
-  });
-
-  if (podium.length === 0) {
+  if (results.length === 0) {
     const empty = document.createElement("p");
     empty.className = "muted";
     empty.textContent = "Resultado ainda nao disponivel para esta etapa.";

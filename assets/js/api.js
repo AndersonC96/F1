@@ -151,3 +151,14 @@ export async function fetchScheduleBySeason(season) {
     throw new Error("Nao foi possivel carregar o calendario da temporada solicitada.");
   }
 }
+export async function fetchRaceResults(season, round) {
+  try {
+    return await safeFetchArray(
+      `${API_BASE}/${season}/${round}/results.json`,
+      `f1_results_${season}_${round}`,
+      ["MRData", "RaceTable", "Races", 0, "Results"]
+    );
+  } catch {
+    throw new Error("Nao foi possivel carregar os resultados da corrida.");
+  }
+}
