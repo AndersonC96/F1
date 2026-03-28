@@ -113,7 +113,7 @@ export const DRIVER_STATIC = {
     website: "https://www.formula1.com/en/drivers/oliver-bearman",
     teamColor: "#9c9fa2"
   },
-  kimi_antonelli: {
+  antonelli: {
     number: "12",
     poles: 0,
     photo: "https://media.formula1.com/image/upload/c_lfill,w_440/q_auto/d_common:f1:2026:fallback:driver:2026fallbackdriverright.webp/v1740000001/common/f1/2026/mercedes/andant01/2026mercedesandant01right.webp",
