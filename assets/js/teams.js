@@ -94,9 +94,15 @@ function createTeamCard(team) {
   setImageFallback(logo);
 
   const textWrap = document.createElement("div");
-  const name = document.createElement("h3");
-  name.className = "name";
-  name.textContent = team.name;
+  textWrap.className = "team-text-wrap";
+
+  const nameBrand = document.createElement("h3");
+  nameBrand.className = "name-brand";
+  nameBrand.textContent = team.shortName;
+
+  const nameOfficial = document.createElement("p");
+  nameOfficial.className = "name-official";
+  nameOfficial.textContent = team.name;
 
   const meta = document.createElement("p");
   meta.className = "meta";
@@ -114,7 +120,7 @@ function createTeamCard(team) {
   pointsBadge.textContent = `${team.points} pts`;
 
   badges.append(positionBadge, pointsBadge);
-  textWrap.append(name, meta, badges);
+  textWrap.append(nameBrand, nameOfficial, meta, badges);
 
   const metrics = document.createElement("span");
   metrics.className = "driver-number";
@@ -218,9 +224,11 @@ async function loadTeams() {
     teamsData = constructorStandings.map((entry) => {
       const id = entry.Constructor.constructorId;
       const staticData = TEAM_STATIC[id] || {};
+      const rawName = entry.Constructor.name;
       return {
         id,
-        name: getOfficialTeamName(entry.Constructor.name),
+        shortName: rawName,
+        name: getOfficialTeamName(rawName),
         position: Number(entry.position || 0),
         points: Number(entry.points || 0),
         wins: Number(entry.wins || 0),

@@ -125,7 +125,7 @@ export const DRIVER_STATIC = {
 export const TEAM_STATIC = {
   mercedes: {
     logo: "https://media.formula1.com/image/upload/c_lfill,w_64/q_auto/v1740000001/common/f1/2026/mercedes/2026mercedeslogowhite.webp",
-    carImage: "https://www.formula1.com/content/dam/fom-website/teams/2026/mercedes.png.img.1536.medium.png",
+    carImage: "https://media.formula1.com/image/upload/c_lfill,w_3392/q_auto/v1740000001/common/f1/2026/mercedes/2026mercedescarright.webp",
     chassis: "W17",
     powerUnit: "Mercedes-AMG",
     base: "Brackley, Reino Unido",
