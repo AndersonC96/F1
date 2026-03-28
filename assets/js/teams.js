@@ -2,7 +2,7 @@ import {
   fetchCurrentConstructorStandings,
   fetchCurrentDriverStandings
 } from "./api.js";
-import { TEAM_STATIC, setupNavActiveState } from "./static-data.js";
+import { PLACEHOLDER_DRIVER_IMAGE, TEAM_STATIC, setImageFallback, setupNavActiveState } from "./static-data.js";
 
 const stateContainer = document.getElementById("teams-state");
 const sortSelect = document.getElementById("sort-select");
@@ -91,6 +91,7 @@ function createTeamCard(team) {
   logo.src = team.logo;
   logo.alt = `Logo da equipe ${team.name}`;
   logo.loading = "lazy";
+  setImageFallback(logo);
 
   const textWrap = document.createElement("div");
   const name = document.createElement("h3");
@@ -146,6 +147,7 @@ function createTeamCard(team) {
       carImage.className = "portrait";
       carImage.style.height = "120px";
       carImage.style.objectFit = "contain";
+      setImageFallback(carImage);
       details.appendChild(carImage);
     }
 
@@ -223,7 +225,7 @@ async function loadTeams() {
         points: Number(entry.points || 0),
         wins: Number(entry.wins || 0),
         drivers: driverGroups.get(id) || [],
-        logo: staticData.logo || "assets/images/placeholder-driver.svg",
+        logo: staticData.logo || PLACEHOLDER_DRIVER_IMAGE,
         carImage: staticData.carImage || null,
         chassis: staticData.chassis || "-",
         powerUnit: staticData.powerUnit || "-",

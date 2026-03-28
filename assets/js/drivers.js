@@ -103,6 +103,25 @@ function createBadge(label, value) {
   return badge;
 }
 
+function appendDetailRow(dl, label, value, linkHref = "") {
+  const dt = document.createElement("dt");
+  dt.textContent = label;
+
+  const dd = document.createElement("dd");
+  if (linkHref) {
+    const link = document.createElement("a");
+    link.href = linkHref;
+    link.target = "_blank";
+    link.rel = "noopener noreferrer";
+    link.textContent = `Acessar ${label.toLowerCase()}`;
+    dd.appendChild(link);
+  } else {
+    dd.textContent = value;
+  }
+
+  dl.append(dt, dd);
+}
+
 function renderEmptyState() {
   const card = document.createElement("article");
   card.className = "state-card";
@@ -169,24 +188,19 @@ function buildDriverCard(driver) {
     details.className = "details";
 
     const dl = document.createElement("dl");
-    const pairs = [
-      ["Posicao", String(driver.position)],
-      ["Equipe", driver.team],
-      ["Pontos", String(driver.points)],
-      ["Vitorias", String(driver.wins)],
-      ["Poles", String(driver.poles)],
-      ["Nascimento", driver.dateOfBirth || "-"],
-      ["Nacionalidade", driver.nationality || "-"],
-      ["Site oficial", driver.website || "Nao informado"]
-    ];
+    appendDetailRow(dl, "Posicao", String(driver.position));
+    appendDetailRow(dl, "Equipe", driver.team);
+    appendDetailRow(dl, "Pontos", String(driver.points));
+    appendDetailRow(dl, "Vitorias", String(driver.wins));
+    appendDetailRow(dl, "Poles", String(driver.poles));
+    appendDetailRow(dl, "Nascimento", driver.dateOfBirth || "-");
+    appendDetailRow(dl, "Nacionalidade", driver.nationality || "-");
 
-    pairs.forEach(([label, value]) => {
-      const dt = document.createElement("dt");
-      dt.textContent = label;
-      const dd = document.createElement("dd");
-      dd.textContent = value;
-      dl.append(dt, dd);
-    });
+    if (driver.website) {
+      appendDetailRow(dl, "Site oficial do piloto", "", driver.website);
+    } else {
+      appendDetailRow(dl, "Site oficial do piloto", "Nao informado");
+    }
 
     details.appendChild(dl);
     article.appendChild(details);

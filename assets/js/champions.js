@@ -4,6 +4,26 @@ const stateContainer = document.getElementById("champions-state");
 const titlesFilter = document.getElementById("titles-filter");
 const sortSelect = document.getElementById("sort-select");
 
+function renderSkeleton() {
+  const grid = document.createElement("div");
+  grid.className = "grid grid-champions";
+
+  for (let i = 0; i < 6; i += 1) {
+    const card = document.createElement("article");
+    card.className = "skeleton-card";
+
+    for (let line = 0; line < 5; line += 1) {
+      const block = document.createElement("div");
+      block.className = `skeleton skeleton-line ${line === 0 ? "short" : "medium"}`;
+      card.appendChild(block);
+    }
+
+    grid.appendChild(card);
+  }
+
+  stateContainer.replaceChildren(grid);
+}
+
 function readQueryParams() {
   const params = new URL(window.location.href).searchParams;
   const allowedSort = ["titles", "name", "firstYear"];
@@ -147,6 +167,7 @@ function render() {
 
 function init() {
   setupNavActiveState();
+  renderSkeleton();
 
   const query = readQueryParams();
   sortSelect.value = query.sort;
@@ -160,7 +181,7 @@ function init() {
   sortSelect.addEventListener("change", onControlsChange);
   titlesFilter.addEventListener("change", onControlsChange);
 
-  render();
+  window.setTimeout(render, 0);
 }
 
 init();
