@@ -299,55 +299,214 @@ export const CHAMPIONS_HISTORY = [
   { name: "Max Verstappen", nationality: "Paises Baixos", wins: 63, teams: ["Red Bull"], titleYears: [2021, 2022, 2023, 2024], photo: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Max_Verstappen_2017_Malaysia_3.jpg/512px-Max_Verstappen_2017_Malaysia_3.jpg" }
 ];
 
-const NATIONALITY_TO_FLAG = {
-  argentina: "🇦🇷",
-  australia: "🇦🇺",
-  austria: "🇦🇹",
-  brazil: "🇧🇷",
-  brasil: "🇧🇷",
-  belgium: "🇧🇪",
-  canada: "🇨🇦",
-  china: "🇨🇳",
-  czech: "🇨🇿",
-  denmark: "🇩🇰",
-  finland: "🇫🇮",
-  finlandia: "🇫🇮",
-  france: "🇫🇷",
-  franca: "🇫🇷",
-  germany: "🇩🇪",
-  alemanha: "🇩🇪",
-  italy: "🇮🇹",
-  italia: "🇮🇹",
-  japan: "🇯🇵",
-  mexico: "🇲🇽",
-  monaco: "🇲🇨",
-  netherlands: "🇳🇱",
-  "paises baixos": "🇳🇱",
-  "new zealand": "🇳🇿",
-  "nova zelandia": "🇳🇿",
-  spain: "🇪🇸",
-  espanha: "🇪🇸",
-  thailand: "🇹🇭",
-  "united kingdom": "🇬🇧",
-  "reino unido": "🇬🇧",
-  "united states": "🇺🇸",
-  "estados unidos": "🇺🇸",
-  "south africa": "🇿🇦",
-  "africa do sul": "🇿🇦",
-  switzerland: "🇨🇭",
-  suica: "🇨🇭"
+export const CIRCUIT_STATIC = {
+  suzuka: { 
+    laps: 53, 
+    length: "5.807km", 
+    distance: "307.471km", 
+    firstGP: 1987, 
+    fastestLap: { time: "1:30.965", driver: "Kimi Antonelli", year: 2025 },
+    image: "https://media.formula1.com/image/upload/c_fit,h_704/q_auto/v1740000001/common/f1/2026/track/2026tracksuzukadetailed.webp"
+  },
+  interlagos: { 
+    laps: 71, 
+    length: "4.309km", 
+    distance: "305.879km", 
+    firstGP: 1973, 
+    fastestLap: { time: "1:10.540", driver: "Valtteri Bottas", year: 2018 },
+    image: "https://media.formula1.com/image/upload/content/dam/fom-website/2018-redesign-assets/circuit-maps-16-9/Brazil_Circuit.png"
+  },
+  silverstone: { 
+    laps: 52, 
+    length: "5.891km", 
+    distance: "306.198km", 
+    firstGP: 1950, 
+    fastestLap: { time: "1:27.097", driver: "Max Verstappen", year: 2020 },
+    image: "https://media.formula1.com/image/upload/content/dam/fom-website/2018-redesign-assets/circuit-maps-16-9/Great_Britain_Circuit.png"
+  },
+  monaco: { 
+    laps: 78, 
+    length: "3.337km", 
+    distance: "260.286km", 
+    firstGP: 1950, 
+    fastestLap: { time: "1:12.909", driver: "Lewis Hamilton", year: 2021 },
+    image: "https://media.formula1.com/image/upload/content/dam/fom-website/2018-redesign-assets/circuit-maps-16-9/Monaco_Circuit.png"
+  },
+  monza: { 
+    laps: 53, 
+    length: "5.793km", 
+    distance: "306.720km", 
+    firstGP: 1950, 
+    fastestLap: { time: "1:21.046", driver: "Rubens Barrichello", year: 2004 },
+    image: "https://media.formula1.com/image/upload/content/dam/fom-website/2018-redesign-assets/circuit-maps-16-9/Italy_Circuit.png"
+  },
+  spa: { 
+    laps: 44, 
+    length: "7.004km", 
+    distance: "308.052km", 
+    firstGP: 1950, 
+    fastestLap: { time: "1:46.286", driver: "Valtteri Bottas", year: 2018 },
+    image: "https://media.formula1.com/image/upload/content/dam/fom-website/2018-redesign-assets/circuit-maps-16-9/Belgium_Circuit.png"
+  },
+  albert_park: { 
+    laps: 58, 
+    length: "5.278km", 
+    distance: "306.124km", 
+    firstGP: 1996, 
+    fastestLap: { time: "1:20.235", driver: "Charles Leclerc", year: 2022 },
+    image: "https://media.formula1.com/image/upload/content/dam/fom-website/2018-redesign-assets/circuit-maps-16-9/Australia_Circuit.png"
+  },
+  bahrain: { laps: 57, length: "5.412km", distance: "308.238km", firstGP: 2004 , image: "https://media.formula1.com/image/upload/content/dam/fom-website/2018-redesign-assets/circuit-maps-16-9/Bahrain_Circuit.png"},
+  jeddah: { laps: 50, length: "6.174km", distance: "308.450km", firstGP: 2021 , image: "https://media.formula1.com/image/upload/content/dam/fom-website/2018-redesign-assets/circuit-maps-16-9/Saudi_Arabia_Circuit.png"},
+  miami: { laps: 57, length: "5.412km", distance: "308.326km", firstGP: 2022 , image: "https://media.formula1.com/image/upload/content/dam/fom-website/2018-redesign-assets/circuit-maps-16-9/Miami_Circuit.png"},
+  catalunya: { laps: 66, length: "4.657km", distance: "307.236km", firstGP: 1991 , image: "https://media.formula1.com/image/upload/content/dam/fom-website/2018-redesign-assets/circuit-maps-16-9/Spain_Circuit.png"},
+  red_bull_ring: { laps: 71, length: "4.318km", distance: "306.452km", firstGP: 1970 , image: "https://media.formula1.com/image/upload/content/dam/fom-website/2018-redesign-assets/circuit-maps-16-9/Austria_Circuit.png"},
+  hungaroring: { laps: 70, length: "4.381km", distance: "306.630km", firstGP: 1986 , image: "https://media.formula1.com/image/upload/content/dam/fom-website/2018-redesign-assets/circuit-maps-16-9/Hungary_Circuit.png"},
+  zandvoort: { laps: 72, length: "4.259km", distance: "306.587km", firstGP: 1952 , image: "https://media.formula1.com/image/upload/content/dam/fom-website/2018-redesign-assets/circuit-maps-16-9/Netherlands_Circuit.png"},
+  baku: { laps: 51, length: "6.003km", distance: "306.049km", firstGP: 2016 , image: "https://media.formula1.com/image/upload/content/dam/fom-website/2018-redesign-assets/circuit-maps-16-9/Azerbaijan_Circuit.png"},
+  marina_bay: { laps: 62, length: "4.940km", distance: "306.143km", firstGP: 2008 , image: "https://media.formula1.com/image/upload/content/dam/fom-website/2018-redesign-assets/circuit-maps-16-9/Singapore_Circuit.png"},
+  americas: { laps: 56, length: "5.513km", distance: "308.405km", firstGP: 2012 , image: "https://media.formula1.com/image/upload/content/dam/fom-website/2018-redesign-assets/circuit-maps-16-9/USA_Circuit.png"},
+  rodriguez: { laps: 71, length: "4.304km", distance: "305.354km", firstGP: 1963 , image: "https://media.formula1.com/image/upload/content/dam/fom-website/2018-redesign-assets/circuit-maps-16-9/Mexico_Circuit.png"},
+  las_vegas: { laps: 50, length: "6.201km", distance: "310.050km", firstGP: 1982 , image: "https://media.formula1.com/image/upload/content/dam/fom-website/2018-redesign-assets/circuit-maps-16-9/Las_Vegas_Circuit.png"},
+  losail: { laps: 57, length: "5.419km", distance: "308.611km", firstGP: 2021 , image: "https://media.formula1.com/image/upload/content/dam/fom-website/2018-redesign-assets/circuit-maps-16-9/Qatar_Circuit.png"},
+  yas_marina: { laps: 58, length: "5.281km", distance: "306.183km", firstGP: 2009 , image: "https://media.formula1.com/image/upload/content/dam/fom-website/2018-redesign-assets/circuit-maps-16-9/Abu_Dhabi_Circuit.png"},
+  shanghai: { laps: 56, length: "5.451km", distance: "305.066km", firstGP: 2004 , image: "https://media.formula1.com/image/upload/content/dam/fom-website/2018-redesign-assets/circuit-maps-16-9/China_Circuit.png"},
+  imola: { laps: 63, length: "4.909km", distance: "309.049km", firstGP: 1980 , image: "https://media.formula1.com/image/upload/content/dam/fom-website/2018-redesign-assets/circuit-maps-16-9/Emilia_Romagna_Circuit.png"},
+  villeneuve: { laps: 70, length: "4.361km", distance: "305.270km", firstGP: 1978 , image: "https://media.formula1.com/image/upload/content/dam/fom-website/2018-redesign-assets/circuit-maps-16-9/Canada_Circuit.png"}
 };
+
+const COUNTRY_TO_ISO = {
+  argentina: "AR",
+  australia: "AU",
+  austria: "AT",
+  brazil: "BR",
+  brasil: "BR",
+  belgium: "BE",
+  canada: "CA",
+  china: "CN",
+  czech: "CZ",
+  denmark: "DK",
+  finland: "FI",
+  finlandia: "FI",
+  france: "FR",
+  franca: "FR",
+  germany: "DE",
+  alemanha: "DE",
+  italy: "IT",
+  italia: "IT",
+  japan: "JP",
+  mexico: "MX",
+  monaco: "MC",
+  netherlands: "NL",
+  "paises baixos": "NL",
+  "new zealand": "NZ",
+  "nova zelandia": "NZ",
+  spain: "ES",
+  espanha: "ES",
+  thailand: "TH",
+  "united kingdom": "GB",
+  "reino unido": "GB",
+  "united states": "US",
+  "estados unidos": "US",
+  "south africa": "ZA",
+  "africa do sul": "ZA",
+  switzerland: "CH",
+  suica: "CH",
+  hungary: "HU",
+  bahrain: "BH",
+  "saudi arabia": "SA",
+  "arabia saudita": "SA",
+  uae: "AE",
+  "abu dhabi": "AE",
+  qatar: "QA",
+  singapore: "SG",
+  singapura: "SG",
+  azerbaijan: "AZ",
+  azerbaidjao: "AZ",
+  "las vegas": "US"
+};
+
+const COUNTRY_TO_PT = {
+  argentina: "Argentina",
+  australia: "Austrália",
+  austria: "Áustria",
+  brazil: "Brasil",
+  brasil: "Brasil",
+  belgium: "Bélgica",
+  canada: "Canadá",
+  china: "China",
+  denmark: "Dinamarca",
+  finland: "Finlândia",
+  france: "França",
+  germany: "Alemanha",
+  italy: "Itália",
+  japan: "Japão",
+  mexico: "México",
+  monaco: "Mônaco",
+  netherlands: "Holanda",
+  "paises baixos": "Holanda",
+  spain: "Espanha",
+  "united kingdom": "Reino Unido",
+  "united states": "EUA",
+  "south africa": "África do Sul",
+  switzerland: "Suíça",
+  hungary: "Hungria",
+  bahrain: "Bahrein",
+  "saudi arabia": "Arábia Saudita",
+  uae: "Emirados Árabes",
+  qatar: "Catar",
+  singapore: "Singapura",
+  azerbaijan: "Azerbaijão"
+};
+
+export function translateCountry(label) {
+  if (!label) return "";
+  const normalized = label
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "");
+  return COUNTRY_TO_PT[normalized] || label;
+}
+
+function normalizeCountryLabel(label) {
+  return label
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "");
+}
+
+function isoToFlagEmoji(isoCode) {
+  if (!isoCode || isoCode.length !== 2) {
+    return "🏁";
+  }
+
+  const first = isoCode.charCodeAt(0) - 65 + 0x1f1e6;
+  const second = isoCode.charCodeAt(1) - 65 + 0x1f1e6;
+  return String.fromCodePoint(first, second);
+}
 
 export function toFlag(label) {
   if (!label) {
     return "🏁";
   }
-  const normalized = label
-    .toLowerCase()
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "");
+  const normalized = normalizeCountryLabel(label);
 
-  return NATIONALITY_TO_FLAG[normalized] || "🏁";
+  const iso = COUNTRY_TO_ISO[normalized];
+  if (!iso) {
+    return "🏁";
+  }
+
+  return isoToFlagEmoji(iso);
+}
+
+export function toFlagUrl(label) {
+  if (!label) {
+    return "https://flagsapi.com/BE/flat/64.png";
+  }
+
+  const normalized = normalizeCountryLabel(label);
+  const iso = COUNTRY_TO_ISO[normalized] || "BE";
+  return `https://flagsapi.com/${iso}/flat/64.png`;
 }
 
 export function formatRaceDate(dateStr, timeStr = "") {

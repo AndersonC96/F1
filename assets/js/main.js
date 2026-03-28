@@ -5,7 +5,7 @@ import {
   fetchCurrentSchedule,
   fetchScheduleBySeason
 } from "./api.js";
-import { formatRaceDate, setupNavActiveState, toFlag } from "./static-data.js";
+import { formatRaceDate, setupNavActiveState, toFlagUrl, CIRCUIT_STATIC, translateCountry } from "./static-data.js";
 
 const nextRaceState = document.getElementById("next-race-state");
 const lastRaceState = document.getElementById("last-race-state");
@@ -61,51 +61,142 @@ function formatCountdown(milliseconds) {
   return `${days}d ${String(hours).padStart(2, "0")}h ${String(minutes).padStart(2, "0")}m ${String(seconds).padStart(2, "0")}s`;
 }
 
-function buildNextRaceCard(nextRace, isSeasonClosed = false) {
-  const card = document.createElement("article");
-  card.className = "card highlight";
+function cleanRaceName(name) {
+  // Remove prefixos como "JP " de nomes vindos da API.
+  return name.replace(/^[A-Z]{2,3}\s+/, "");
+}
 
-  const title = document.createElement("h3");
-  title.className = "card-title";
-  title.textContent = isSeasonClosed ? "Temporada encerrada" : `${toFlag(nextRace.Circuit.Location.country)} ${nextRace.raceName}`;
+function buildDetailItem(label, value) {
+  const item = document.createElement("div");
+  item.className = "detail-item";
+  
+  const lbl = document.createElement("span");
+  lbl.className = "detail-label";
+  lbl.textContent = label;
+  
+  const val = document.createElement("span");
+  val.className = "detail-value";
+  val.textContent = value;
+  
+  item.append(lbl, val);
+  return item;
+}
 
-  const subtitle = document.createElement("p");
-  subtitle.className = "card-subtitle";
-  subtitle.textContent = `${nextRace.Circuit.circuitName} - ${formatRaceDate(nextRace.date, nextRace.time)}`;
+function buildRaceDetailsGrid(race) {
+  const grid = document.createElement("div");
+  grid.className = "race-details-grid";
 
-  const countdown = document.createElement("p");
-  countdown.className = "countdown-timer";
+  const circuitKey = race.Circuit.circuitId.replace(/-/g, "_");
+  const staticInfo = CIRCUIT_STATIC[circuitKey] || { laps: "-", length: "-", distance: "-", firstGP: "-" };
 
-  const eventTime = raceDateToTimestamp(nextRace);
-  const updateCountdown = () => {
+  grid.append(
+    buildDetailItem("Circuito", race.Circuit.circuitName),
+    buildDetailItem("Extensão", staticInfo.length),
+    buildDetailItem("Distância", staticInfo.distance),
+    buildDetailItem("Voltas", staticInfo.laps),
+    buildDetailItem("Primeiro GP", staticInfo.firstGP),
+    buildDetailItem("Data Local", formatRaceDate(race.date, race.time))
+  );
+
+  if (staticInfo.fastestLap) {
+    const fl = staticInfo.fastestLap;
+    grid.append(buildDetailItem("Recorde", `${fl.time} (${fl.driver}, ${fl.year})`));
+  }
+
+  return grid;
+}
+
+function buildCountdownHud(eventTime) {
+  const hud = document.createElement("div");
+  hud.className = "countdown-hud";
+  
+  const label = document.createElement("span");
+  label.className = "label";
+  label.textContent = "Largada da Corrida em";
+  
+  const timer = document.createElement("span");
+  timer.className = "timer";
+  
+  const updateTimer = () => {
     const diff = eventTime - Date.now();
-    countdown.textContent = diff > 0 ? formatCountdown(diff) : "Largada concluida";
+    timer.textContent = diff > 0 ? formatCountdown(diff) : "AO VIVO";
   };
-
-  updateCountdown();
+  
+  updateTimer();
 
   if (countdownInterval) {
     window.clearInterval(countdownInterval);
   }
+  countdownInterval = window.setInterval(updateTimer, 1000);
+  
+  hud.append(label, timer);
+  return hud;
+}
 
-  if (!isSeasonClosed) {
-    countdownInterval = window.setInterval(updateCountdown, 1000);
+function buildNextRaceCard(nextRace, isSeasonClosed = false) {
+  const card = document.createElement("article");
+  card.className = "card highlight";
+
+  const headerTop = document.createElement("div");
+  headerTop.className = "card-header-top";
+
+  const title = document.createElement("h3");
+  title.className = "card-title official";
+  
+  // Use official full branding for the next race
+  const year = nextRace.date.split("-")[0];
+  title.textContent = isSeasonClosed ? "Temporada encerrada" : `FORMULA 1 ARAMCO ${cleanRaceName(nextRace.raceName).toUpperCase()} ${year}`;
+
+  const flag = document.createElement("img");
+  flag.className = "flag-icon";
+  flag.src = toFlagUrl(nextRace.Circuit.Location.country);
+  flag.alt = nextRace.Circuit.Location.country;
+  flag.loading = "lazy";
+
+  headerTop.append(title, flag);
+
+  const subtitle = document.createElement("p");
+  subtitle.className = "card-subtitle";
+  subtitle.textContent = nextRace.Circuit.Location.locality + ", " + translateCountry(nextRace.Circuit.Location.country);
+
+  const eventTime = raceDateToTimestamp(nextRace);
+  const hud = buildCountdownHud(eventTime);
+  const grid = buildRaceDetailsGrid(nextRace);
+
+  const footer = document.createElement("p");
+  footer.className = "muted";
+  footer.textContent = isSeasonClosed
+    ? `Primeira corrida da proxima temporada: ${formatRaceDate(nextRace.date, nextRace.time)}`
+    : ``;
+
+  const wrapper = document.createElement("div");
+  wrapper.className = "card-content-wrapper";
+
+  const mainInfo = document.createElement("div");
+  mainInfo.style.flex = "1.5";
+
+  mainInfo.append(headerTop, subtitle, hud, grid, footer);
+
+  const circuitKey = nextRace.Circuit.circuitId.replace(/-/g, "_");
+  const staticInfo = CIRCUIT_STATIC[circuitKey] || {};
+
+  if (staticInfo.image) {
+    const circuitContainer = document.createElement("div");
+    circuitContainer.className = "circuit-container";
+    
+    const trackMap = document.createElement("img");
+    trackMap.className = "circuit-map";
+    trackMap.src = staticInfo.image;
+    trackMap.alt = `Mapa do circuito ${nextRace.Circuit.circuitName}`;
+    trackMap.loading = "lazy";
+    
+    circuitContainer.appendChild(trackMap);
+    wrapper.append(mainInfo, circuitContainer);
   } else {
-    countdown.textContent = `Primeira corrida em ${formatRaceDate(nextRace.date, nextRace.time)}`;
+    wrapper.appendChild(mainInfo);
   }
 
-  const footer = document.createElement("div");
-  footer.className = "kpis";
-  footer.style.marginTop = "1.5rem";
-
-  const cta = document.createElement("a");
-  cta.href = "calendar.html";
-  cta.className = "button";
-  cta.textContent = "Ver calendário completo";
-
-  footer.appendChild(cta);
-
-  card.append(title, subtitle, countdown, footer);
+  card.append(wrapper);
   return card;
 }
 
@@ -113,13 +204,24 @@ function buildLastRaceCard(lastRace) {
   const card = document.createElement("article");
   card.className = "card";
 
+  const headerTop = document.createElement("div");
+  headerTop.className = "card-header-top";
+
   const title = document.createElement("h3");
   title.className = "card-title";
-  title.textContent = `${toFlag(lastRace.Circuit.Location.country)} ${lastRace.raceName}`;
+  title.textContent = cleanRaceName(lastRace.raceName);
+
+  const flag = document.createElement("img");
+  flag.className = "flag-icon";
+  flag.src = toFlagUrl(lastRace.Circuit.Location.country);
+  flag.alt = lastRace.Circuit.Location.country;
+  flag.loading = "lazy";
+
+  headerTop.append(title, flag);
 
   const subtitle = document.createElement("p");
   subtitle.className = "card-subtitle";
-  subtitle.textContent = `Round ${lastRace.round} - ${formatRaceDate(lastRace.date, lastRace.time)}`;
+  subtitle.textContent = `Etapa ${lastRace.round} - ${translateCountry(lastRace.Circuit.Location.country)}`;
 
   const podiumWrapper = document.createElement("div");
   podiumWrapper.className = "kpis";
@@ -139,23 +241,42 @@ function buildLastRaceCard(lastRace) {
     const empty = document.createElement("p");
     empty.className = "muted";
     empty.textContent = "Resultado ainda nao disponivel para esta etapa.";
-    card.append(title, subtitle, empty);
+    card.append(headerTop, subtitle, empty);
     return card;
   }
 
-  const footer = document.createElement("div");
-  footer.className = "kpis";
-  footer.style.marginTop = "1rem";
+  const grid = buildRaceDetailsGrid(lastRace);
 
-  const cta = document.createElement("a");
-  cta.href = "calendar.html"; // Should ideally go to result detail if it existed
-  cta.className = "button";
-  cta.style.background = "transparent";
-  cta.textContent = "Ver detalhes da corrida";
+  const footer = document.createElement("p");
 
-  footer.appendChild(cta);
+  const wrapper = document.createElement("div");
+  wrapper.className = "card-content-wrapper";
 
-  card.append(title, subtitle, podiumWrapper, footer);
+  const mainInfo = document.createElement("div");
+  mainInfo.style.flex = "1.5";
+
+  mainInfo.append(headerTop, subtitle, podiumWrapper, grid, footer);
+
+  const circuitKey = lastRace.Circuit.circuitId.replace(/-/g, "_");
+  const staticInfo = CIRCUIT_STATIC[circuitKey] || {};
+
+  if (staticInfo.image) {
+    const circuitContainer = document.createElement("div");
+    circuitContainer.className = "circuit-container";
+    
+    const trackMap = document.createElement("img");
+    trackMap.className = "circuit-map";
+    trackMap.src = staticInfo.image;
+    trackMap.alt = `Mapa do circuito ${lastRace.Circuit.circuitName}`;
+    trackMap.loading = "lazy";
+    
+    circuitContainer.appendChild(trackMap);
+    wrapper.append(mainInfo, circuitContainer);
+  } else {
+    wrapper.appendChild(mainInfo);
+  }
+
+  card.append(wrapper);
   return card;
 }
 
@@ -260,7 +381,7 @@ async function loadHomeData() {
       createTable("Top 5 construtores", constructorStandings.slice(0, 5), true)
     );
     quickStandingsState.replaceChildren(tablesWrap);
-  } catch (error) {
+  } catch {
     renderErrorState(nextRaceState, "Falha ao carregar a proxima corrida.", loadHomeData);
     renderErrorState(lastRaceState, "Falha ao carregar o resultado da ultima corrida.", loadHomeData);
     renderErrorState(quickStandingsState, "Falha ao carregar a classificacao rapida.", loadHomeData);
