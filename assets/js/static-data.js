@@ -123,115 +123,126 @@ export const DRIVER_STATIC = {
 };
 
 export const TEAM_STATIC = {
-  red_bull: {
-    logo: "https://media.formula1.com/image/upload/c_lfill,w_64/q_auto/v1740000001/common/f1/2026/redbullracing/2026redbullracinglogowhite.webp",
-    carImage: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Max_Verstappen_2017_Malaysia_3.jpg/640px-Max_Verstappen_2017_Malaysia_3.jpg",
-    chassis: "RB20",
-    powerUnit: "Honda RBPT",
-    base: "Milton Keynes, Reino Unido",
-    technicalChief: "Pierre Wache",
-    historicWins: 120,
-    championships: 7,
-    principal: "Christian Horner"
-  },
-  ferrari: {
-    logo: "https://media.formula1.com/image/upload/c_lfill,w_64/q_auto/v1740000001/common/f1/2026/ferrari/2026ferrarilogowhite.webp",
-    carImage: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Ferrari_SF-24_%28cropped%29.jpg/640px-Ferrari_SF-24_%28cropped%29.jpg",
-    chassis: "SF-24",
-    powerUnit: "Ferrari 066/12",
-    base: "Maranello, Italia",
-    technicalChief: "Enrico Cardile",
-    historicWins: 247,
-    championships: 16,
-    principal: "Frederic Vasseur"
-  },
   mercedes: {
     logo: "https://media.formula1.com/image/upload/c_lfill,w_64/q_auto/v1740000001/common/f1/2026/mercedes/2026mercedeslogowhite.webp",
-    carImage: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Lewis_Hamilton_2022_Paris.jpg/640px-Lewis_Hamilton_2022_Paris.jpg",
-    chassis: "W15",
-    powerUnit: "Mercedes-AMG F1 M15",
+    carImage: "https://www.formula1.com/content/dam/fom-website/teams/2026/mercedes.png.img.1536.medium.png",
+    chassis: "W17",
+    powerUnit: "Mercedes-AMG",
     base: "Brackley, Reino Unido",
     technicalChief: "James Allison",
-    historicWins: 128,
+    historicWins: 130,
     championships: 8,
     principal: "Toto Wolff"
   },
+  ferrari: {
+    logo: "https://media.formula1.com/image/upload/c_lfill,w_64/q_auto/v1740000001/common/f1/2026/ferrari/2026ferrarilogowhite.webp",
+    carImage: "https://www.formula1.com/content/dam/fom-website/teams/2026/ferrari.png.img.1536.medium.png",
+    chassis: "SF-26",
+    powerUnit: "Ferrari",
+    base: "Maranello, Italia",
+    technicalChief: "Loic Serra",
+    historicWins: 248,
+    championships: 16,
+    principal: "Frederic Vasseur"
+  },
   mclaren: {
     logo: "https://media.formula1.com/image/upload/c_lfill,w_64/q_auto/v1740000001/common/f1/2026/mclaren/2026mclarenlogowhite.webp",
-    carImage: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Lando_Norris_2020.png/640px-Lando_Norris_2020.png",
-    chassis: "MCL38",
-    powerUnit: "Mercedes-AMG F1 M15",
+    carImage: "https://www.formula1.com/content/dam/fom-website/teams/2026/mclaren.png.img.1536.medium.png",
+    chassis: "MCL40",
+    powerUnit: "Mercedes",
     base: "Woking, Reino Unido",
     technicalChief: "Peter Prodromou",
-    historicWins: 184,
+    historicWins: 186,
     championships: 9,
     principal: "Andrea Stella"
   },
-  aston_martin: {
-    logo: "https://media.formula1.com/image/upload/c_lfill,w_48/q_auto/v1740000001/common/f1/2026/astonmartin/2026astonmartinlogowhite.webp",
-    carImage: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/37/Fernando_Alonso_2018_Malaysia.jpg/640px-Fernando_Alonso_2018_Malaysia.jpg",
-    chassis: "AMR24",
-    powerUnit: "Mercedes-AMG F1 M15",
-    base: "Silverstone, Reino Unido",
-    technicalChief: "Dan Fallows",
-    historicWins: 1,
+  haas: {
+    logo: "https://media.formula1.com/image/upload/c_lfill,w_64/q_auto/v1740000001/common/f1/2026/haas/2026haaslogowhite.webp",
+    carImage: "https://www.formula1.com/content/dam/fom-website/teams/2026/haas.png.img.1536.medium.png",
+    chassis: "VF-26",
+    powerUnit: "Ferrari",
+    base: "Kannapolis, EUA",
+    technicalChief: "Andrea De Zordo",
+    historicWins: 0,
     championships: 0,
-    principal: "Mike Krack"
+    principal: "Ayao Komatsu"
+  },
+  red_bull: {
+    logo: "https://media.formula1.com/image/upload/c_lfill,w_64/q_auto/v1740000001/common/f1/2026/redbullracing/2026redbullracinglogowhite.webp",
+    carImage: "https://www.formula1.com/content/dam/fom-website/teams/2026/red-bull-racing.png.img.1536.medium.png",
+    chassis: "RB22",
+    powerUnit: "Red Bull Ford Powertrains",
+    base: "Milton Keynes, Reino Unido",
+    technicalChief: "Pierre Wache",
+    historicWins: 122,
+    championships: 7,
+    principal: "Christian Horner"
+  },
+  rb: {
+    logo: "https://media.formula1.com/image/upload/c_lfill,w_64/q_auto/v1740000001/common/f1/2026/racingbulls/2026racingbullslogowhite.webp",
+    carImage: "https://www.formula1.com/content/dam/fom-website/teams/2026/racing-bulls.png.img.1536.medium.png",
+    chassis: "VCARB 02",
+    powerUnit: "Red Bull Ford Powertrains",
+    base: "Faenza, Italia",
+    technicalChief: "Tim Goss",
+    historicWins: 2,
+    championships: 0,
+    principal: "Peter Bayer"
   },
   alpine: {
     logo: "https://media.formula1.com/image/upload/c_lfill,w_64/q_auto/v1740000001/common/f1/2026/alpine/2026alpinelogowhite.webp",
-    carImage: null,
-    chassis: "A524",
-    powerUnit: "Renault E-Tech RE24",
+    carImage: "https://www.formula1.com/content/dam/fom-website/teams/2026/alpine.png.img.1536.medium.png",
+    chassis: "A526",
+    powerUnit: "Mercedes",
     base: "Enstone, Reino Unido",
     technicalChief: "David Sanchez",
     historicWins: 21,
     championships: 2,
-    principal: "Bruno Famin"
+    principal: "Flavio Briatore"
+  },
+  audi: {
+    logo: "https://media.formula1.com/image/upload/c_lfill,w_64/q_auto/v1740000001/common/f1/2026/audi/2026audilogowhite.webp",
+    carImage: "https://www.formula1.com/content/dam/fom-website/teams/2026/audi.png.img.1536.medium.png",
+    chassis: "A26",
+    powerUnit: "Audi",
+    base: "Hinwil, Suica",
+    technicalChief: "Mattia Binotto",
+    historicWins: 1,
+    championships: 0,
+    principal: "Jonathan Wheatley"
   },
   williams: {
     logo: "https://media.formula1.com/image/upload/c_lfill,w_64/q_auto/v1740000001/common/f1/2026/williams/2026williamslogowhite.webp",
-    carImage: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Alexander_Albon_2020.jpg/640px-Alexander_Albon_2020.jpg",
-    chassis: "FW46",
-    powerUnit: "Mercedes-AMG F1 M15",
+    carImage: "https://www.formula1.com/content/dam/fom-website/teams/2026/williams.png.img.1536.medium.png",
+    chassis: "FW48",
+    powerUnit: "Mercedes",
     base: "Grove, Reino Unido",
     technicalChief: "Pat Fry",
     historicWins: 114,
     championships: 9,
     principal: "James Vowles"
   },
-  rb: {
-    logo: "https://media.formula1.com/image/upload/c_lfill,w_64/q_auto/v1740000001/common/f1/2026/racingbulls/2026racingbullslogowhite.webp",
-    carImage: null,
-    chassis: "VCARB 01",
-    powerUnit: "Honda RBPT",
-    base: "Faenza, Italia",
-    technicalChief: "Jody Egginton",
-    historicWins: 2,
-    championships: 0,
-    principal: "Laurent Mekies"
-  },
-  sauber: {
-    logo: "https://media.formula1.com/image/upload/c_lfill,w_64/q_auto/v1740000001/common/f1/2026/sauber/2026sauberlogowhite.webp",
-    carImage: null,
-    chassis: "C44",
-    powerUnit: "Ferrari 066/12",
-    base: "Hinwil, Suica",
-    technicalChief: "James Key",
-    historicWins: 1,
-    championships: 0,
-    principal: "Alessandro Alunni Bravi"
-  },
-  haas: {
-    logo: "https://media.formula1.com/image/upload/c_lfill,w_64/q_auto/v1740000001/common/f1/2026/haas/2026haaslogowhite.webp",
-    carImage: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/Kevin_Magnussen_2022.jpg/640px-Kevin_Magnussen_2022.jpg",
-    chassis: "VF-24",
-    powerUnit: "Ferrari 066/12",
-    base: "Kannapolis, EUA",
-    technicalChief: "Ayao Komatsu",
+  cadillac: {
+    logo: "https://media.formula1.com/image/upload/c_lfill,w_64/q_auto/v1740000001/common/f1/2026/cadillac/2026cadillaclogowhite.webp",
+    carImage: "https://www.formula1.com/content/dam/fom-website/teams/2026/cadillac.png.img.1536.medium.png",
+    chassis: "C26",
+    powerUnit: "Ferrari",
+    base: "Silverstone, Reino Unido",
+    technicalChief: "Pat Symonds",
     historicWins: 0,
     championships: 0,
-    principal: "Ayao Komatsu"
+    principal: "Graeme Lowdon"
+  },
+  aston_martin: {
+    logo: "https://media.formula1.com/image/upload/c_lfill,w_48/q_auto/v1740000001/common/f1/2026/astonmartin/2026astonmartinlogowhite.webp",
+    carImage: "https://www.formula1.com/content/dam/fom-website/teams/2026/aston-martin.png.img.1536.medium.png",
+    chassis: "AMR26",
+    powerUnit: "Honda",
+    base: "Silverstone, Reino Unido",
+    technicalChief: "Dan Fallows",
+    historicWins: 1,
+    championships: 0,
+    principal: "Andy Cowell"
   }
 };
 
