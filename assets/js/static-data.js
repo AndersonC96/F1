@@ -78,13 +78,6 @@ export const DRIVER_STATIC = {
     website: "https://www.formula1.com/en/drivers/esteban-ocon",
     teamColor: "#0090ff"
   },
-  yuki_tsunoda: {
-    number: "22",
-    poles: 0,
-    photo: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Yuki_Tsunoda_2021_Styria.jpg/512px-Yuki_Tsunoda_2021_Styria.jpg",
-    website: "https://www.formula1.com/en/drivers/yuki-tsunoda",
-    teamColor: "#2b4562"
-  },
   alexander_albon: {
     number: "23",
     poles: 0,
@@ -99,40 +92,12 @@ export const DRIVER_STATIC = {
     website: "https://www.formula1.com/en/drivers/nico-hulkenberg",
     teamColor: "#9c9fa2"
   },
-  kevin_magnussen: {
-    number: "20",
-    poles: 1,
-    photo: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/Kevin_Magnussen_2022.jpg/512px-Kevin_Magnussen_2022.jpg",
-    website: "https://www.formula1.com/en/drivers/kevin-magnussen",
-    teamColor: "#9c9fa2"
-  },
   valtteri_bottas: {
     number: "77",
     poles: 20,
     photo: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Valtteri_Bottas_2017_Malaysia_3.jpg/512px-Valtteri_Bottas_2017_Malaysia_3.jpg",
     website: "https://www.formula1.com/en/drivers/valtteri-bottas",
     teamColor: "#900000"
-  },
-  zhou_guanyu: {
-    number: "24",
-    poles: 0,
-    photo: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Zhou_Guanyu_2022.jpg/512px-Zhou_Guanyu_2022.jpg",
-    website: "https://www.formula1.com/en/drivers/guanyu-zhou",
-    teamColor: "#900000"
-  },
-  daniel_ricciardo: {
-    number: "3",
-    poles: 3,
-    photo: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Daniel_Ricciardo_2017_Malaysia_3.jpg/512px-Daniel_Ricciardo_2017_Malaysia_3.jpg",
-    website: "https://www.formula1.com/en/drivers/daniel-ricciardo",
-    teamColor: "#2b4562"
-  },
-  logan_sargeant: {
-    number: "2",
-    poles: 0,
-    photo: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/Logan_Sargeant_2023_Austria.jpg/512px-Logan_Sargeant_2023_Austria.jpg",
-    website: "https://www.formula1.com/en/drivers/logan-sargeant",
-    teamColor: "#005aff"
   },
   liam_lawson: {
     number: "30",
