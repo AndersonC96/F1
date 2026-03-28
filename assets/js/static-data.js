@@ -375,6 +375,33 @@ export const CIRCUIT_STATIC = {
   villeneuve: { laps: 70, length: "4.361km", distance: "305.270km", firstGP: 1978 , image: "https://media.formula1.com/image/upload/content/dam/fom-website/2018-redesign-assets/circuit-maps-16-9/Canada_Circuit.png"}
 };
 
+const OFFICIAL_RACE_NAMES_2026 = {
+  "Australian Grand Prix": "FORMULA 1 QATAR AIRWAYS AUSTRALIAN GRAND PRIX 2026",
+  "Chinese Grand Prix": "FORMULA 1 HEINEKEN CHINESE GRAND PRIX 2026",
+  "Japanese Grand Prix": "FORMULA 1 ARAMCO JAPANESE GRAND PRIX 2026",
+  "Miami Grand Prix": "FORMULA 1 CRYPTO.COM MIAMI GRAND PRIX 2026",
+  "Canadian Grand Prix": "FORMULA 1 LENOVO GRAND PRIX DU CANADA 2026",
+  "Monaco Grand Prix": "FORMULA 1 LOUIS VUITTON GRAND PRIX DE MONACO 2026",
+  "Barcelona Grand Prix": "FORMULA 1 MSC CRUISES GRAN PREMIO DE BARCELONA-CATALUNYA 2026",
+  "Austrian Grand Prix": "FORMULA 1 LENOVO AUSTRIAN GRAND PRIX 2026",
+  "British Grand Prix": "FORMULA 1 PIRELLI BRITISH GRAND PRIX 2026",
+  "Belgian Grand Prix": "FORMULA 1 MOËT & CHANDON BELGIAN GRAND PRIX 2026",
+  "Hungarian Grand Prix": "FORMULA 1 AWS HUNGARIAN GRAND PRIX 2026",
+  "Dutch Grand Prix": "FORMULA 1 HEINEKEN DUTCH GRAND PRIX 2026",
+  "Italian Grand Prix": "FORMULA 1 PIRELLI GRAN PREMIO D’ITALIA 2026",
+  "Spanish Grand Prix": "FORMULA 1 TAG HEUER GRAN PREMIO DE ESPAÑA 2026",
+  "Azerbaijan Grand Prix": "FORMULA 1 QATAR AIRWAYS AZERBAIJAN GRAND PRIX 2026",
+  "Singapore Grand Prix": "FORMULA 1 SINGAPORE AIRLINES SINGAPORE GRAND PRIX 2026",
+  "United States Grand Prix": "FORMULA 1 MSC CRUISES UNITED STATES GRAND PRIX 2026",
+  "Mexico City Grand Prix": "FORMULA 1 GRAN PREMIO DE LA CIUDAD DE MÉXICO 2026",
+  "Brazilian Grand Prix": "FORMULA 1 MSC CRUISES GRANDE PRÊMIO DE SÃO PAULO 2026",
+  "Sao Paulo Grand Prix": "FORMULA 1 MSC CRUISES GRANDE PRÊMIO DE SÃO PAULO 2026",
+  "São Paulo Grand Prix": "FORMULA 1 MSC CRUISES GRANDE PRÊMIO DE SÃO PAULO 2026",
+  "Las Vegas Grand Prix": "FORMULA 1 HEINEKEN LAS VEGAS GRAND PRIX 2026",
+  "Qatar Grand Prix": "FORMULA 1 QATAR AIRWAYS QATAR GRAND PRIX 2026",
+  "Abu Dhabi Grand Prix": "FORMULA 1 ETIHAD AIRWAYS ABU DHABI GRAND PRIX 2026"
+};
+
 const COUNTRY_TO_ISO = {
   argentina: "AR",
   australia: "AU",
@@ -517,6 +544,10 @@ export function formatRaceDate(dateStr, timeStr = "") {
     day: "numeric",
     month: "long"
   }).format(date);
+}
+
+export function getOfficialRaceName2026(raceName) {
+  return OFFICIAL_RACE_NAMES_2026[raceName] || raceName;
 }
 
 export function formatRaceDateTime(dateStr, timeStr = "") {

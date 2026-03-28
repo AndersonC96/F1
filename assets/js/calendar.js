@@ -1,5 +1,5 @@
 import { fetchCurrentSchedule } from "./api.js";
-import { formatRaceDate, setupNavActiveState, toFlag } from "./static-data.js";
+import { formatRaceDate, setupNavActiveState, toFlag, getOfficialRaceName2026 } from "./static-data.js";
 
 const stateContainer = document.getElementById("calendar-state");
 
@@ -56,7 +56,7 @@ function createRaceItem(race, status) {
   const info = document.createElement("div");
   const title = document.createElement("h3");
   title.className = "card-title";
-  title.textContent = `${toFlag(race.Circuit.Location.country)} ${race.raceName}`;
+  title.textContent = `${toFlag(race.Circuit.Location.country)} ${getOfficialRaceName2026(race.raceName)}`;
 
   const subtitle = document.createElement("p");
   subtitle.className = "card-subtitle";

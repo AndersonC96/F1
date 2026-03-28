@@ -5,7 +5,7 @@ import {
   fetchCurrentSchedule,
   fetchScheduleBySeason
 } from "./api.js";
-import { formatRaceDate, setupNavActiveState, toFlagUrl, CIRCUIT_STATIC, translateCountry } from "./static-data.js";
+import { formatRaceDate, setupNavActiveState, toFlagUrl, CIRCUIT_STATIC, translateCountry, getOfficialRaceName2026 } from "./static-data.js";
 
 const nextRaceState = document.getElementById("next-race-state");
 const lastRaceState = document.getElementById("last-race-state");
@@ -142,10 +142,7 @@ function buildNextRaceCard(nextRace, isSeasonClosed = false) {
 
   const title = document.createElement("h3");
   title.className = "card-title official";
-  
-  // Use official full branding for the next race
-  const year = nextRace.date.split("-")[0];
-  title.textContent = isSeasonClosed ? "Temporada encerrada" : `FORMULA 1 ARAMCO ${cleanRaceName(nextRace.raceName).toUpperCase()} ${year}`;
+  title.textContent = isSeasonClosed ? "Temporada encerrada" : getOfficialRaceName2026(cleanRaceName(nextRace.raceName));
 
   const flag = document.createElement("img");
   flag.className = "flag-icon";
@@ -209,7 +206,7 @@ function buildLastRaceCard(lastRace) {
 
   const title = document.createElement("h3");
   title.className = "card-title";
-  title.textContent = cleanRaceName(lastRace.raceName);
+  title.textContent = getOfficialRaceName2026(cleanRaceName(lastRace.raceName));
 
   const flag = document.createElement("img");
   flag.className = "flag-icon";
