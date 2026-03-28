@@ -74,8 +74,7 @@ function buildNextRaceCard(nextRace, isSeasonClosed = false) {
   subtitle.textContent = `${nextRace.Circuit.circuitName} - ${formatRaceDate(nextRace.date, nextRace.time)}`;
 
   const countdown = document.createElement("p");
-  countdown.className = "driver-number";
-  countdown.style.fontSize = "1.5rem";
+  countdown.className = "countdown-timer";
 
   const eventTime = raceDateToTimestamp(nextRace);
   const updateCountdown = () => {
@@ -92,10 +91,21 @@ function buildNextRaceCard(nextRace, isSeasonClosed = false) {
   if (!isSeasonClosed) {
     countdownInterval = window.setInterval(updateCountdown, 1000);
   } else {
-    countdown.textContent = `Primeira corrida da proxima temporada em ${formatRaceDate(nextRace.date, nextRace.time)}`;
+    countdown.textContent = `Primeira corrida em ${formatRaceDate(nextRace.date, nextRace.time)}`;
   }
 
-  card.append(title, subtitle, countdown);
+  const footer = document.createElement("div");
+  footer.className = "kpis";
+  footer.style.marginTop = "1.5rem";
+
+  const cta = document.createElement("a");
+  cta.href = "calendar.html";
+  cta.className = "button";
+  cta.textContent = "Ver calendário completo";
+
+  footer.appendChild(cta);
+
+  card.append(title, subtitle, countdown, footer);
   return card;
 }
 
@@ -133,7 +143,19 @@ function buildLastRaceCard(lastRace) {
     return card;
   }
 
-  card.append(title, subtitle, podiumWrapper);
+  const footer = document.createElement("div");
+  footer.className = "kpis";
+  footer.style.marginTop = "1rem";
+
+  const cta = document.createElement("a");
+  cta.href = "calendar.html"; // Should ideally go to result detail if it existed
+  cta.className = "button";
+  cta.style.background = "transparent";
+  cta.textContent = "Ver detalhes da corrida";
+
+  footer.appendChild(cta);
+
+  card.append(title, subtitle, podiumWrapper, footer);
   return card;
 }
 
