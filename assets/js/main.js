@@ -5,7 +5,16 @@ import {
   fetchCurrentSchedule,
   fetchScheduleBySeason
 } from "./api.js";
-import { formatRaceDate, setupNavActiveState, toFlagUrl, CIRCUIT_STATIC, translateCountry, getOfficialRaceName2026 } from "./static-data.js";
+import {
+  CIRCUIT_STATIC,
+  DRIVER_STATIC,
+  PLACEHOLDER_DRIVER_IMAGE,
+  formatRaceDate,
+  getOfficialRaceName2026,
+  setupNavActiveState,
+  toFlagUrl,
+  translateCountry
+} from "./static-data.js";
 
 const nextRaceState = document.getElementById("next-race-state");
 const lastRaceState = document.getElementById("last-race-state");
