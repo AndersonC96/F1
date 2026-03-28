@@ -114,7 +114,11 @@ function createCard(champion) {
   years.className = "muted";
   years.textContent = `Titulos: ${champion.titleYears.join(", ")}`;
 
-  textWrap.append(name, meta, years);
+  const wins = document.createElement("p");
+  wins.className = "muted";
+  wins.textContent = `Vitorias: ${champion.wins}`;
+
+  textWrap.append(name, meta, years, wins);
 
   const count = document.createElement("span");
   count.className = "title-count";

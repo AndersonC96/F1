@@ -68,7 +68,7 @@ function createRaceItem(race, status) {
   if (status === "next") {
     const badge = document.createElement("span");
     badge.className = "badge badge-accent";
-    badge.textContent = "PROXIMA";
+    badge.textContent = "PRÓXIMA";
     side.appendChild(badge);
   } else if (status === "past") {
     const resultText = document.createElement("span");
