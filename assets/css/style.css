@@ -936,7 +936,7 @@ button:focus-visible {
   max-height: 22px;
   object-fit: contain;
   display: block;
-  margin: 0 auto;
+  margin: 0;
   filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.25));
   transition: transform 0.2s ease;
 }

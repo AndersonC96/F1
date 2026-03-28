@@ -124,7 +124,7 @@ export const DRIVER_STATIC = {
 
 export const TEAM_STATIC = {
   red_bull: {
-    logo: "https://media.formula1.com/image/upload/c_lfill,w_64/q_auto/v1740000001/common/f1/2026/red-bull-racing/2026red-bull-racinglogowhite.webp",
+    logo: "https://media.formula1.com/image/upload/c_lfill,w_64/q_auto/v1740000001/common/f1/2026/redbullracing/2026redbullracinglogowhite.webp",
     carImage: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Max_Verstappen_2017_Malaysia_3.jpg/640px-Max_Verstappen_2017_Malaysia_3.jpg",
     chassis: "RB20",
     powerUnit: "Honda RBPT",
@@ -168,7 +168,7 @@ export const TEAM_STATIC = {
     principal: "Andrea Stella"
   },
   aston_martin: {
-    logo: "https://media.formula1.com/image/upload/c_lfill,w_64/q_auto/v1740000001/common/f1/2026/aston-martin/2026aston-martinlogowhite.webp",
+    logo: "https://media.formula1.com/image/upload/c_lfill,w_48/q_auto/v1740000001/common/f1/2026/astonmartin/2026astonmartinlogowhite.webp",
     carImage: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/37/Fernando_Alonso_2018_Malaysia.jpg/640px-Fernando_Alonso_2018_Malaysia.jpg",
     chassis: "AMR24",
     powerUnit: "Mercedes-AMG F1 M15",
@@ -201,7 +201,7 @@ export const TEAM_STATIC = {
     principal: "James Vowles"
   },
   rb: {
-    logo: "https://media.formula1.com/image/upload/c_lfill,w_64/q_auto/v1740000001/common/f1/2026/rb/2026rblogowhite.webp",
+    logo: "https://media.formula1.com/image/upload/c_lfill,w_64/q_auto/v1740000001/common/f1/2026/racingbulls/2026racingbullslogowhite.webp",
     carImage: null,
     chassis: "VCARB 01",
     powerUnit: "Honda RBPT",
