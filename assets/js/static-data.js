@@ -31,10 +31,40 @@ export const DRIVER_STATIC = {
   },
   george_russell: {
     number: "63",
-    poles: 5,
+    poles: 8,
     photo: "https://media.formula1.com/image/upload/c_lfill,w_440/q_auto/d_common:f1:2026:fallback:driver:2026fallbackdriverright.webp/v1740000001/common/f1/2026/mercedes/georus01/2026mercedesgeorus01right.webp",
     website: "https://www.formula1.com/en/drivers/george-russell",
-    teamColor: "#00d2be"
+    teamColor: "#00d2be",
+    dateOfBirth: "15/02/1998",
+    placeOfBirth: "King's Lynn, England",
+    seasonStats: {
+      seasonPosition: "1st",
+      seasonPoints: 51,
+      grandPrixRaces: 2,
+      grandPrixPoints: 43,
+      grandPrixWins: 1,
+      grandPrixPodiums: 2,
+      grandPrixPoles: 1,
+      grandPrixTop10s: 2,
+      dhlFastestLaps: 0,
+      dnfs: 0,
+      sprintRaces: 1,
+      sprintPoints: 8,
+      sprintWins: 1,
+      sprintPodiums: 1,
+      sprintPoles: 1,
+      sprintTop10s: 1
+    },
+    careerStats: {
+      grandPrixEntered: 154,
+      careerPoints: 1084,
+      highestRaceFinish: "1 (x5)",
+      podiums: 26,
+      highestGridPosition: "1 (x9)",
+      polePositions: 8,
+      worldChampionships: 0,
+      dnfs: 19
+    }
   },
   carlos_sainz: {
     number: "55",

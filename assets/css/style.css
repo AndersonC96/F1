@@ -296,6 +296,10 @@ img {
   padding: 1rem;
 }
 
+.driver-header {
+  grid-template-columns: 110px 1fr auto;
+}
+
 .team-header {
   grid-template-columns: 56px 1fr auto;
 }
@@ -311,6 +315,11 @@ img {
   object-fit: cover;
   border-radius: 8px;
   background: #111;
+}
+
+.driver-card .portrait {
+  height: 120px;
+  object-position: center 0%;
 }
 
 .logo {

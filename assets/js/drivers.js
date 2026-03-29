@@ -136,6 +136,29 @@ function resolveTeamColor(teamName, staticColor) {
   return TEAM_COLOR_MAP[normalized] || staticColor || "#e10600";
 }
 
+function normalizeDriverKey(value) {
+  return String(value || "")
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^a-z0-9]+/g, "_")
+    .replace(/^_+|_+$/g, "");
+}
+
+function resolveDriverStaticData(driver, profile) {
+  const byId = normalizeDriverKey(driver?.driverId);
+  if (byId && DRIVER_STATIC[byId]) {
+    return DRIVER_STATIC[byId];
+  }
+
+  const fullNameKey = normalizeDriverKey(`${profile?.givenName || driver?.givenName || ""}_${profile?.familyName || driver?.familyName || ""}`);
+  if (fullNameKey && DRIVER_STATIC[fullNameKey]) {
+    return DRIVER_STATIC[fullNameKey];
+  }
+
+  return {};
+}
+
 function appendDetailRow(dl, label, value, linkHref = "") {
   const dt = document.createElement("dt");
   dt.textContent = label;
@@ -185,7 +208,7 @@ function buildDriverCard(driver) {
 
   const meta = document.createElement("p");
   meta.className = "meta";
-  meta.textContent = `${toFlag(driver.nationality)} ${driver.team}`;
+  meta.textContent = `${toFlag(driver.nationality)} ${driver.shortTeam}`;
 
   const badges = document.createElement("div");
   badges.className = "kpis";
@@ -222,11 +245,12 @@ function buildDriverCard(driver) {
 
     const dl = document.createElement("dl");
     appendDetailRow(dl, "Posicao", String(driver.position));
-    appendDetailRow(dl, "Equipe", driver.team);
+    appendDetailRow(dl, "Equipe", driver.fullTeam);
     appendDetailRow(dl, "Pontos", String(driver.points));
     appendDetailRow(dl, "Vitorias", String(driver.wins));
     appendDetailRow(dl, "Poles", String(driver.poles));
     appendDetailRow(dl, "Nascimento", driver.dateOfBirth || "-");
+    appendDetailRow(dl, "Local de nascimento", driver.placeOfBirth || "-");
     appendDetailRow(dl, "Nacionalidade", driver.nationality || "-");
 
     if (driver.website) {
@@ -280,22 +304,25 @@ async function loadDrivers() {
       const driver = standing.Driver || {};
       const id = driver.driverId;
       const profile = driversById.get(id) || driver;
-      const staticData = DRIVER_STATIC[id] || {};
+      const staticData = resolveDriverStaticData(driver, profile);
+      const rawTeamName = standing.Constructors?.[0]?.name || "Equipe nao informada";
 
       return {
         id,
         position: Number(standing.position || 0),
         fullName: `${driver.givenName || ""} ${driver.familyName || ""}`.trim(),
-        team: getOfficialTeamName(standing.Constructors?.[0]?.name) || "Equipe nao informada",
+        shortTeam: rawTeamName,
+        fullTeam: getOfficialTeamName(rawTeamName),
         points: Number(standing.points || 0),
         wins: Number(standing.wins || 0),
         poles: Number(staticData.poles || 0),
         number: staticData.number || profile.permanentNumber || "-",
         nationality: profile.nationality || driver.nationality || "",
-        dateOfBirth: profile.dateOfBirth || "",
+        dateOfBirth: staticData.dateOfBirth || profile.dateOfBirth || "",
+        placeOfBirth: staticData.placeOfBirth || "",
         photo: staticData.photo || PLACEHOLDER_DRIVER_IMAGE,
         website: staticData.website || "",
-        teamColor: resolveTeamColor(standing.Constructors?.[0]?.name, staticData.teamColor)
+        teamColor: resolveTeamColor(rawTeamName, staticData.teamColor)
       };
     });
 
