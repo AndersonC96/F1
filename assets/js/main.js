@@ -457,39 +457,66 @@ async function loadHomeData() {
   lastRaceState.replaceChildren(createSkeletonBlock(4));
   quickStandingsState.replaceChildren(createSkeletonBlock(6));
 
-  try {
-    const [schedule, results, driverStandings, constructorStandings] = await Promise.all([
-      fetchCurrentSchedule(),
-      fetchCurrentResults(),
-      fetchCurrentDriverStandings(),
-      fetchCurrentConstructorStandings()
-    ]);
+  const [scheduleState, resultsState, driversState, constructorsState] = await Promise.allSettled([
+    fetchCurrentSchedule(),
+    fetchCurrentResults(),
+    fetchCurrentDriverStandings(),
+    fetchCurrentConstructorStandings()
+  ]);
 
-    const nextRaceInfo = await resolveNextRace(schedule);
-    nextRaceState.replaceChildren(buildNextRaceCard(nextRaceInfo.race, nextRaceInfo.isSeasonClosed));
+  if (scheduleState.status === "fulfilled" && Array.isArray(scheduleState.value) && scheduleState.value.length > 0) {
+    try {
+      const nextRaceInfo = await resolveNextRace(scheduleState.value);
+      nextRaceState.replaceChildren(buildNextRaceCard(nextRaceInfo.race, nextRaceInfo.isSeasonClosed));
+    } catch {
+      renderErrorState(nextRaceState, "Falha ao carregar a proxima corrida.", loadHomeData);
+    }
+  } else {
+    renderErrorState(nextRaceState, "Falha ao carregar a proxima corrida.", loadHomeData);
+  }
 
-    const lastRace = [...results].sort((a, b) => Number(b.round) - Number(a.round))[0];
+  if (resultsState.status === "fulfilled" && Array.isArray(resultsState.value)) {
+    const lastRace = [...resultsState.value].sort((a, b) => Number(b.round) - Number(a.round))[0];
     if (lastRace) {
-      lastRaceState.replaceChildren(buildLastRaceCard(lastRace));
+      try {
+        lastRaceState.replaceChildren(buildLastRaceCard(lastRace));
+      } catch {
+        renderErrorState(lastRaceState, "Falha ao carregar o resultado da ultima corrida.", loadHomeData);
+      }
     } else {
       const emptyCard = document.createElement("article");
       emptyCard.className = "state-card";
       emptyCard.textContent = "Ainda nao ha resultado oficial registrado para esta temporada.";
       lastRaceState.replaceChildren(emptyCard);
     }
-
-    const tablesWrap = document.createElement("div");
-    tablesWrap.className = "table-wrap";
-    tablesWrap.append(
-      createTable("Top 5 pilotos", driverStandings.slice(0, 5), false),
-      createTable("Top 5 construtores", constructorStandings.slice(0, 5), true)
-    );
-    quickStandingsState.replaceChildren(tablesWrap);
-  } catch {
-    renderErrorState(nextRaceState, "Falha ao carregar a proxima corrida.", loadHomeData);
+  } else {
     renderErrorState(lastRaceState, "Falha ao carregar o resultado da ultima corrida.", loadHomeData);
-    renderErrorState(quickStandingsState, "Falha ao carregar a classificacao rapida.", loadHomeData);
   }
+
+  const driverStandings = driversState.status === "fulfilled" && Array.isArray(driversState.value)
+    ? driversState.value
+    : [];
+  const constructorStandings = constructorsState.status === "fulfilled" && Array.isArray(constructorsState.value)
+    ? constructorsState.value
+    : [];
+
+  if (driverStandings.length === 0 && constructorStandings.length === 0) {
+    renderErrorState(quickStandingsState, "Falha ao carregar a classificacao rapida.", loadHomeData);
+    return;
+  }
+
+  const tablesWrap = document.createElement("div");
+  tablesWrap.className = "table-wrap";
+
+  if (driverStandings.length > 0) {
+    tablesWrap.append(createTable("Top 5 pilotos", driverStandings.slice(0, 5), false));
+  }
+
+  if (constructorStandings.length > 0) {
+    tablesWrap.append(createTable("Top 5 construtores", constructorStandings.slice(0, 5), true));
+  }
+
+  quickStandingsState.replaceChildren(tablesWrap);
 }
 
 function init() {
