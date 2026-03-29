@@ -354,6 +354,37 @@ img {
   overflow-wrap: anywhere;
 }
 
+.driver-card .meta {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.driver-flag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+.driver-flag-inline {
+  width: 14px;
+  height: 14px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  flex-shrink: 0;
+}
+
+.team-logo-inline {
+  width: 14px;
+  height: 14px;
+  object-fit: contain;
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.08);
+  flex-shrink: 0;
+}
+
 .driver-number,
 .title-count,
 .countdown-timer {

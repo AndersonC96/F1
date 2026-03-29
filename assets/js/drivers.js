@@ -1,5 +1,5 @@
 import { fetchCurrentDriverStandings, fetchDrivers } from "./api.js";
-import { DRIVER_STATIC, PLACEHOLDER_DRIVER_IMAGE, getOfficialTeamName, setupNavActiveState, toFlag } from "./static-data.js";
+import { DRIVER_STATIC, PLACEHOLDER_DRIVER_IMAGE, TEAM_STATIC, getOfficialTeamName, setupNavActiveState, toFlagUrl } from "./static-data.js";
 
 const stateContainer = document.getElementById("drivers-state");
 const searchInput = document.getElementById("search-input");
@@ -206,9 +206,31 @@ function buildDriverCard(driver) {
   name.className = "name";
   name.textContent = driver.fullName;
 
-  const meta = document.createElement("p");
+  const meta = document.createElement("div");
   meta.className = "meta";
-  meta.textContent = `${toFlag(driver.nationality)} ${driver.shortTeam}`;
+
+  const nationalityFlag = document.createElement("img");
+  nationalityFlag.className = "driver-flag-inline";
+  nationalityFlag.src = toFlagUrl(driver.nationality);
+  nationalityFlag.alt = `Bandeira ${driver.nationality || ""}`.trim();
+  nationalityFlag.loading = "lazy";
+
+  const teamLogo = document.createElement("img");
+  teamLogo.className = "team-logo-inline";
+  teamLogo.src = driver.teamLogo || "";
+  teamLogo.alt = `Logo ${driver.shortTeam}`;
+  teamLogo.loading = "lazy";
+  if (!driver.teamLogo) {
+    teamLogo.style.display = "none";
+  }
+  teamLogo.addEventListener("error", () => {
+    teamLogo.style.display = "none";
+  });
+
+  const teamName = document.createElement("span");
+  teamName.textContent = driver.shortTeam;
+
+  meta.append(nationalityFlag, teamLogo, teamName);
 
   const badges = document.createElement("div");
   badges.className = "kpis";
@@ -305,6 +327,7 @@ async function loadDrivers() {
       const id = driver.driverId;
       const profile = driversById.get(id) || driver;
       const staticData = resolveDriverStaticData(driver, profile);
+      const constructorId = standing.Constructors?.[0]?.constructorId || "";
       const rawTeamName = standing.Constructors?.[0]?.name || "Equipe nao informada";
 
       return {
@@ -322,6 +345,7 @@ async function loadDrivers() {
         placeOfBirth: staticData.placeOfBirth || "",
         photo: staticData.photo || PLACEHOLDER_DRIVER_IMAGE,
         website: staticData.website || "",
+        teamLogo: TEAM_STATIC[constructorId]?.logo || "",
         teamColor: resolveTeamColor(rawTeamName, staticData.teamColor)
       };
     });
