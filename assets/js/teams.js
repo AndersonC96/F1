@@ -1,8 +1,6 @@
-import {
-  fetchCurrentConstructorStandings,
-  fetchCurrentDriverStandings
-} from "./api.js";
+import { fetchCurrentConstructorStandings, fetchCurrentDriverStandings } from "./api.js";
 import { PLACEHOLDER_DRIVER_IMAGE, TEAM_STATIC, getOfficialTeamName, setImageFallback, setupNavActiveState } from "./static-data.js";
+import { renderSkeleton, renderError, showCacheFeedback, announceToScreenReader } from "./ui-utils.js";
 
 const stateContainer = document.getElementById("teams-state");
 const sortSelect = document.getElementById("sort-select");
@@ -22,47 +20,12 @@ function updateSortInUrl(value) {
   window.history.replaceState({}, "", url);
 }
 
-function renderSkeleton() {
-  const grid = document.createElement("div");
-  grid.className = "grid grid-teams";
-
-  for (let i = 0; i < 6; i += 1) {
-    const card = document.createElement("article");
-    card.className = "skeleton-card";
-    for (let line = 0; line < 5; line += 1) {
-      const block = document.createElement("div");
-      block.className = `skeleton skeleton-line ${line === 0 ? "short" : "medium"}`;
-      card.appendChild(block);
-    }
-    grid.appendChild(card);
-  }
-
-  stateContainer.replaceChildren(grid);
-}
-
-function renderError(onRetry) {
-  const card = document.createElement("article");
-  card.className = "state-card error";
-
-  const text = document.createElement("p");
-  text.textContent = "Nao foi possivel carregar as equipes agora.";
-
-  const button = document.createElement("button");
-  button.className = "button";
-  button.type = "button";
-  button.textContent = "Tentar novamente";
-  button.addEventListener("click", onRetry);
-
-  card.append(text, button);
-  stateContainer.replaceChildren(card);
-}
-
 function applySort(items, sortBy) {
   const sorted = [...items];
 
   sorted.sort((a, b) => {
     if (sortBy === "name") {
-      return a.name.localeCompare(b.name, "pt-BR");
+      return a.shortName.localeCompare(b.shortName, "pt-BR");
     }
 
     if (sortBy === "wins") {
@@ -81,7 +44,7 @@ function applySort(items, sortBy) {
 
 function createTeamCard(team) {
   const article = document.createElement("article");
-  article.className = "team-card";
+  article.className = "team-card reveal-up";
 
   const header = document.createElement("div");
   header.className = "team-header";
@@ -153,6 +116,7 @@ function createTeamCard(team) {
       carImage.className = "portrait";
       carImage.style.height = "120px";
       carImage.style.objectFit = "contain";
+      carImage.style.backgroundColor = "transparent";
       setImageFallback(carImage);
       details.appendChild(carImage);
     }
@@ -160,11 +124,11 @@ function createTeamCard(team) {
     const dl = document.createElement("dl");
     const pairs = [
       ["Chefe de equipe", team.principal],
-      ["Chefe tecnico", team.technicalChief],
+      ["Chefe técnico", team.technicalChief],
       ["Chassi", team.chassis],
       ["Motor", team.powerUnit],
       ["Base", team.base],
-      ["Vitorias historicas", String(team.historicWins)],
+      ["Vitórias históricas", String(team.historicWins)],
       ["Campeonatos", String(team.championships)]
     ];
 
@@ -189,7 +153,7 @@ function renderTeams() {
   if (sorted.length === 0) {
     const empty = document.createElement("article");
     empty.className = "state-card";
-    empty.textContent = "Nenhuma equipe disponivel nesta temporada.";
+    empty.textContent = "Nenhuma equipe disponível nesta temporada.";
     stateContainer.replaceChildren(empty);
     return;
   }
@@ -202,13 +166,18 @@ function renderTeams() {
 }
 
 async function loadTeams() {
-  renderSkeleton();
+  renderSkeleton(stateContainer, 6, "grid");
 
   try {
-    const [constructorStandings, driverStandings] = await Promise.all([
+    const [constructorStandingsResult, driverStandingsResult] = await Promise.all([
       fetchCurrentConstructorStandings(),
       fetchCurrentDriverStandings()
     ]);
+
+    const constructorStandings = constructorStandingsResult.items;
+    const driverStandings = driverStandingsResult.items;
+    
+    showCacheFeedback(Math.max(constructorStandingsResult.timestamp, driverStandingsResult.timestamp));
 
     const driverGroups = new Map();
     driverStandings.forEach((entry) => {
@@ -247,7 +216,7 @@ async function loadTeams() {
 
     renderTeams();
   } catch {
-    renderError(loadTeams);
+    renderError(stateContainer, "Não foi possível carregar as equipes agora.", loadTeams);
   }
 }
 

@@ -1,128 +1,94 @@
-# F1 Portal
+# 🏁 F1 Portal
 
-Portal de dados da Fórmula 1 com informações em tempo real sobre pilotos, equipes, calendário e campeões históricos.
+Portal de dados da Fórmula 1 com informações em tempo real sobre pilotos, equipes, calendário e campeões históricos. Desenvolvido com foco em performance, acessibilidade e experiência do usuário em dispositivos móveis e desktop.
 
 ## 📸 Screenshots
 
-[Inserir aqui screenshots reais das páginas — geradas após o deploy]
-<!-- Placeholder: adicionar após primeiro deploy -->
-![Home](docs/screenshots/home.png)
-![Pilotos](docs/screenshots/drivers.png)
-![Calendário](docs/screenshots/calendar.png)
+<div align="center">
+  <img src="assets/images/screenshot-home.png" alt="Página Inicial" width="400">
+  <img src="assets/images/screenshot-drivers.png" alt="Página de Pilotos" width="400">
+</div>
 
 ## 🔗 Demo
 
-[Link do GitHub Pages será gerado automaticamente após o primeiro deploy]
+Acesse o portal ao vivo: [https://andersonls.github.io/F1/](https://andersonls.github.io/F1/)
 
-## Sobre o projeto
+## 🚀 Sobre o projeto
 
-Este projeto é uma revitalização de um portal antigo feito em PHP.
+Este projeto é uma aplicação frontend moderna e estática que consome dados da principal categoria do automobilismo mundial.
 
-O foco foi migrar tudo para frontend estático com HTML, CSS e JavaScript vanilla, para rodar sem backend e com deploy direto no GitHub Pages. Durante a migração, a fonte de dados foi atualizada para a Jolpica F1 API, com cache local para reduzir chamadas e respeitar rate limit.
+O foco principal foi a criação de uma interface resiliente e performática utilizando apenas **tecnologias nativas (Vanilla JS)**. Implementamos um sistema de cache inteligente com persistência local para garantir uma navegação fluida mesmo sob limites de taxa da API, além de um design focado na identidade visual da Fórmula 1.
 
-Foi desenvolvido como projeto pessoal para praticar consumo de APIs REST, manipulação de DOM sem frameworks, design responsivo e CI/CD com GitHub Actions.
+### Diferenciais Técnicos:
+- **Zero Dependências:** Sem frameworks (React/Vue/Angular) ou bibliotecas externas de UI.
+- **Cache Inteligente:** Implementação manual de cache em `localStorage` com controle de TTL (Time-to-Live).
+- **Acessibilidade:** Navegação por teclado, landmarks semânticos e suporte a leitores de tela.
+- **Mobile First:** Navegação otimizada para toque com barra inferior estilo app nativo.
 
-## Funcionalidades
+## ✨ Funcionalidades
 
-- Classificação de pilotos e construtores em tempo real (atualizada a cada corrida)
-- Countdown para o próximo Grande Prêmio
-- Resultado das últimas corridas
-- Calendário completo da temporada com status de cada GP
-- Perfis detalhados de todos os pilotos do grid atual
-- Histórico de todos os campeões mundiais desde 1950
-- Cache local para performance e respeito ao rate limit da API
-- Interface responsiva (mobile, tablet e desktop)
-- Deploy automático via GitHub Actions
+- **Dashboard Inicial:** Countdown em tempo real para o próximo GP e resultados da última corrida.
+- **Classificação:** Tabela rápida de pilotos e construtores atualizada dinamicamente.
+- **Grid Completo:** Detalhes técnicos de todos os pilotos e equipes da temporada atual.
+- **Histórico:** Galeria de todos os campeões mundiais desde 1950 com filtros por títulos.
+- **Calendário:** Programação completa da temporada com status de cada Grande Prêmio.
+- **Feedback de Cache:** Indicação visual de quando os dados foram atualizados pela última vez.
 
-## Tecnologias
+## 🛠️ Tecnologias
 
-- HTML5, CSS3, JavaScript (ES2022, vanilla — sem frameworks)
-- [Jolpica F1 API](https://github.com/jolpica/jolpica-f1) — dados em tempo real
-- GitHub Actions — CI/CD
-- GitHub Pages — hospedagem estática gratuita
-- Titillium Web (Google Fonts) — tipografia
+- **Linguagens:** HTML5, CSS3, JavaScript (ES2022+)
+- **API:** [Jolpica F1 API](https://github.com/jolpica/jolpica-f1) (Sucessor do Ergast API)
+- **Deployment:** GitHub Pages
+- **CI/CD:** GitHub Actions
+- **Imagens:** FlagsAPI e Assets Oficiais da F1
 
-## Estrutura do projeto
+## 📂 Estrutura do Projeto
 
 ```text
 /
-├── index.html                     # Home: hero, próxima corrida, última corrida, classificação rápida
-├── drivers.html                   # Lista de pilotos, busca, ordenação e detalhes expandidos
-├── teams.html                     # Lista de equipes com dados técnicos e expansão de card
-├── champions.html                 # Campeões históricos com filtros por títulos
-├── calendar.html                  # Calendário completo da temporada em formato de lista
-├── 404.html                       # Página de erro temática
-├── .nojekyll                      # Desabilita processamento Jekyll no GitHub Pages
+├── index.html                     # Dashboard principal
+├── drivers.html                   # Grid de pilotos com busca e filtros
+├── teams.html                     # Detalhes das escuderias
+├── champions.html                 # Histórico de campeões
+├── calendar.html                  # Calendário da temporada
 ├── assets/
-│   ├── css/
-│   │   ├── style.css              # Estilos globais, layout responsivo e componentes
-│   │   └── animations.css         # Animações de entrada e shimmer dos skeletons
+│   ├── css/                       # Design System e Animações
 │   ├── js/
-│   │   ├── api.js                 # Cliente da Jolpica API com cache local e TTL
-│   │   ├── static-data.js         # Dados estáticos: fotos, equipes e campeões históricos
-│   │   ├── main.js                # Lógica da home
-│   │   ├── drivers.js             # Lógica da página de pilotos
-│   │   ├── teams.js               # Lógica da página de equipes
-│   │   ├── champions.js           # Lógica da página de campeões
-│   │   └── calendar.js            # Lógica da página de calendário
-│   └── images/
-│       └── placeholder-driver.svg # Fallback para imagens quebradas
-├── .github/
-│   └── workflows/
-│       └── deploy.yml             # Pipeline de deploy automático no GitHub Pages
-├── docs/
-│   └── screenshots/               # Capturas de tela para documentação
-└── README.md
+│   │   ├── api.js                 # Camada de serviço e cache
+│   │   ├── ui-utils.js            # Helpers de interface e feedbacks
+│   │   ├── static-data.js         # Complementos de dados e mapeamentos
+│   │   └── [page].js              # Lógica específica de cada página
+│   └── images/                    # Fallbacks e ícones
+└── .github/workflows/             # Automação de deploy
 ```
 
-## Como rodar localmente
+## 💻 Como rodar localmente
 
-Não requer build ou instalação de dependências.
+Como o projeto é estático, não há necessidade de `npm install`. No entanto, devido ao uso de módulos ES6 e chamadas de API, é necessário um servidor local.
 
-1. Clone o repositório
-
+1. Clone o repositório:
 ```bash
-git clone https://github.com/[seu-usuario]/f1-portal.git
-cd f1-portal
+git clone https://github.com/andersonls/F1.git
+cd F1
 ```
 
-1. Abra um servidor local (qualquer um serve):
-
+2. Inicie um servidor (Exemplos):
 ```bash
-# Python
-python3 -m http.server 8080
+# Se tiver VS Code
+# Use a extensão "Live Server"
 
-# Node (se tiver npx)
+# Se tiver Python
+python -m http.server 8080
+
+# Se tiver Node.js
 npx serve .
-
-# VS Code: instalar extensão Live Server e clicar em "Go Live"
 ```
 
-1. Acesse `http://localhost:8080`
+3. Acesse `http://localhost:8080` no navegador.
 
-> ⚠️ Não abrir os arquivos .html diretamente no browser (file://) — o localStorage e os fetch() precisam de um servidor HTTP, mesmo que local.
+## 📝 Licença
 
-## API utilizada
+Distribuído sob a licença MIT. Veja `LICENSE` para mais informações.
 
-Todos os dados são fornecidos pela [Jolpica F1 API](http://api.jolpi.ca/ergast/f1/), substituta open source do Ergast API (desativado em 2024). Sem autenticação necessária. Rate limit: 200 requisições/hora.
-
-Endpoints utilizados:
-
-- `/current/driverStandings.json`
-- `/current/constructorStandings.json`
-- `/current/races.json`
-- `/current/results.json`
-
-## Deploy
-
-O projeto é deployado automaticamente no GitHub Pages via GitHub Actions a cada push na branch `main`. O workflow está em `.github/workflows/deploy.yml`.
-
-Para configurar em seu fork:
-
-1. Vá em Settings → Pages
-1. Em "Source", selecione "GitHub Actions"
-1. Faça qualquer push na main — o deploy acontece automaticamente
-
-## Licença
-
-MIT
+---
+Desenvolvido por [Anderson](https://github.com/andersonls)

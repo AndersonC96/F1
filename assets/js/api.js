@@ -17,7 +17,7 @@ function readCache(cacheKey, ttlMinutes) {
       return null;
     }
 
-    return data;
+    return { data, timestamp };
   } catch {
     return null;
   }
@@ -32,9 +32,9 @@ function writeCache(cacheKey, data) {
 }
 
 export async function fetchWithCache(url, cacheKey, ttlMinutes = 60) {
-  const cachedData = readCache(cacheKey, ttlMinutes);
-  if (cachedData) {
-    return cachedData;
+  const cached = readCache(cacheKey, ttlMinutes);
+  if (cached) {
+    return cached;
   }
 
   const response = await fetch(url, { headers: { Accept: "application/json" } });
@@ -44,7 +44,7 @@ export async function fetchWithCache(url, cacheKey, ttlMinutes = 60) {
 
   const data = await response.json();
   writeCache(cacheKey, data);
-  return data;
+  return { data, timestamp: Date.now() };
 }
 
 function getByPath(root, path, fallback) {
@@ -60,10 +60,13 @@ function getByPath(root, path, fallback) {
 
 async function safeFetchArray(url, cacheKey, path) {
   try {
-    const data = await fetchWithCache(url, cacheKey, 60);
-    return getByPath(data, path, []);
+    const result = await fetchWithCache(url, cacheKey, 60);
+    return {
+      items: getByPath(result.data, path, []),
+      timestamp: result.timestamp
+    };
   } catch (error) {
-    throw new Error("Nao foi possivel carregar dados da API no momento.");
+    throw new Error("Não foi possível carregar dados da API no momento.");
   }
 }
 

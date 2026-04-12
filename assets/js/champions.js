@@ -1,28 +1,9 @@
 import { CHAMPIONS_HISTORY, setupNavActiveState, toFlag } from "./static-data.js";
+import { renderSkeleton, renderEmptyState, announceToScreenReader } from "./ui-utils.js";
 
 const stateContainer = document.getElementById("champions-state");
 const titlesFilter = document.getElementById("titles-filter");
 const sortSelect = document.getElementById("sort-select");
-
-function renderSkeleton() {
-  const grid = document.createElement("div");
-  grid.className = "grid grid-champions";
-
-  for (let i = 0; i < 6; i += 1) {
-    const card = document.createElement("article");
-    card.className = "skeleton-card";
-
-    for (let line = 0; line < 5; line += 1) {
-      const block = document.createElement("div");
-      block.className = `skeleton skeleton-line ${line === 0 ? "short" : "medium"}`;
-      card.appendChild(block);
-    }
-
-    grid.appendChild(card);
-  }
-
-  stateContainer.replaceChildren(grid);
-}
 
 function readQueryParams() {
   const params = new URL(window.location.href).searchParams;
@@ -87,7 +68,7 @@ function sortItems(items, sortBy) {
 
 function createCard(champion) {
   const article = document.createElement("article");
-  article.className = "champion-card";
+  article.className = "champion-card reveal-up";
 
   const header = document.createElement("div");
   header.className = "champion-header";
@@ -112,11 +93,11 @@ function createCard(champion) {
 
   const years = document.createElement("p");
   years.className = "muted";
-  years.textContent = `Titulos: ${champion.titleYears.join(", ")}`;
+  years.textContent = `Títulos: ${champion.titleYears.join(", ")}`;
 
   const wins = document.createElement("p");
   wins.className = "muted";
-  wins.textContent = `Vitorias: ${champion.wins}`;
+  wins.textContent = `Vitórias: ${champion.wins}`;
 
   textWrap.append(name, meta, years, wins);
 
@@ -131,10 +112,10 @@ function createCard(champion) {
 
   const dl = document.createElement("dl");
   const pairs = [
-    ["Primeiro titulo", String(champion.titleYears[0])],
-    ["Ultimo titulo", String(champion.titleYears[champion.titleYears.length - 1])],
-    ["Vitorias", String(champion.wins)],
-    ["Equipes", champion.teams.join(" / ")]
+    ["Primeiro título", String(champion.titleYears[0])],
+    ["Último título", String(champion.titleYears[champion.titleYears.length - 1])],
+    ["Vitórias totais", String(champion.wins)],
+    ["Equipes campeãs", champion.teams.join(" / ")]
   ];
 
   pairs.forEach(([label, value]) => {
@@ -156,10 +137,7 @@ function render() {
   const sorted = sortItems(filtered, sortSelect.value);
 
   if (sorted.length === 0) {
-    const empty = document.createElement("article");
-    empty.className = "state-card";
-    empty.textContent = "Nenhum campeao encontrado para este filtro.";
-    stateContainer.replaceChildren(empty);
+    renderEmptyState(stateContainer, "Nenhum campeão encontrado para este filtro.");
     return;
   }
 
@@ -167,11 +145,13 @@ function render() {
   grid.className = "grid grid-champions";
   sorted.forEach((champion) => grid.appendChild(createCard(champion)));
   stateContainer.replaceChildren(grid);
+  
+  announceToScreenReader(`${sorted.length} campeões exibidos.`);
 }
 
 function init() {
   setupNavActiveState();
-  renderSkeleton();
+  renderSkeleton(stateContainer, 6, "grid");
 
   const query = readQueryParams();
   sortSelect.value = query.sort;
@@ -185,7 +165,8 @@ function init() {
   sortSelect.addEventListener("change", onControlsChange);
   titlesFilter.addEventListener("change", onControlsChange);
 
-  window.setTimeout(render, 0);
+  // Pequeno delay para simular carregamento e mostrar skeletons
+  window.setTimeout(render, 300);
 }
 
 init();

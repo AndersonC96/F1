@@ -1,5 +1,6 @@
 import { fetchCurrentSchedule } from "./api.js";
 import { formatRaceDate, setupNavActiveState, toFlag, getOfficialRaceName2026 } from "./static-data.js";
+import { renderSkeleton, renderError, showCacheFeedback } from "./ui-utils.js";
 
 const stateContainer = document.getElementById("calendar-state");
 
@@ -8,46 +9,9 @@ function raceToTime(race) {
   return new Date(iso).getTime();
 }
 
-function renderSkeleton() {
-  const wrap = document.createElement("div");
-  wrap.className = "list";
-
-  for (let i = 0; i < 8; i += 1) {
-    const card = document.createElement("article");
-    card.className = "skeleton-card";
-
-    const lineA = document.createElement("div");
-    lineA.className = "skeleton skeleton-line short";
-    const lineB = document.createElement("div");
-    lineB.className = "skeleton skeleton-line medium";
-
-    card.append(lineA, lineB);
-    wrap.appendChild(card);
-  }
-
-  stateContainer.replaceChildren(wrap);
-}
-
-function renderError(onRetry) {
-  const card = document.createElement("article");
-  card.className = "state-card error";
-
-  const text = document.createElement("p");
-  text.textContent = "Nao foi possivel carregar o calendario nesta tentativa.";
-
-  const button = document.createElement("button");
-  button.type = "button";
-  button.className = "button";
-  button.textContent = "Tentar novamente";
-  button.addEventListener("click", onRetry);
-
-  card.append(text, button);
-  stateContainer.replaceChildren(card);
-}
-
 function createRaceItem(race, status) {
   const card = document.createElement("article");
-  card.className = `card calendar-item ${status}`.trim();
+  card.className = `card calendar-item ${status} reveal-up`.trim();
 
   const round = document.createElement("div");
   round.className = "round";
@@ -60,7 +24,7 @@ function createRaceItem(race, status) {
 
   const subtitle = document.createElement("p");
   subtitle.className = "card-subtitle";
-  subtitle.textContent = `${race.Circuit.circuitName} - ${formatRaceDate(race.date, race.time)}`;
+  subtitle.textContent = `${race.Circuit.circuitName} — ${formatRaceDate(race.date, race.time)}`;
 
   info.append(title, subtitle);
 
@@ -73,12 +37,12 @@ function createRaceItem(race, status) {
   } else if (status === "past") {
     const resultText = document.createElement("span");
     resultText.className = "badge";
-    resultText.textContent = "Resultado";
+    resultText.textContent = "CONCLUÍDA";
     side.appendChild(resultText);
   } else {
     const dateText = document.createElement("span");
     dateText.className = "badge";
-    dateText.textContent = race.date;
+    dateText.textContent = "AGENDADA";
     side.appendChild(dateText);
   }
 
@@ -90,7 +54,7 @@ function renderCalendar(races) {
   if (!races.length) {
     const empty = document.createElement("article");
     empty.className = "state-card";
-    empty.textContent = "Calendario indisponivel para esta temporada.";
+    empty.textContent = "Calendário indisponível para esta temporada.";
     stateContainer.replaceChildren(empty);
     return;
   }
@@ -121,13 +85,14 @@ function renderCalendar(races) {
 }
 
 async function loadCalendar() {
-  renderSkeleton();
+  renderSkeleton(stateContainer, 8, "list");
 
   try {
-    const races = await fetchCurrentSchedule();
-    renderCalendar(races);
+    const result = await fetchCurrentSchedule();
+    showCacheFeedback(result.timestamp);
+    renderCalendar(result.items);
   } catch {
-    renderError(loadCalendar);
+    renderError(stateContainer, "Não foi possível carregar o calendário agora.", loadCalendar);
   }
 }
 

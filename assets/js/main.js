@@ -17,6 +17,7 @@ import {
   translateCountry,
   getOfficialTeamName
 } from "./static-data.js";
+import { renderError, showCacheFeedback } from "./ui-utils.js";
 
 const nextRaceState = document.getElementById("next-race-state");
 const lastRaceState = document.getElementById("last-race-state");
@@ -38,25 +39,6 @@ function createSkeletonBlock(lines = 4) {
   return card;
 }
 
-function renderErrorState(target, message, onRetry) {
-  target.replaceChildren();
-
-  const card = document.createElement("article");
-  card.className = "state-card error";
-
-  const text = document.createElement("p");
-  text.textContent = message;
-
-  const retryButton = document.createElement("button");
-  retryButton.type = "button";
-  retryButton.className = "button";
-  retryButton.textContent = "Tentar novamente";
-  retryButton.addEventListener("click", onRetry);
-
-  card.append(text, retryButton);
-  target.appendChild(card);
-}
-
 function raceDateToTimestamp(race) {
   const isoDate = race.time ? `${race.date}T${race.time}` : `${race.date}T12:00:00Z`;
   return new Date(isoDate).getTime();
@@ -73,7 +55,6 @@ function formatCountdown(milliseconds) {
 }
 
 function cleanRaceName(name) {
-  // Remove prefixos como "JP " de nomes vindos da API.
   return name.replace(/^[A-Z]{2,3}\s+/, "");
 }
 
@@ -128,22 +109,18 @@ function buildPodiumComponent(results) {
   const container = document.createElement("div");
   container.className = "podium-grid";
 
-  const ranks = ["1ST", "2ND", "3RD"];
   const rankSuffixes = ["ST", "ND", "RD"];
 
   results.forEach((result, index) => {
     const card = document.createElement("div");
     card.className = "podium-card";
 
-    // Rank
     const rankEl = document.createElement("div");
     rankEl.className = "podium-rank";
     rankEl.innerHTML = `${index + 1}<span>${rankSuffixes[index]}</span>`;
     
-    // Driver Info
     const staticInfo = resolveDriverStaticInfo(result.Driver);
     
-    // Avatar
     const avatar = document.createElement("img");
     avatar.className = "podium-avatar";
     avatar.src = staticInfo.photo || PLACEHOLDER_DRIVER_IMAGE;
@@ -153,7 +130,6 @@ function buildPodiumComponent(results) {
       card.style.borderLeftColor = staticInfo.teamColor;
     }
 
-    // Info Wrap
     const info = document.createElement("div");
     info.className = "podium-info";
 
@@ -178,6 +154,7 @@ function buildPodiumComponent(results) {
 
   return container;
 }
+
 function buildRaceDetailsGrid(race) {
   const grid = document.createElement("div");
   grid.className = "race-details-grid";
@@ -231,7 +208,7 @@ function buildCountdownHud(eventTime) {
 
 function buildNextRaceCard(nextRace, isSeasonClosed = false) {
   const card = document.createElement("article");
-  card.className = "card highlight";
+  card.className = "card highlight reveal-up";
 
   const headerTop = document.createElement("div");
   headerTop.className = "card-header-top";
@@ -259,7 +236,7 @@ function buildNextRaceCard(nextRace, isSeasonClosed = false) {
   const footer = document.createElement("p");
   footer.className = "muted";
   footer.textContent = isSeasonClosed
-    ? `Primeira corrida da proxima temporada: ${formatRaceDate(nextRace.date, nextRace.time)}`
+    ? `Próxima temporada: ${formatRaceDate(nextRace.date, nextRace.time)}`
     : ``;
 
   const wrapper = document.createElement("div");
@@ -295,7 +272,7 @@ function buildNextRaceCard(nextRace, isSeasonClosed = false) {
 
 function buildLastRaceCard(lastRace) {
   const card = document.createElement("article");
-  card.className = "card";
+  card.className = "card reveal-up";
 
   const headerTop = document.createElement("div");
   headerTop.className = "card-header-top";
@@ -322,14 +299,12 @@ function buildLastRaceCard(lastRace) {
   if (results.length === 0) {
     const empty = document.createElement("p");
     empty.className = "muted";
-    empty.textContent = "Resultado ainda nao disponivel para esta etapa.";
+    empty.textContent = "Resultado ainda não disponível para esta etapa.";
     card.append(headerTop, subtitle, empty);
     return card;
   }
 
   const grid = buildRaceDetailsGrid(lastRace);
-
-  const footer = document.createElement("p");
 
   const wrapper = document.createElement("div");
   wrapper.className = "card-content-wrapper";
@@ -337,7 +312,7 @@ function buildLastRaceCard(lastRace) {
   const mainInfo = document.createElement("div");
   mainInfo.style.flex = "1.5";
 
-  mainInfo.append(headerTop, subtitle, podiumWrapper, grid, footer);
+  mainInfo.append(headerTop, subtitle, podiumWrapper, grid);
 
   const circuitKey = lastRace.Circuit.circuitId.replace(/-/g, "_");
   const staticInfo = CIRCUIT_STATIC[circuitKey] || {};
@@ -364,7 +339,7 @@ function buildLastRaceCard(lastRace) {
 
 function createTable(titleText, rows, isConstructorTable = false) {
   const card = document.createElement("article");
-  card.className = "card";
+  card.className = "card reveal-up";
 
   const title = document.createElement("h3");
   title.className = "card-title";
@@ -442,11 +417,11 @@ async function resolveNextRace(schedule) {
   }
 
   const nextSeason = new Date().getFullYear() + 1;
-  const nextSeasonSchedule = await fetchScheduleBySeason(nextSeason);
-  const firstRound = [...nextSeasonSchedule].sort((a, b) => raceDateToTimestamp(a) - raceDateToTimestamp(b))[0];
+  const nextSeasonScheduleResult = await fetchScheduleBySeason(nextSeason);
+  const firstRound = [...nextSeasonScheduleResult.items].sort((a, b) => raceDateToTimestamp(a) - raceDateToTimestamp(b))[0];
 
   if (!firstRound) {
-    throw new Error("Nao foi possivel identificar a proxima corrida.");
+    throw new Error("Não foi possível identificar a próxima corrida.");
   }
 
   return { race: firstRound, isSeasonClosed: true };
@@ -464,44 +439,52 @@ async function loadHomeData() {
     fetchCurrentConstructorStandings()
   ]);
 
-  if (scheduleState.status === "fulfilled" && Array.isArray(scheduleState.value) && scheduleState.value.length > 0) {
+  let maxTimestamp = 0;
+  [scheduleState, resultsState, driversState, constructorsState].forEach(s => {
+    if (s.status === "fulfilled" && s.value.timestamp > maxTimestamp) {
+      maxTimestamp = s.value.timestamp;
+    }
+  });
+  if (maxTimestamp > 0) showCacheFeedback(maxTimestamp);
+
+  if (scheduleState.status === "fulfilled" && Array.isArray(scheduleState.value.items) && scheduleState.value.items.length > 0) {
     try {
-      const nextRaceInfo = await resolveNextRace(scheduleState.value);
+      const nextRaceInfo = await resolveNextRace(scheduleState.value.items);
       nextRaceState.replaceChildren(buildNextRaceCard(nextRaceInfo.race, nextRaceInfo.isSeasonClosed));
     } catch {
-      renderErrorState(nextRaceState, "Falha ao carregar a proxima corrida.", loadHomeData);
+      renderError(nextRaceState, "Falha ao carregar a próxima corrida.", loadHomeData);
     }
   } else {
-    renderErrorState(nextRaceState, "Falha ao carregar a proxima corrida.", loadHomeData);
+    renderError(nextRaceState, "Falha ao carregar a próxima corrida.", loadHomeData);
   }
 
-  if (resultsState.status === "fulfilled" && Array.isArray(resultsState.value)) {
-    const lastRace = [...resultsState.value].sort((a, b) => Number(b.round) - Number(a.round))[0];
+  if (resultsState.status === "fulfilled" && Array.isArray(resultsState.value.items)) {
+    const lastRace = [...resultsState.value.items].sort((a, b) => Number(b.round) - Number(a.round))[0];
     if (lastRace) {
       try {
         lastRaceState.replaceChildren(buildLastRaceCard(lastRace));
       } catch {
-        renderErrorState(lastRaceState, "Falha ao carregar o resultado da ultima corrida.", loadHomeData);
+        renderError(lastRaceState, "Falha ao carregar o resultado da última corrida.", loadHomeData);
       }
     } else {
       const emptyCard = document.createElement("article");
       emptyCard.className = "state-card";
-      emptyCard.textContent = "Ainda nao ha resultado oficial registrado para esta temporada.";
+      emptyCard.textContent = "Ainda não há resultado oficial registrado para esta temporada.";
       lastRaceState.replaceChildren(emptyCard);
     }
   } else {
-    renderErrorState(lastRaceState, "Falha ao carregar o resultado da ultima corrida.", loadHomeData);
+    renderError(lastRaceState, "Falha ao carregar o resultado da última corrida.", loadHomeData);
   }
 
-  const driverStandings = driversState.status === "fulfilled" && Array.isArray(driversState.value)
-    ? driversState.value
+  const driverStandings = driversState.status === "fulfilled" && Array.isArray(driversState.value.items)
+    ? driversState.value.items
     : [];
-  const constructorStandings = constructorsState.status === "fulfilled" && Array.isArray(constructorsState.value)
-    ? constructorsState.value
+  const constructorStandings = constructorsState.status === "fulfilled" && Array.isArray(constructorsState.value.items)
+    ? constructorsState.value.items
     : [];
 
   if (driverStandings.length === 0 && constructorStandings.length === 0) {
-    renderErrorState(quickStandingsState, "Falha ao carregar a classificacao rapida.", loadHomeData);
+    renderError(quickStandingsState, "Falha ao carregar a classificação rápida.", loadHomeData);
     return;
   }
 

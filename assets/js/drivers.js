@@ -1,5 +1,6 @@
 import { fetchCurrentDriverStandings, fetchDrivers } from "./api.js";
 import { DRIVER_STATIC, PLACEHOLDER_DRIVER_IMAGE, TEAM_STATIC, getOfficialTeamName, setupNavActiveState, toFlagUrl } from "./static-data.js";
+import { renderSkeleton, renderError, renderEmptyState, showCacheFeedback, announceToScreenReader } from "./ui-utils.js";
 
 const stateContainer = document.getElementById("drivers-state");
 const searchInput = document.getElementById("search-input");
@@ -38,43 +39,6 @@ function getSortFromUrl() {
   const value = new URL(window.location.href).searchParams.get("sort");
   const allowed = ["standing", "name", "team", "points", "wins", "poles"];
   return allowed.includes(value) ? value : "standing";
-}
-
-function renderSkeleton() {
-  const grid = document.createElement("div");
-  grid.className = "grid grid-drivers";
-
-  for (let i = 0; i < 6; i += 1) {
-    const skeletonCard = document.createElement("article");
-    skeletonCard.className = "skeleton-card";
-
-    for (let line = 0; line < 5; line += 1) {
-      const skeletonLine = document.createElement("div");
-      skeletonLine.className = `skeleton skeleton-line ${line === 0 ? "short" : "medium"}`;
-      skeletonCard.appendChild(skeletonLine);
-    }
-
-    grid.appendChild(skeletonCard);
-  }
-
-  stateContainer.replaceChildren(grid);
-}
-
-function renderError(onRetry) {
-  const card = document.createElement("article");
-  card.className = "state-card error";
-
-  const text = document.createElement("p");
-  text.textContent = "Nao foi possivel carregar os pilotos agora.";
-
-  const button = document.createElement("button");
-  button.type = "button";
-  button.className = "button";
-  button.textContent = "Tentar novamente";
-  button.addEventListener("click", onRetry);
-
-  card.append(text, button);
-  stateContainer.replaceChildren(card);
 }
 
 function applySort(items, sortBy) {
@@ -178,16 +142,9 @@ function appendDetailRow(dl, label, value, linkHref = "") {
   dl.append(dt, dd);
 }
 
-function renderEmptyState() {
-  const card = document.createElement("article");
-  card.className = "state-card";
-  card.textContent = "Nenhum piloto encontrado com os filtros atuais.";
-  stateContainer.replaceChildren(card);
-}
-
 function buildDriverCard(driver) {
   const article = document.createElement("article");
-  article.className = "driver-card";
+  article.className = "driver-card reveal-up";
 
   const header = document.createElement("div");
   header.className = "driver-header";
@@ -296,7 +253,7 @@ function renderDrivers() {
   const sorted = applySort(filtered, sortBy);
 
   if (sorted.length === 0) {
-    renderEmptyState();
+    renderEmptyState(stateContainer, "Nenhum piloto encontrado com os filtros atuais.");
     return;
   }
 
@@ -308,17 +265,27 @@ function renderDrivers() {
   });
 
   stateContainer.replaceChildren(grid);
+  
+  if (query) {
+    announceToScreenReader(`${sorted.length} pilotos encontrados para "${query}"`);
+  }
 }
 
 async function loadDrivers() {
-  renderSkeleton();
+  renderSkeleton(stateContainer);
 
   try {
     const currentYear = new Date().getFullYear();
-    const [driverStandings, allDrivers] = await Promise.all([
+    const [driverStandingsResult, allDriversResult] = await Promise.all([
       fetchCurrentDriverStandings(),
       fetchDrivers(currentYear)
     ]);
+
+    const driverStandings = driverStandingsResult.items;
+    const allDrivers = allDriversResult.items;
+    
+    // Mostra feedback do cache usando o timestamp mais recente
+    showCacheFeedback(Math.max(driverStandingsResult.timestamp, allDriversResult.timestamp));
 
     const driversById = new Map(allDrivers.map((entry) => [entry.driverId, entry]));
 
@@ -352,7 +319,7 @@ async function loadDrivers() {
 
     renderDrivers();
   } catch {
-    renderError(loadDrivers);
+    renderError(stateContainer, "Não foi possível carregar os pilotos agora.", loadDrivers);
   }
 }
 
