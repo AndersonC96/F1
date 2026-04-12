@@ -54,6 +54,10 @@ function createTeamCard(team) {
   logo.src = team.logo;
   logo.alt = `Logo da equipe ${team.name}`;
   logo.loading = "lazy";
+  // Force styles inline to bypass zombie CSS caches
+  logo.style.background = "rgba(255, 255, 255, 0.05)";
+  logo.style.padding = "8px";
+  logo.style.objectFit = "contain";
   setImageFallback(logo);
 
   const textWrap = document.createElement("div");
@@ -69,18 +73,18 @@ function createTeamCard(team) {
 
   const meta = document.createElement("p");
   meta.className = "meta";
-  meta.textContent = `Pilotos: ${team.drivers.join(" / ") || "-"}`;
+  meta.textContent = `PILOTOS ${team.drivers.join(" / ") || "-"}`;
 
   const badges = document.createElement("div");
   badges.className = "kpis";
 
   const positionBadge = document.createElement("span");
   positionBadge.className = "badge badge-accent";
-  positionBadge.textContent = `P${team.position}`;
+  positionBadge.textContent = `POS ${team.position}`;
 
   const pointsBadge = document.createElement("span");
   pointsBadge.className = "badge";
-  pointsBadge.textContent = `${team.points} pts`;
+  pointsBadge.textContent = `${team.points} PTS`;
 
   badges.append(positionBadge, pointsBadge);
   textWrap.append(nameBrand, nameOfficial, meta, badges);
@@ -121,7 +125,9 @@ function createTeamCard(team) {
       details.appendChild(carImage);
     }
 
-    const dl = document.createElement("dl");
+    const detailsGrid = document.createElement("div");
+    detailsGrid.className = "race-details-grid";
+
     const pairs = [
       ["Chefe de equipe", team.principal],
       ["Chefe técnico", team.technicalChief],
@@ -133,14 +139,22 @@ function createTeamCard(team) {
     ];
 
     pairs.forEach(([label, value]) => {
-      const dt = document.createElement("dt");
+      const item = document.createElement("div");
+      item.className = "detail-item";
+      
+      const dt = document.createElement("span");
+      dt.className = "detail-label";
       dt.textContent = label;
-      const dd = document.createElement("dd");
+
+      const dd = document.createElement("div");
+      dd.className = "detail-value";
       dd.textContent = value || "-";
-      dl.append(dt, dd);
+
+      item.append(dt, dd);
+      detailsGrid.append(item);
     });
 
-    details.appendChild(dl);
+    details.appendChild(detailsGrid);
     article.appendChild(details);
   }
 

@@ -163,17 +163,17 @@ function buildRaceDetailsGrid(race) {
   const staticInfo = CIRCUIT_STATIC[circuitKey] || { laps: "-", length: "-", distance: "-", firstGP: "-" };
 
   grid.append(
-    buildDetailItem("CIRCUIT: ", race.Circuit.circuitName),
-    buildDetailItem("LENGTH: ", staticInfo.length),
-    buildDetailItem("DISTANCE: ", staticInfo.distance),
-    buildDetailItem("LAPS: ", staticInfo.laps),
-    buildDetailItem("ESTABLISHED: ", staticInfo.firstGP),
-    buildDetailItem("LOCAL TIME: ", formatRaceDate(race.date, race.time))
+    buildDetailItem("CIRCUITO", race.Circuit.circuitName),
+    buildDetailItem("EXTENSÃO", staticInfo.length),
+    buildDetailItem("DISTÂNCIA", staticInfo.distance),
+    buildDetailItem("VOLTAS", staticInfo.laps),
+    buildDetailItem("ESTREIA", staticInfo.firstGP),
+    buildDetailItem("DATA LOCAL", formatRaceDate(race.date, race.time))
   );
 
   if (staticInfo.fastestLap) {
     const fl = staticInfo.fastestLap;
-    grid.append(buildDetailItem("TRACK RECORD: ", `${fl.time} (${fl.driver}, ${fl.year})`));
+    grid.append(buildDetailItem("RECORDE", `${fl.time} (${fl.driver}, ${fl.year})`));
   }
 
   return grid;
@@ -185,7 +185,7 @@ function buildCountdownHud(eventTime) {
   
   const label = document.createElement("span");
   label.className = "label";
-  label.textContent = "T-MINUS";
+  label.textContent = "LARGADA DA CORRIDA EM";
   
   const timer = document.createElement("span");
   timer.className = "timer";
@@ -202,7 +202,11 @@ function buildCountdownHud(eventTime) {
   }
   countdownInterval = window.setInterval(updateTimer, 1000);
   
-  hud.append(label, timer);
+  const wrapper = document.createElement("div");
+  wrapper.className = "timer-wrapper";
+  wrapper.append(label, timer);
+  
+  hud.append(wrapper);
   return hud;
 }
 
@@ -236,7 +240,7 @@ function buildNextRaceCard(nextRace, isSeasonClosed = false) {
   const footer = document.createElement("p");
   footer.className = "muted";
   footer.textContent = isSeasonClosed
-    ? `Próxima temporada: ${formatRaceDate(nextRace.date, nextRace.time)}`
+    ? `PROXIMA TEMPORADA ${formatRaceDate(nextRace.date, nextRace.time)}`
     : ``;
 
   const wrapper = document.createElement("div");
@@ -392,6 +396,10 @@ function createTable(titleText, rows, isConstructorTable = false) {
         img.src = logoUrl;
         img.alt = getOfficialTeamName(constructor?.name || "-");
         img.title = getOfficialTeamName(constructor?.name || "-");
+        // Protection against stale CSS backgrounds
+        img.style.background = "rgba(255, 255, 255, 0.1)";
+        img.style.padding = "2px";
+        img.style.borderRadius = "2px";
         secondary.replaceChildren(img);
       } else {
         secondary.textContent = getOfficialTeamName(constructor?.name || "-");

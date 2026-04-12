@@ -392,6 +392,7 @@ img {
   width: 100px;
   height: 100px;
   object-fit: cover;
+  object-position: top center; /* Focus on the driver's face */
   border-radius: var(--radius-sm);
   background: var(--bg);
   border: 1px solid var(--border);
@@ -402,7 +403,8 @@ img {
   height: 72px;
   object-fit: contain;
   padding: 0.5rem;
-  background: #fff; /* logos usually need light bg */
+  background: rgba(255, 255, 255, 0.05) !important; /* Force visibility over dark card */
+  border: 1px solid var(--border);
 }
 
 .name-brand {
@@ -503,26 +505,7 @@ img {
   background: rgba(0, 0, 0, 0.2);
 }
 
-.details dl {
-  margin: 0;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1rem 1.5rem;
-}
-
-.details dt {
-  color: var(--text-muted);
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  font-weight: 700;
-  letter-spacing: 0.05em;
-}
-
-.details dd {
-  margin: 0.2rem 0 0;
-  font-size: 1rem;
-  font-weight: 600;
-}
+/* Detalhes unificados via .race-details-grid e .detail-item */
 
 .list {
   display: flex;
@@ -605,33 +588,73 @@ img {
 
 .race-details-grid {
   display: grid;
-  grid-template-columns: repeat(1, 1fr);
-  gap: 1.25rem;
-  margin: 1.5rem 0;
-  padding: 1.5rem;
-  background: rgba(0, 0, 0, 0.4);
-  border-radius: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2.5rem 1.5rem;
+  margin: 2.5rem 0;
+  padding: 2rem;
+  background: var(--surface-muted);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
 }
 
-@media (min-width: 640px) {
+@media (min-width: 992px) {
   .race-details-grid {
     grid-template-columns: repeat(3, 1fr);
   }
 }
 
+.detail-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.detail-item:last-child {
+  grid-column: 1 / -1;
+  margin-top: 1rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+}
+
+.detail-label {
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: #888;
+  font-weight: 800;
+}
+
+.detail-value {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.2;
+  font-family: var(--font-mono);
+}
+
 .circuit-container {
-  flex: 1;
+  flex: 1.2;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 2rem;
-  background: radial-gradient(circle at center, rgba(30, 30, 30, 0.8), rgba(0, 0, 0, 0.9));
-  border-radius: 15px;
-  min-height: 300px;
+  padding: 3rem;
+  background: radial-gradient(circle at center, rgba(30, 30, 30, 0.4), var(--bg));
   border: 1px solid var(--border);
+  border-radius: var(--radius);
+  min-height: 400px;
   position: relative;
-  box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.8);
+  overflow: hidden;
+}
+
+.circuit-container::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  background-size: 20px 20px;
+  pointer-events: none;
 }
 
 .circuit-map {
@@ -684,12 +707,28 @@ img {
   letter-spacing: 2px;
 }
 
+.countdown-hud .timer-wrapper {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.countdown-hud .label {
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.3em;
+  color: var(--accent);
+  opacity: 0.6;
+}
+
 .countdown-hud .timer {
   font-family: var(--font-mono);
-  font-size: 3rem;
+  font-size: 3.5rem;
   font-weight: 700;
   color: var(--text);
   line-height: 1;
+  letter-spacing: -0.02em;
 }
 
 .podium-card {

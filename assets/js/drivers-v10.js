@@ -83,7 +83,7 @@ function filterDrivers(items, query) {
 function createBadge(label, value) {
   const badge = document.createElement("span");
   badge.className = "badge";
-  badge.textContent = `${label}: ${value}`;
+  badge.textContent = `${label} ${value}`;
   return badge;
 }
 
@@ -123,11 +123,17 @@ function resolveDriverStaticData(driver, profile) {
   return {};
 }
 
-function appendDetailRow(dl, label, value, linkHref = "") {
-  const dt = document.createElement("dt");
+function appendDetailRow(container, label, value, linkHref = "") {
+  const item = document.createElement("div");
+  item.className = "detail-item";
+
+  const dt = document.createElement("span");
+  dt.className = "detail-label";
   dt.textContent = label;
 
-  const dd = document.createElement("dd");
+  const dd = document.createElement("div");
+  dd.className = "detail-value";
+  
   if (linkHref) {
     const link = document.createElement("a");
     link.href = linkHref;
@@ -139,7 +145,8 @@ function appendDetailRow(dl, label, value, linkHref = "") {
     dd.textContent = value;
   }
 
-  dl.append(dt, dd);
+  item.append(dt, dd);
+  container.append(item);
 }
 
 function buildDriverCard(driver) {
@@ -192,9 +199,9 @@ function buildDriverCard(driver) {
   const badges = document.createElement("div");
   badges.className = "kpis";
   badges.append(
-    createBadge("Pts", driver.points),
-    createBadge("Vitorias", driver.wins),
-    createBadge("Poles", driver.poles)
+    createBadge("PTS", driver.points),
+    createBadge("VITORIAS", driver.wins),
+    createBadge("POLES", driver.poles)
   );
 
   textWrap.append(name, meta, badges);
@@ -222,23 +229,25 @@ function buildDriverCard(driver) {
     const details = document.createElement("div");
     details.className = "details";
 
-    const dl = document.createElement("dl");
-    appendDetailRow(dl, "Posicao", String(driver.position));
-    appendDetailRow(dl, "Equipe", driver.fullTeam);
-    appendDetailRow(dl, "Pontos", String(driver.points));
-    appendDetailRow(dl, "Vitorias", String(driver.wins));
-    appendDetailRow(dl, "Poles", String(driver.poles));
-    appendDetailRow(dl, "Nascimento", driver.dateOfBirth || "-");
-    appendDetailRow(dl, "Local de nascimento", driver.placeOfBirth || "-");
-    appendDetailRow(dl, "Nacionalidade", driver.nationality || "-");
+    const detailsGrid = document.createElement("div");
+    detailsGrid.className = "race-details-grid"; // Reusing the same grid style for expanded details
+
+    appendDetailRow(detailsGrid, "Posicao", String(driver.position));
+    appendDetailRow(detailsGrid, "Equipe", driver.fullTeam);
+    appendDetailRow(detailsGrid, "Pontos", String(driver.points));
+    appendDetailRow(detailsGrid, "Vitorias", String(driver.wins));
+    appendDetailRow(detailsGrid, "Poles", String(driver.poles));
+    appendDetailRow(detailsGrid, "Nascimento", driver.dateOfBirth || "-");
+    appendDetailRow(detailsGrid, "Local de nascimento", driver.placeOfBirth || "-");
+    appendDetailRow(detailsGrid, "Nacionalidade", driver.nationality || "-");
 
     if (driver.website) {
-      appendDetailRow(dl, "Site oficial do piloto", "", driver.website);
+      appendDetailRow(detailsGrid, "Site oficial do piloto", "", driver.website);
     } else {
-      appendDetailRow(dl, "Site oficial do piloto", "Nao informado");
+      appendDetailRow(detailsGrid, "Site oficial do piloto", "Nao informado");
     }
 
-    details.appendChild(dl);
+    details.appendChild(detailsGrid);
     article.appendChild(details);
   }
 

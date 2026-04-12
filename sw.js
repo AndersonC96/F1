@@ -1,4 +1,4 @@
-const CACHE_NAME = 'f1-portal-v1';
+const CACHE_NAME = 'f1-portal-v13';
 const ASSETS_TO_CACHE = [
   './',
   './index.html',
@@ -7,15 +7,15 @@ const ASSETS_TO_CACHE = [
   './champions.html',
   './calendar.html',
   './404.html',
-  './assets/css/style.css',
+  './assets/css/styles-v7.css',
   './assets/css/animations.css',
   './assets/js/api.js',
   './assets/js/calendar.js',
   './assets/js/champions.js',
-  './assets/js/drivers.js',
-  './assets/js/main.js',
+  './assets/js/drivers-v10.js',
+  './assets/js/main-v10.js',
   './assets/js/static-data.js',
-  './assets/js/teams.js',
+  './assets/js/teams-v10.js',
   './assets/js/ui-utils.js',
   './assets/images/placeholder-driver.svg',
   './manifest.json'
