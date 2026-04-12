@@ -163,17 +163,17 @@ function buildRaceDetailsGrid(race) {
   const staticInfo = CIRCUIT_STATIC[circuitKey] || { laps: "-", length: "-", distance: "-", firstGP: "-" };
 
   grid.append(
-    buildDetailItem("CIRCUIT", race.Circuit.circuitName),
-    buildDetailItem("LENGTH", staticInfo.length),
-    buildDetailItem("DISTANCE", staticInfo.distance),
-    buildDetailItem("LAPS", staticInfo.laps),
-    buildDetailItem("ESTABLISHED", staticInfo.firstGP),
-    buildDetailItem("LOCAL TIME", formatRaceDate(race.date, race.time))
+    buildDetailItem("CIRCUIT: ", race.Circuit.circuitName),
+    buildDetailItem("LENGTH: ", staticInfo.length),
+    buildDetailItem("DISTANCE: ", staticInfo.distance),
+    buildDetailItem("LAPS: ", staticInfo.laps),
+    buildDetailItem("ESTABLISHED: ", staticInfo.firstGP),
+    buildDetailItem("LOCAL TIME: ", formatRaceDate(race.date, race.time))
   );
 
   if (staticInfo.fastestLap) {
     const fl = staticInfo.fastestLap;
-    grid.append(buildDetailItem("TRACK RECORD", `${fl.time} (${fl.driver}, ${fl.year})`));
+    grid.append(buildDetailItem("TRACK RECORD: ", `${fl.time} (${fl.driver}, ${fl.year})`));
   }
 
   return grid;
