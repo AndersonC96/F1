@@ -163,17 +163,17 @@ function buildRaceDetailsGrid(race) {
   const staticInfo = CIRCUIT_STATIC[circuitKey] || { laps: "-", length: "-", distance: "-", firstGP: "-" };
 
   grid.append(
-    buildDetailItem("Circuito", race.Circuit.circuitName),
-    buildDetailItem("Extensão", staticInfo.length),
-    buildDetailItem("Distância", staticInfo.distance),
-    buildDetailItem("Voltas", staticInfo.laps),
-    buildDetailItem("Primeiro GP", staticInfo.firstGP),
-    buildDetailItem("Data Local", formatRaceDate(race.date, race.time))
+    buildDetailItem("CIRCUIT", race.Circuit.circuitName),
+    buildDetailItem("LENGTH", staticInfo.length),
+    buildDetailItem("DISTANCE", staticInfo.distance),
+    buildDetailItem("LAPS", staticInfo.laps),
+    buildDetailItem("ESTABLISHED", staticInfo.firstGP),
+    buildDetailItem("LOCAL TIME", formatRaceDate(race.date, race.time))
   );
 
   if (staticInfo.fastestLap) {
     const fl = staticInfo.fastestLap;
-    grid.append(buildDetailItem("Recorde", `${fl.time} (${fl.driver}, ${fl.year})`));
+    grid.append(buildDetailItem("TRACK RECORD", `${fl.time} (${fl.driver}, ${fl.year})`));
   }
 
   return grid;
@@ -185,7 +185,7 @@ function buildCountdownHud(eventTime) {
   
   const label = document.createElement("span");
   label.className = "label";
-  label.textContent = "Largada da Corrida em";
+  label.textContent = "T-MINUS";
   
   const timer = document.createElement("span");
   timer.className = "timer";
@@ -504,7 +504,7 @@ async function loadHomeData() {
 
 function init() {
   setupNavActiveState();
-  currentYearElement.textContent = String(new Date().getFullYear());
+  if (currentYearElement) currentYearElement.textContent = String(new Date().getFullYear());
   loadHomeData();
 }
 

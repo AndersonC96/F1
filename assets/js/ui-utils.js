@@ -79,12 +79,8 @@ export function showCacheFeedback(timestamp) {
   info.id = "cache-info";
   info.className = "cache-feedback reveal-up";
   info.innerHTML = `
-    <span>Dados de cache (${timeStr})</span>
-    <button id="clear-cache-btn" title="Forçar atualização">
-      <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="3">
-        <path d="M23 4v6h-6M1 20v-6h6M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path>
-      </svg>
-    </button>
+    <span>TELEMETRY CACHE (${timeStr})</span>
+    <button id="clear-cache-btn" title="Forçar atualização">RELOAD</button>
   `;
 
   document.body.appendChild(info);
