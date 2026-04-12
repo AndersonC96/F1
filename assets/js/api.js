@@ -109,8 +109,8 @@ export async function fetchCurrentSchedule() {
 export async function fetchCurrentResults() {
   try {
     return await safeFetchArray(
-      `${API_BASE}/current/results.json?limit=5`,
-      "f1_current_results",
+      `${API_BASE}/current/last/results.json`,
+      "f1_last_results",
       ["MRData", "RaceTable", "Races"]
     );
   } catch {

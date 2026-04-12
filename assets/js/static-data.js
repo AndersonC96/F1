@@ -998,7 +998,7 @@ export const CIRCUIT_STATIC = {
     distance: "305.879km",
     firstGP: 1973,
     fastestLap: { time: "1:10.540", driver: "Valtteri Bottas", year: 2018 },
-    image: "https://media.formula1.com/image/upload/content/dam/fom-website/2018-redesign-assets/circuit-maps-16-9/Brazil_Circuit.png"
+    image: "https://media.formula1.com/image/upload/c_fit,h_704/q_auto/v1740000001/common/f1/2026/track/2026trackinterlagosdetailed.webp"
   },
   silverstone: {
     laps: 52,
@@ -1006,7 +1006,7 @@ export const CIRCUIT_STATIC = {
     distance: "306.198km",
     firstGP: 1950,
     fastestLap: { time: "1:27.097", driver: "Max Verstappen", year: 2020 },
-    image: "https://media.formula1.com/image/upload/content/dam/fom-website/2018-redesign-assets/circuit-maps-16-9/Great_Britain_Circuit.png"
+    image: "https://media.formula1.com/image/upload/c_fit,h_704/q_auto/v1740000001/common/f1/2026/track/2026tracksilverstonedetailed.webp"
   },
   monaco: {
     laps: 78,
@@ -1014,23 +1014,23 @@ export const CIRCUIT_STATIC = {
     distance: "260.286km",
     firstGP: 1950,
     fastestLap: { time: "1:12.909", driver: "Lewis Hamilton", year: 2021 },
-    image: "https://media.formula1.com/image/upload/content/dam/fom-website/2018-redesign-assets/circuit-maps-16-9/Monaco_Circuit.png"
+    image: "https://media.formula1.com/image/upload/c_fit,h_704/q_auto/v1740000001/common/f1/2026/track/2026trackmontecarlodetailed.webp"
   },
   monza: {
     laps: 53,
     length: "5.793km",
-    distance: "306.720km",
+    distance: "306.72km",
     firstGP: 1950,
-    fastestLap: { time: "1:21.046", driver: "Rubens Barrichello", year: 2004 },
-    image: "https://media.formula1.com/image/upload/content/dam/fom-website/2018-redesign-assets/circuit-maps-16-9/Italy_Circuit.png"
+    fastestLap: { time: "1:20.901", driver: "Lando Norris", year: 2025 },
+    image: "https://media.formula1.com/image/upload/c_fit,h_704/q_auto/v1740000001/common/f1/2026/track/2026trackmonzadetailed.webp"
   },
   spa: {
     laps: 44,
     length: "7.004km",
     distance: "308.052km",
     firstGP: 1950,
-    fastestLap: { time: "1:46.286", driver: "Valtteri Bottas", year: 2018 },
-    image: "https://media.formula1.com/image/upload/content/dam/fom-website/2018-redesign-assets/circuit-maps-16-9/Belgium_Circuit.png"
+    fastestLap: { time: "1:44.701", driver: "Sergio Perez", year: 2024 },
+    image: "https://media.formula1.com/image/upload/c_fit,h_704/q_auto/v1740000001/common/f1/2026/track/2026trackspafrancorchampsdetailed.webp"
   },
   albert_park: {
     laps: 58,
@@ -1050,20 +1050,112 @@ export const CIRCUIT_STATIC = {
     fastestLap: { time: "1:29.708", driver: "Max Verstappen", year: 2023 },
     image: "https://media.formula1.com/image/upload/c_fit,h_704/q_auto/v1740000001/common/f1/2026/track/2026trackmiamidetailed.webp"
   },
-  catalunya: { laps: 66, length: "4.657km", distance: "307.236km", firstGP: 1991, image: "https://media.formula1.com/image/upload/content/dam/fom-website/2018-redesign-assets/circuit-maps-16-9/Spain_Circuit.png" },
-  red_bull_ring: { laps: 71, length: "4.318km", distance: "306.452km", firstGP: 1970, image: "https://media.formula1.com/image/upload/content/dam/fom-website/2018-redesign-assets/circuit-maps-16-9/Austria_Circuit.png" },
-  hungaroring: { laps: 70, length: "4.381km", distance: "306.630km", firstGP: 1986, image: "https://media.formula1.com/image/upload/content/dam/fom-website/2018-redesign-assets/circuit-maps-16-9/Hungary_Circuit.png" },
-  zandvoort: { laps: 72, length: "4.259km", distance: "306.587km", firstGP: 1952, image: "https://media.formula1.com/image/upload/content/dam/fom-website/2018-redesign-assets/circuit-maps-16-9/Netherlands_Circuit.png" },
-  baku: { laps: 51, length: "6.003km", distance: "306.049km", firstGP: 2016, image: "https://media.formula1.com/image/upload/content/dam/fom-website/2018-redesign-assets/circuit-maps-16-9/Azerbaijan_Circuit.png" },
-  marina_bay: { laps: 62, length: "4.940km", distance: "306.143km", firstGP: 2008, image: "https://media.formula1.com/image/upload/content/dam/fom-website/2018-redesign-assets/circuit-maps-16-9/Singapore_Circuit.png" },
-  americas: { laps: 56, length: "5.513km", distance: "308.405km", firstGP: 2012, image: "https://media.formula1.com/image/upload/content/dam/fom-website/2018-redesign-assets/circuit-maps-16-9/USA_Circuit.png" },
-  rodriguez: { laps: 71, length: "4.304km", distance: "305.354km", firstGP: 1963, image: "https://media.formula1.com/image/upload/content/dam/fom-website/2018-redesign-assets/circuit-maps-16-9/Mexico_Circuit.png" },
-  las_vegas: { laps: 50, length: "6.201km", distance: "310.050km", firstGP: 1982, image: "https://media.formula1.com/image/upload/content/dam/fom-website/2018-redesign-assets/circuit-maps-16-9/Las_Vegas_Circuit.png" },
-  losail: { laps: 57, length: "5.419km", distance: "308.611km", firstGP: 2021, image: "https://media.formula1.com/image/upload/content/dam/fom-website/2018-redesign-assets/circuit-maps-16-9/Qatar_Circuit.png" },
-  yas_marina: { laps: 58, length: "5.281km", distance: "306.183km", firstGP: 2009, image: "https://media.formula1.com/image/upload/content/dam/fom-website/2018-redesign-assets/circuit-maps-16-9/Abu_Dhabi_Circuit.png" },
+  catalunya: {
+    laps: 66,
+    length: "4.657km",
+    distance: "307.236km",
+    firstGP: 1991,
+    fastestLap: { time: "1:15.743", driver: "Oscar Piastri", year: 2025 },
+    image: "https://media.formula1.com/image/upload/c_fit,h_704/q_auto/v1740000001/common/f1/2026/track/2026trackcatalunyadetailed.webp"
+  },
+  red_bull_ring: {
+    laps: 71,
+    length: "4.326km",
+    distance: "307.018km",
+    firstGP: 1970,
+    fastestLap: { time: "1:07.924", driver: "Oscar Piastri", year: 2025 },
+    image: "https://media.formula1.com/image/upload/c_fit,h_704/q_auto/v1740000001/common/f1/2026/track/2026trackspielbergdetailed.webp"
+  },
+  hungaroring: {
+    laps: 70,
+    length: "4.381km",
+    distance: "306.63km",
+    firstGP: 1986,
+    fastestLap: { time: "1:16.627", driver: "Lewis Hamilton", year: 2020 },
+    image: "https://media.formula1.com/image/upload/c_fit,h_704/q_auto/v1740000001/common/f1/2026/track/2026trackhungaroringdetailed.webp"
+  },
+  zandvoort: {
+    laps: 72,
+    length: "4.259km",
+    distance: "306.587km",
+    firstGP: 1952,
+    fastestLap: { time: "1:11.097", driver: "Lewis Hamilton", year: 2021 },
+    image: "https://media.formula1.com/image/upload/c_fit,h_704/q_auto/v1740000001/common/f1/2026/track/2026trackzandvoortdetailed.webp"
+  },
+  baku: {
+    laps: 51,
+    length: "6.003km",
+    distance: "306.049km",
+    firstGP: 2016,
+    fastestLap: { time: "1:43.009", driver: "Charles Leclerc", year: 2019 },
+    image: "https://media.formula1.com/image/upload/c_fit,h_704/q_auto/v1740000001/common/f1/2026/track/2026trackbakudetailed.webp"
+  },
+  marina_bay: {
+    laps: 62,
+    length: "4.927km",
+    distance: "305.337km",
+    firstGP: 2008,
+    fastestLap: { time: "1:33.808", driver: "Lewis Hamilton", year: 2025 },
+    image: "https://media.formula1.com/image/upload/c_fit,h_704/q_auto/v1740000001/common/f1/2026/track/2026tracksingaporedetailed.webp"
+  },
+  americas: {
+    laps: 56,
+    length: "5.513km",
+    distance: "308.405km",
+    firstGP: 2012,
+    fastestLap: { time: "1:36.169", driver: "Charles Leclerc", year: 2019 },
+    image: "https://media.formula1.com/image/upload/c_fit,h_704/q_auto/v1740000001/common/f1/2026/track/2026trackaustindetailed.webp"
+  },
+  rodriguez: {
+    laps: 71,
+    length: "4.304km",
+    distance: "305.354km",
+    firstGP: 1963,
+    fastestLap: { time: "1:17.774", driver: "Valtteri Bottas", year: 2021 },
+    image: "https://media.formula1.com/image/upload/c_fit,h_704/q_auto/v1740000001/common/f1/2026/track/2026trackmexicocitydetailed.webp"
+  },
+  las_vegas: {
+    laps: 50,
+    length: "6.201km",
+    distance: "309.958km",
+    firstGP: 2023,
+    fastestLap: { time: "1:33.365", driver: "Max Verstappen", year: 2025 },
+    image: "https://media.formula1.com/image/upload/c_fit,h_704/q_auto/v1740000001/common/f1/2026/track/2026tracklasvegasdetailed.webp"
+  },
+  losail: {
+    laps: 57,
+    length: "5.419km",
+    distance: "308.611km",
+    firstGP: 2021,
+    fastestLap: { time: "1:22.384", driver: "Lando Norris", year: 2024 },
+    image: "https://media.formula1.com/image/upload/c_fit,h_704/q_auto/v1740000001/common/f1/2026/track/2026tracklusaildetailed.webp"
+  },
+  madrid: {
+    laps: 57,
+    length: "5.416km",
+    distance: "308.524km",
+    firstGP: 2026,
+    fastestLap: { time: "--", driver: "--", year: "--" },
+    image: "https://media.formula1.com/image/upload/c_fit,h_704/q_auto/v1740000001/common/f1/2026/track/2026trackmadringdetailed.webp"
+  },
+  yas_marina: {
+    laps: 58,
+    length: "5.281km",
+    distance: "306.183km",
+    firstGP: 2009,
+    fastestLap: { time: "1:25.637", driver: "Kevin Magnussen", year: 2024 },
+    image: "https://media.formula1.com/image/upload/c_fit,h_704/q_auto/v1740000001/common/f1/2026/track/2026trackyasmarinacircuitdetailed.webp"
+  },
   shanghai: { laps: 56, length: "5.451km", distance: "305.066km", firstGP: 2004, image: "https://media.formula1.com/image/upload/content/dam/fom-website/2018-redesign-assets/circuit-maps-16-9/China_Circuit.png" },
   imola: { laps: 63, length: "4.909km", distance: "309.049km", firstGP: 1980, image: "https://media.formula1.com/image/upload/content/dam/fom-website/2018-redesign-assets/circuit-maps-16-9/Emilia_Romagna_Circuit.png" },
-  villeneuve: { laps: 70, length: "4.361km", distance: "305.270km", firstGP: 1978, image: "https://media.formula1.com/image/upload/content/dam/fom-website/2018-redesign-assets/circuit-maps-16-9/Canada_Circuit.png" }
+  villeneuve: {
+    laps: 70,
+    length: "4.361km",
+    distance: "305.27km",
+    firstGP: 1978,
+    fastestLap: { time: "1:13.078", driver: "Valtteri Bottas", year: 2019 },
+    image: "https://media.formula1.com/image/upload/c_fit,h_704/q_auto/v1740000001/common/f1/2026/track/2026trackmontrealdetailed.webp"
+  }
 };
 
 const OFFICIAL_RACE_NAMES_2026 = {
@@ -1090,7 +1182,8 @@ const OFFICIAL_RACE_NAMES_2026 = {
   "São Paulo Grand Prix": "FORMULA 1 MSC CRUISES GRANDE PRÊMIO DE SÃO PAULO 2026",
   "Las Vegas Grand Prix": "FORMULA 1 HEINEKEN LAS VEGAS GRAND PRIX 2026",
   "Qatar Grand Prix": "FORMULA 1 QATAR AIRWAYS QATAR GRAND PRIX 2026",
-  "Abu Dhabi Grand Prix": "FORMULA 1 ETIHAD AIRWAYS ABU DHABI GRAND PRIX 2026"
+  "Abu Dhabi Grand Prix": "FORMULA 1 ETIHAD AIRWAYS ABU DHABI GRAND PRIX 2026",
+  "Madrid Grand Prix": "FORMULA 1 MADRID GRAND PRIX 2026"
 };
 
 const COUNTRY_TO_ISO = {

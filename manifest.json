@@ -1,0 +1,16 @@
+{
+  "name": "F1 Portal",
+  "short_name": "F1 Portal",
+  "description": "Portal de dados da Fórmula 1 com informações em tempo real.",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#0b0b0b",
+  "theme_color": "#e10600",
+  "icons": [
+    {
+      "src": "assets/images/placeholder-driver.svg",
+      "sizes": "192x192 512x512",
+      "type": "image/svg+xml"
+    }
+  ]
+}
