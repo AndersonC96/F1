@@ -53,13 +53,11 @@ export function renderError(container, message, onRetry) {
 
 export function renderEmptyState(container, message) {
   const card = document.createElement("article");
-  card.className = "state-card reveal-up";
-  card.style.textAlign = "center";
-  card.style.padding = "3rem 1rem";
+  card.className = "state-card state-card-empty reveal-up";
   
   card.innerHTML = `
-    <div style="font-size: 3rem; margin-bottom: 1rem; opacity: 0.3;">🔍</div>
-    <p style="color: var(--text-muted);">${message || "Nenhum resultado encontrado."}</p>
+    <div class="empty-icon">🔍</div>
+    <p class="empty-message">${message || "Nenhum resultado encontrado."}</p>
   `;
   
   container.replaceChildren(card);
@@ -92,7 +90,12 @@ export function showCacheFeedback(timestamp) {
   document.body.appendChild(info);
 
   document.getElementById("clear-cache-btn")?.addEventListener("click", () => {
-    localStorage.clear();
+    // Limpeza seletiva: preserva outros dados do domínio
+    Object.keys(localStorage).forEach(key => {
+      if (key.startsWith('f1_')) {
+        localStorage.removeItem(key);
+      }
+    });
     window.location.reload();
   });
 }
@@ -123,8 +126,10 @@ export function announceToScreenReader(message) {
 export function registerServiceWorker() {
   if ("serviceWorker" in navigator) {
     window.addEventListener("load", () => {
-      navigator.serviceWorker.register("./sw.js").catch(() => {
-        // Silencioso em caso de erro no registro
+      // Ajuste de path para GitHub Pages (subpath /F1/)
+      const swPath = window.location.pathname.includes('/F1/') ? '/F1/sw.js' : './sw.js';
+      navigator.serviceWorker.register(swPath).catch(() => {
+        // Silencioso
       });
     });
   }

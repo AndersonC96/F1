@@ -1,94 +1,73 @@
-# 🏁 F1 Portal
+# F1 Portal
 
-Portal de dados da Fórmula 1 com informações em tempo real sobre pilotos, equipes, calendário e campeões históricos. Desenvolvido com foco em performance, acessibilidade e experiência do usuário em dispositivos móveis e desktop.
+Um portal estático desenvolvido com Vanilla JavaScript para consulta de dados em tempo real da Fórmula 1. O projeto foca em performance, acessibilidade e resiliência, utilizando técnicas modernas de desenvolvimento web sem a dependência de frameworks pesados.
 
-## 📸 Screenshots
+Acesse a demonstração: [https://andersoncav.github.io/F1/](https://andersoncav.github.io/F1/)
 
-<div align="center">
-  <img src="assets/images/screenshot-home.png" alt="Página Inicial" width="400">
-  <img src="assets/images/screenshot-drivers.png" alt="Página de Pilotos" width="400">
-</div>
+## 🏎️ O Projeto
 
-## 🔗 Demo
+O objetivo deste portal é fornecer uma interface rápida e intuitiva para entusiastas da categoria. Ele consome dados da Jolpica F1 API (sucessora da Ergast) e implementa uma camada robusta de cache local para contornar limites de taxa e garantir funcionamento offline parcial via PWA.
 
-Acesse o portal ao vivo: [https://andersonls.github.io/F1/](https://andersonls.github.io/F1/)
+### Diferenciais Técnicos
 
-## 🚀 Sobre o projeto
-
-Este projeto é uma aplicação frontend moderna e estática que consome dados da principal categoria do automobilismo mundial.
-
-O foco principal foi a criação de uma interface resiliente e performática utilizando apenas **tecnologias nativas (Vanilla JS)**. Implementamos um sistema de cache inteligente com persistência local para garantir uma navegação fluida mesmo sob limites de taxa da API, além de um design focado na identidade visual da Fórmula 1.
-
-### Diferenciais Técnicos:
-- **Zero Dependências:** Sem frameworks (React/Vue/Angular) ou bibliotecas externas de UI.
-- **Cache Inteligente:** Implementação manual de cache em `localStorage` com controle de TTL (Time-to-Live).
-- **Acessibilidade:** Navegação por teclado, landmarks semânticos e suporte a leitores de tela.
-- **Mobile First:** Navegação otimizada para toque com barra inferior estilo app nativo.
+- **Arquitetura Vanilla:** Zero frameworks. Todo o gerenciamento de estado e DOM é feito via JavaScript puro, demonstrando domínio dos fundamentos da web.
+- **Persistência Seletiva:** Sistema de cache customizado em `localStorage` com controle de expiração (TTL) e limpeza granular por projeto.
+- **Performance e PWA:** Implementação de Service Worker para cache de assets estáticos e manifesto para instalação como aplicativo.
+- **Acessibilidade Real:** Marcação semântica, suporte a leitores de tela via `aria-live` e gestão de foco para navegação por teclado.
 
 ## ✨ Funcionalidades
 
-- **Dashboard Inicial:** Countdown em tempo real para o próximo GP e resultados da última corrida.
-- **Classificação:** Tabela rápida de pilotos e construtores atualizada dinamicamente.
-- **Grid Completo:** Detalhes técnicos de todos os pilotos e equipes da temporada atual.
-- **Histórico:** Galeria de todos os campeões mundiais desde 1950 com filtros por títulos.
-- **Calendário:** Programação completa da temporada com status de cada Grande Prêmio.
-- **Feedback de Cache:** Indicação visual de quando os dados foram atualizados pela última vez.
+- **Dashboard:** Próximo Grande Prêmio com countdown em tempo real e resultados da última corrida.
+- **Classificação Dinâmica:** Tabelas de pilotos e construtores com filtros e ordenação personalizada.
+- **Grid Completo:** Detalhes técnicos de equipes e pilotos, incluindo fotos e estatísticas históricas.
+- **Histórico de Campeões:** Galeria completa de todos os campeões mundiais desde 1950.
+- **Calendário:** Cronograma da temporada com status atualizado de cada etapa.
 
-## 🛠️ Tecnologias
+## 🛠️ Stack Técnica
 
-- **Linguagens:** HTML5, CSS3, JavaScript (ES2022+)
-- **API:** [Jolpica F1 API](https://github.com/jolpica/jolpica-f1) (Sucessor do Ergast API)
-- **Deployment:** GitHub Pages
-- **CI/CD:** GitHub Actions
-- **Imagens:** FlagsAPI e Assets Oficiais da F1
+- **Linguagens:** HTML5, CSS3, JavaScript (ES6+ Modules)
+- **API:** [Jolpica F1 API](https://github.com/jolpica/jolpica-f1)
+- **Infra:** GitHub Actions (Deploy automatizado), Node.js (apenas para o Test Runner nativo)
+- **Testes:** Node Test Runner (sem dependências externas)
 
-## 📂 Estrutura do Projeto
+## 📂 Estrutura
 
 ```text
-/
-├── index.html                     # Dashboard principal
-├── drivers.html                   # Grid de pilotos com busca e filtros
-├── teams.html                     # Detalhes das escuderias
-├── champions.html                 # Histórico de campeões
-├── calendar.html                  # Calendário da temporada
-├── assets/
-│   ├── css/                       # Design System e Animações
-│   ├── js/
-│   │   ├── api.js                 # Camada de serviço e cache
-│   │   ├── ui-utils.js            # Helpers de interface e feedbacks
-│   │   ├── static-data.js         # Complementos de dados e mapeamentos
-│   │   └── [page].js              # Lógica específica de cada página
-│   └── images/                    # Fallbacks e ícones
-└── .github/workflows/             # Automação de deploy
+/assets
+  ├── css/          # Design System e animações
+  ├── js/
+  │   ├── api.js    # Camada de rede e cache
+  │   ├── ui-utils.js # Utilitários de interface e PWA
+  │   └── *.js      # Scripts específicos por página
+/tests              # Testes unitários de lógica pura
+sw.js               # Service Worker para suporte offline
+manifest.json       # Configurações do PWA
 ```
 
-## 💻 Como rodar localmente
+## 💻 Desenvolvimento Local
 
-Como o projeto é estático, não há necessidade de `npm install`. No entanto, devido ao uso de módulos ES6 e chamadas de API, é necessário um servidor local.
+O projeto utiliza módulos ES6, o que requer um servidor web para rodar localmente devido às restrições de CORS e segurança do navegador.
 
 1. Clone o repositório:
-```bash
-git clone https://github.com/andersonls/F1.git
-cd F1
-```
+   ```bash
+   git clone https://github.com/AndersonCav/F1.git
+   cd F1
+   ```
 
-2. Inicie um servidor (Exemplos):
-```bash
-# Se tiver VS Code
-# Use a extensão "Live Server"
+2. Inicie um servidor local (exemplos):
+   - **Node.js:** `npx serve .`
+   - **Python:** `python -m http.server 8080`
+   - **VS Code:** Extensão "Live Server"
 
-# Se tiver Python
-python -m http.server 8080
+3. Para rodar os testes unitários (requer Node.js 20+):
+   ```bash
+   npm run test
+   ```
 
-# Se tiver Node.js
-npx serve .
-```
+## 📝 Observações e Limitações
 
-3. Acesse `http://localhost:8080` no navegador.
-
-## 📝 Licença
-
-Distribuído sob a licença MIT. Veja `LICENSE` para mais informações.
+- As fotos dos pilotos e logos das equipes são fornecidos por assets externos integrados no `static-data.js`.
+- O cache da API é renovado automaticamente a cada 60 minutos para garantir dados frescos sem sobrecarregar o serviço gratuito.
 
 ---
-Desenvolvido por [Anderson](https://github.com/andersonls)
+Desenvolvido por [Anderson Cavalcante](https://github.com/AndersonCav)
